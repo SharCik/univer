@@ -1,0 +1,30 @@
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"><%= link_to image_tag("logo.png"), root_path , class:"logo" %></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav pages">
+            <li>
+              <%= link_to "УНИВЕРСИТЕТЫ", main_path, class:"main_links"   %>
+            </li>
+            <li>
+              <%= link_to "УСЛУГИ", services_path, class:"main_links"  %>
+            </li>
+            <li>
+              <%= link_to "НОВОСТИ", news_path, class:"main_links" %>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to image_tag("feedback.png"), "#" , class:"feedback" %></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>

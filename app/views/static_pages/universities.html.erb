@@ -1,0 +1,14 @@
+<div class="container" style="padding: 50px;">
+  <row style="text-align: center;font-family: Roboto,Helvetica Neue,Arial,sans-serif;">
+    <h2>Лучшие вузы</h2>
+    <p style="color: #999;font-family: Roboto,Helvetica Neue,Arial,sans-serif;margin-bottom: 50px;">Самые престижные университеты страны</p>
+  </row>
+  <% @univers.each do |univer| %> 
+    <div class="col-md-3">
+    <%= link_to image_tag(univer.image.normal.url), "#" , class:"image-university"%>
+    <h4 class="image_text_first" style="color: white;font-size: 1.4rem;"><%= univer.name.upcase! %></h4>
+    <span class="image_text_second"><%= univer.short_name %></span>
+    </div>
+  <% end %>
+
+</div>

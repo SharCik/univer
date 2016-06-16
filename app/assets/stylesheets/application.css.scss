@@ -1,0 +1,171 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+/** nav **/
+
+.navbar{
+  background-color: #141c29;
+  border: none;
+}
+
+.logo{
+  position: relative;
+  top: 20px !important;
+}
+
+.main_links{
+  font-family: sans-serif;
+  font-size: 18 !important;
+  color: #c1c1c2 !important;
+}
+
+.main_links:hover{
+  color: #fff !important;
+}
+
+.pages{
+  position: relative;
+  top: 8px !important;
+  padding-left: 50px;
+}
+
+.feedback{
+  padding: 10px !important;
+}
+
+/**   slider   **/
+
+.item{
+  max-height: 480px !important;
+}
+
+/**  Universities  **/
+
+.image-university{
+  position: relative; 
+  width: 100%;
+}
+
+.image_text_first{
+  position: absolute; 
+  top: 60px; 
+  left: 30px; 
+  width: 100%; 
+  font-weight: bold;
+}
+
+.image_text_second{
+  position: absolute; 
+  top: 120px; 
+  left: 30px; 
+  width: 100%; 
+  color: silver;
+}
+
+
+
+
+/**   services   **/
+.serv{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.first_half_logo{
+  color: #bb6062;
+}
+
+.list_services{
+  margin-top: 40px;
+  text-align: center;
+  color: #424c58;
+}
+
+.world{
+  position: relative;
+  left: 10px;
+}
+
+.welcome{
+  position: relative;
+  top: 10px;
+  right: 10px;
+}
+
+.plane{
+  position: relative;
+  top: 12px;
+}
+
+
+/**   footer   **/
+
+.footer_top{
+  margin: 0px;
+  height: 20px;
+  background-color: black;
+}
+
+.footer{
+  background-color: #192128;
+  margin: 0px;
+}
+
+.footer_apper{
+  margin-top: 10px;
+  font-size: 11pt;
+}
+
+.communication{
+  padding-left: 10px;
+}
+
+.footer a{
+  color: silver;
+  text-decoration: none;
+}
+
+.footer a:hover{
+  color: #fff;
+}
+
+.footer_columns{
+  margin-top: 30px;
+  color: silver;
+}
+
+.social{
+  position: relative;
+  top: 10px;
+  padding-right: 20px;
+}
+
+.logo_footer{
+  font-family: sans-serif;
+  font-size: 18pt;
+}
+
+.info{
+  font-size: 1.2rem !important;
+  line-height: 1.8333333333;
+  color: #424c58;
+  margin-bottom: 0;
+}
