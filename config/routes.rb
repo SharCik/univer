@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root  'static_pages#universities'
   match '/main',  to: 'static_pages#universities',            via: 'get'
   match '/services',  to: 'static_pages#services',            via: 'get'
