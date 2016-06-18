@@ -14,20 +14,31 @@ ActiveAdmin.register University do
 # end
 
   config.batch_actions = false
-  sidebar :add_new_departament,  :only => :show do
-    link_to "New departament for #{university.short_name}", new_admin_departament_path(univer: university)
-  end
+
+  controller do
+    def new
+      @university = University.new(city_id: params[:city])
+      super
+    end 
+      private 
+  end 
+
 
   sidebar 'Departaments by this University', :only => :show do
     table_for Departament.joins(:university).where(:university_id => university.id) do |t|
       t.column("Show") { |departament| link_to departament.name , admin_departament_path(departament) }
       t.column("Edit") { |departament| link_to image_tag("edit.png", size:"20x20"), edit_admin_departament_path(departament) }
     end
-
+    link_to "New departament for #{university.short_name}", new_admin_departament_path(univer: university)
   end
 
+  sidebar :picture,  :only => :show do
+    image_tag(university.image.normal.url)
+  end
+
+
   show do
-    attributes_table :name, :short_name, :description, :image, :initial_cost 
+    attributes_table :name, :short_name, :description, :city_id , :image, :initial_cost 
   end
 
   index do
@@ -36,6 +47,7 @@ ActiveAdmin.register University do
     column :description do |object|
       object.description.slice(0, 100) +"..."
     end
+    column :city
     column :initial_cost do |product|
       number_to_currency product.initial_cost
     end
@@ -43,11 +55,12 @@ ActiveAdmin.register University do
   end
 
   filter :departaments
+  filter :city
   filter :name
   filter :initial_cost
   filter :created_at
   filter :updated_at
 
-  permit_params :name, :short_name, :description, :image, :initial_cost
+  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id
 
 end

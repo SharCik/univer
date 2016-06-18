@@ -22,16 +22,13 @@ ActiveAdmin.register Departament do
       private 
   end 
 
-  sidebar :add_new_specialty,  :only => :show do
-    link_to "New specialty for #{departament.name}", new_admin_specialty_path(departament: departament)
-  end
 
   sidebar 'Specialties by this Departament', :only => :show do
     table_for Specialty.joins(:departament).where(:departament_id => departament) do |t|
       t.column("Show") { |specialty| link_to specialty.name , admin_specialty_path(specialty) }
       t.column("Edit") { |specialty| link_to image_tag("edit.png", size:"20x20"), edit_admin_specialty_path(specialty) }
     end
-
+    link_to "New specialty for #{departament.name}", new_admin_specialty_path(departament: departament)
   end
 
 
