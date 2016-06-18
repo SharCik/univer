@@ -138,7 +138,7 @@ ActiveAdmin.setup do |config|
   #
   # Enable and disable Batch Actions
   #
-  config.batch_actions = true
+  config.batch_actions = false
 
   # == Controller Filters
   #
@@ -229,6 +229,10 @@ ActiveAdmin.setup do |config|
   # or customize the formats shown per namespace/globally
   #
   # To disable/customize for the :admin namespace:
+
+    config.namespace :admin do |admin|
+      admin.batch_actions = false
+    end
   #
   #   config.namespace :admin do |admin|
   #

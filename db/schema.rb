@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616065510) do
+ActiveRecord::Schema.define(version: 20160617071405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,10 +51,13 @@ ActiveRecord::Schema.define(version: 20160616065510) do
 
   create_table "departaments", force: :cascade do |t|
     t.string   "name"
-    t.string   "short_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "university_id"
+    t.integer  "initial_cost"
   end
+
+  add_index "departaments", ["university_id"], name: "index_departaments_on_university_id", using: :btree
 
   create_table "qualifications", force: :cascade do |t|
     t.string   "name"
@@ -68,8 +71,14 @@ ActiveRecord::Schema.define(version: 20160616065510) do
   create_table "specialties", force: :cascade do |t|
     t.string   "name"
     t.integer  "departament_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "profession"
+    t.integer  "training_period"
+    t.boolean  "ochno"
+    t.boolean  "zaochno"
+    t.integer  "ochno_price"
+    t.integer  "zaochno_price"
   end
 
   add_index "specialties", ["departament_id"], name: "index_specialties_on_departament_id", using: :btree
@@ -84,6 +93,7 @@ ActiveRecord::Schema.define(version: 20160616065510) do
     t.integer  "initial_cost"
   end
 
+  add_foreign_key "departaments", "universities"
   add_foreign_key "qualifications", "specialties"
   add_foreign_key "specialties", "departaments"
 end
