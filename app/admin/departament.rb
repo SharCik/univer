@@ -1,5 +1,5 @@
 ActiveAdmin.register Departament do
-  
+  menu priority: 4
 
   config.batch_actions = false
 # See permitted parameters documentation:

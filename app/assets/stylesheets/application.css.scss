@@ -69,19 +69,55 @@
   position: absolute; 
   top: 60px; 
   left: 30px; 
-  width: 100%; 
-  font-weight: bold;
+  width: 90%; 
 }
 
 .image_text_second{
   position: absolute; 
-  top: 120px; 
+  top: 160px; 
   left: 30px; 
   width: 100%; 
   color: silver;
 }
 
+.preparatory_department{
+  font-family: PT Sans,Lucida Grande,Helvetica Neue,Arial,sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5714285714;
+  color: #333; 
+}
 
+.large-btn{
+  width: 145px;
+  background-color: #23599b;
+}
+
+.head{
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+
+.container_for_departaments :hover{
+  color: #fff;
+  transition: color .3s,background-color .3s,border-color .3s;
+  background-color: #23599b;
+}
+
+.departament_row{
+  height: 65px;
+  border: 1px solid #f5f5f5;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+.departament_details{
+  position: relative;
+  top: 25px;
+}
 
 
 /**   services   **/

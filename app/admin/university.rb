@@ -1,5 +1,5 @@
 ActiveAdmin.register University do
-
+  menu priority: 3
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -38,7 +38,7 @@ ActiveAdmin.register University do
 
 
   show do
-    attributes_table :name, :short_name, :description, :city_id , :image, :initial_cost 
+    attributes_table :name, :short_name, :description, :city_id , :preparatory_department, :address , :hostel, :initial_cost 
   end
 
   index do
@@ -48,6 +48,9 @@ ActiveAdmin.register University do
       object.description.slice(0, 100) +"..."
     end
     column :city
+    column :address
+    column :preparatory_department
+    column :hostel
     column :initial_cost do |product|
       number_to_currency product.initial_cost
     end
@@ -61,6 +64,6 @@ ActiveAdmin.register University do
   filter :created_at
   filter :updated_at
 
-  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id
+  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel
 
 end

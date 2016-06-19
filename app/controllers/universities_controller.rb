@@ -20,6 +20,10 @@ class UniversitiesController < ApplicationController
 
   def show
     @univer = University.find(params[:id])
+    @city = City.find(@univer.city_id)
+    @departaments = Departament.where(university_id: @univer.id)
+    departament = Departament.find(1)
+    @specialties = Specialty.where(departament_id: departament.id)
   end
 
   def edit
@@ -35,6 +39,10 @@ class UniversitiesController < ApplicationController
         flash[:error] = "Could not update user."
         redirect_to edit_university_path
       end
+  end
+
+  def departament_specailties
+    
   end
 
   private

@@ -1,18 +1,42 @@
-<div class="container" style="padding: 50px;">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
+<div class="container" style="padding-top: 50px;padding-bottom: 50px;">
       <% flash.each do |key, value| %>
         <div class="alert alert-dismissible alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong><%= value %></strong></div>
       <% end %>
-    <legend><%= @univer.name %></legend>
-    <p><%= @univer.short_name %></p>
-    <% if @univer.initial_cost != nil %>
-      <p style="color: green;"><%= @univer.initial_cost %>$</p>
-    <% end %>
-    <hr>
-    <div><%= link_to "Back", universities_path , style:"padding-right: 30px;"%><%= link_to "Edit", edit_university_path(@univer.id) %></div>
-  </div>
-  <div class="col-md-3"></div>
+        <div class="container" style="height: 260px;width: 100%;">
+          <div class="col-md-3"><%= image_tag(@univer.image.normal.url) %></div>
+          <div class="col-md-6"><%= @univer.description %></div>
+          <div class="col-md-3">
+            <p style="margin: 0px;"><span style="font-weight: bold;padding: 0px;"><%= @city.name %></span></p>
+            <p style="margin-bottom: 22px;padding: 0px;"><%= @univer.address %></p>
+            <% if @univer.preparatory_department == true %>
+            <p style="margin-bottom: 0px;"><span style="margin-right: 10px;"><%= image_tag("green.png", size:"10x10")  %></span><span class="preparatory_department">Подготовительное отделение</span></p>
+            <% end %>
+            <% if @univer.hostel == true %>
+            <p style="margin-bottom: 22px;"><span style="margin-right: 10px;"><%= image_tag("blue.jpg", size:"10x10") %></span><span class="preparatory_department">Общежитие</span></p>
+            <% end %>
+            <p style="font-weight: bold;margin-bottom: 0px;">Подготовительное отделение</p>
+            <p>Цена: <span style="color: #81cf3a;">от <%= number_to_currency @univer.initial_cost %></span></p>
+          </div>
+        </div>
+        <hr>
+        <div class="container head"><h3 style="margin-bottom: 50px;">Ступени образования</h3>
+          <button class="btn btn-primary btn-lg large-btn">Высшее</button>
+        </div>
+        <% @departaments.each do |departament| %>
+        <div class="container_for_departaments">
+          <div class="container departament_row">
+            <div class="col-md-7 departament_details"><%= departament.name %></div>
+            <% if count_specialties(departament) != 1 %>
+            <div class="col-md-3 departament_details"><%= count_specialties(departament) %> специальности</div>
+            <% else %>
+            <div class="col-md-3 departament_details"><%= count_specialties(departament) %> специальность</div>
+            <% end %>
+            <div class="col-md-2 departament_details">от <%= number_to_currency departament.initial_cost %></div>
+          </div>
+        </div>
+        <%= render "universities/departament_specailties"%>
+        <% end %>
+
 </div>
