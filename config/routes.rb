@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   match '/main',  to: 'static_pages#universities',            via: 'get'
   match '/services',  to: 'static_pages#services',            via: 'get'
   match '/news',  to: 'static_pages#news',            via: 'get'
-  match '/specialties', to: 'universities#departament_specailties', via: 'get'
 
   resources :universities
 

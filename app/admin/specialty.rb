@@ -28,12 +28,7 @@ ActiveAdmin.register Specialty do
   index do
     column :name
     column :profession
-    column "Study mode", :ochno, :zaochno
     column :training_period
-    column :price do |product|
-      number_to_currency product.ochno_price
-      number_to_currency product.zaochno_price
-    end
     actions
   end
 

@@ -25,8 +25,8 @@
           <button class="btn btn-primary btn-lg large-btn">Высшее</button>
         </div>
         <% @departaments.each do |departament| %>
-        <div class="container_for_departaments">
-          <div class="container departament_row">
+        <div onclick="showHide('<%= departament.id %>')"  class="container_for_departaments">
+          <div id="<%= departament.id.to_s + 'departament' %>" onclick="changeColor('<%= departament.id.to_s + 'departament' %>')" class="container departament_row">
             <div class="col-md-7 departament_details"><%= departament.name %></div>
             <% if count_specialties(departament) != 1 %>
             <div class="col-md-3 departament_details"><%= count_specialties(departament) %> специальности</div>
@@ -36,7 +36,7 @@
             <div class="col-md-2 departament_details">от <%= number_to_currency departament.initial_cost %></div>
           </div>
         </div>
-        <%= render "universities/departament_specailties"%>
+        <%= render "universities/departament_specailties", :depart_id => departament.id %>
         <% end %>
 
 </div>

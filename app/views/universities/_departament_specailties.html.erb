@@ -1,38 +1,41 @@
-<div class="table table-striped table-hover"  style="width: 100%;">
-  <table style="width: 100%;">
-    <thead style="width: 100%;">
-      <tr>
-        <th>Специальность</th>
-        <th>Профессия</th>
-        <th>Форма обучения</th>
-        <th>Срок, лет</th>
-        <th>Цена, $</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @specialties.each do |specialty| %>
-      <tr>
-        <td><%= specialty.name %></td>
-        <td><%= specialty.profession %></td>
-        <td>
-          <% if specialty.ochno == true  %>
-          <p>Очно</p>
+<div id="<%= depart_id %>" class="container cont block_class" style="display: none;">
+  <div class="table table-bordered table-striped table-hover">
+    <table class="table_specialties" style="width: 100%;">
+      <thead class="head_table">
+        <tr class="tr_head">
+          <th class="padding_spec">Специальность</th>
+          <th class="padding_spec">Профессия</th>
+          <th class="padding_spec">Форма обучения</th>
+          <th class="padding_spec" style="text-align: center;">Срок, лет</th>
+          <th class="padding_spec">Цена, $</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% specialties = spec_of_departament(depart_id) %>
+        <% specialties.each do |specialty| %>
+        <tr>
+          <td class="padding_spec td_height"><%= specialty.name %></td>
+          <td class="padding_spec td_height"><%= specialty.profession %></td>
+          <td class="padding_spec td_height">
+            <% if specialty.ochno == true  %>
+            <p>Очно</p>
+            <% end %>
+            <% if specialty.zaochno == true  %>
+            <p>Заочно</p>
+            <% end %>
+          </td>
+          <td class="padding_spec td_height" style="text-align: center;"><%= specialty.training_period %></td>
+          <td class="padding_spec td_height">
+          <% if specialty.ochno == true %>
+            <p><%= number_to_currency specialty.ochno_price %></p>
           <% end %>
-          <% if specialty.zaochno == true  %>
-          <p>Заочно</p>
+          <% if specialty.ochno == true %>
+            <p><%= number_to_currency specialty.zaochno_price %></p>
           <% end %>
-        </td>
-        <td><%= specialty.training_period %></td>
-        <td>
-        <% if specialty.ochno == true %>
-          <p><%= specialty.ochno_price %></p>
+          </td>
+        </tr>
         <% end %>
-        <% if specialty.ochno == true %>
-          <p><%= specialty.zaochno_price %></p>
-        <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>
