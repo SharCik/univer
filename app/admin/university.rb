@@ -38,7 +38,7 @@ ActiveAdmin.register University do
 
 
   show do
-    attributes_table :name, :short_name, :description, :city_id , :preparatory_department, :address , :hostel, :initial_cost 
+    attributes_table :name, :short_name, :description, :city_id , :preparatory_department, :address , :hostel, :initial_cost , :cost_ochno, :cost_zaochno
   end
 
   index do
@@ -64,6 +64,6 @@ ActiveAdmin.register University do
   filter :created_at
   filter :updated_at
 
-  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel
+  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :cost_ochno , :cost_zaochno
 
 end

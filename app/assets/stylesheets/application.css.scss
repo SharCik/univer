@@ -22,6 +22,10 @@
 
 /** nav **/
 
+body{
+  background-color: #F5F5F5;
+}
+
 .navbar{
   background-color: #141c29;
   border: none;
@@ -197,6 +201,12 @@
 .plane{
   position: relative;
   top: 12px;
+}
+
+.details_silver{
+  color: silver;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
 }
 
 

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   match '/services',  to: 'static_pages#services',            via: 'get'
   match '/news',  to: 'static_pages#news',            via: 'get'
 
+
+
   resources :universities
 
 
