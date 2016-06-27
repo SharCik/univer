@@ -18,6 +18,17 @@ module ApplicationHelper
     Specialty.where(departament_id: departament)
   end
 
+  def depart_request(specialty)
+    spec =Specialty.find(specialty)
+    departament = Departament.where(id: spec.departament_id).first
+    departament.id
+  end
+
+  def university_request(specialty)
+    spec =Specialty.find(specialty)
+    departament = Departament.where(id: spec.departament_id).first
+    University.where(id: departament.university_id).first.id
+  end
 
 
 end

@@ -1,0 +1,38 @@
+<div class="container" style="padding: 50px;">
+  <div class="row">
+    <div class="col-md-3"> </div>
+    <div class="col-md-6" style="background-color: #f9f9f9;">
+    <legend>Оставить заявку</legend>
+
+    <div class="well">
+        <%= @university.name %>
+    </div>
+    <div class="well">
+        <%= @departament.name %>
+    </div>
+    <div class="well">
+        <%= @specialty.name %>
+    </div>
+      <%= form_for(@bid) do |f| %>
+
+        <div class="form-group"><%= f.label :name %></div>
+        <div class="form-group"><%= f.text_area :name, size: "55x1" %></div>
+
+        <div class="form-group"><%= f.label :phone %></div>
+        <div class="form-group"><%= f.text_area :phone, size: "55x1" %></div>
+
+        <div class="form-group"><%= f.label :mail %></div>
+        <div class="form-group"><%= f.text_area :mail , size: "55x1" %></div>
+
+        <div class="form-group"><%= f.label :comment %></div>
+        <div class="form-group"><%= f.text_area :comment, size: "55x3" %></div>
+
+        <%= hidden_field_tag(:specialty, @specialty.id) %>
+
+        <%= f.submit "Create!" %>
+        <%= link_to "Back", root_path, {:class => "btn btn-link"} %>
+      <% end %>
+    </div>
+    <div class="col-md-3"> </div>
+  </div>
+</div>

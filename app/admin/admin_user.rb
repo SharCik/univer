@@ -1,14 +1,12 @@
 ActiveAdmin.register AdminUser do
-  menu priority: 1
+ 
+  menu label: "Администраторы"
   permit_params :email, :password, :password_confirmation
 
-  index do
-    selectable_column
-    id_column
-    column :email
-    column :current_sign_in_at
-    column :sign_in_count
-    column :created_at
+  index title:"Администраторы" do
+    column "Email", :email
+    column "Кол-во посещений",:sign_in_count
+    column "Создан",:created_at
     actions
   end
 

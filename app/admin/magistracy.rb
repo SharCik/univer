@@ -1,5 +1,5 @@
-ActiveAdmin.register Specialty do
-  menu label: "Специальности"
+ActiveAdmin.register Magistracy do
+  menu label: "Магистратура"
 
 
   config.batch_actions = false
@@ -18,17 +18,17 @@ ActiveAdmin.register Specialty do
 
   controller do
     def new
-      @specialty = Specialty.new(departament_id: params[:departament])
+      @magistracy = Magistracy.new(departament_id: params[:departament])
       super
     end 
       private 
   end 
 
 
-  index title:"Специальности" do
-    column "Название",:name
-    column "Квалификация",:profession
-    column "Время обучения",:training_period
+  index title:"Магистратура"  do
+    column :name
+    column :profession
+    column :training_period
     actions
   end
 

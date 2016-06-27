@@ -1,5 +1,5 @@
 ActiveAdmin.register City do 
-  menu priority: 2
+  menu label: "Города"
 
   sidebar :new_university,  :only => :show do
     link_to "New university for #{city.name}", new_admin_university_path(city: city)
@@ -15,6 +15,11 @@ ActiveAdmin.register City do
       t.column("Universities") { |university| link_to university.name , admin_university_path(university) }
       t.column("Edit") { |university| link_to image_tag("edit.png", size:"20x20"), edit_admin_university_path(university) }
     end
+  end
+
+  index title:"Города" do
+    column "Название",:name
+    actions
   end
 
 

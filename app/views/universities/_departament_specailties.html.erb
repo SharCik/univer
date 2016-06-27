@@ -8,6 +8,7 @@
           <th class="padding_spec">Форма обучения</th>
           <th class="padding_spec" style="text-align: center;">Срок, лет</th>
           <th class="padding_spec">Цена, $</th>
+          <th class="padding_spec">Заявка $</th>
         </tr>
       </thead>
       <tbody>
@@ -33,6 +34,7 @@
             <p><%= number_to_currency specialty.zaochno_price %></p>
           <% end %>
           </td>
+          <td class="padding_spec td_height" style="text-align: center;"><%= link_to image_tag("request.png", size:"20x20"), request_path(specialty: specialty.id, departament: depart_request(specialty.id), university:university_request(specialty.id)) %></td>
         </tr>
         <% end %>
       </tbody>

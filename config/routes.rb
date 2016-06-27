@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   match '/main',  to: 'static_pages#universities',            via: 'get'
   match '/services',  to: 'static_pages#services',            via: 'get'
   match '/news',  to: 'static_pages#news',            via: 'get'
+  match '/request',  to: 'bids#new',            via: 'get'
+  match '/bids',  to: 'bids#create',            via: 'post'
 
 
 
   resources :universities
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

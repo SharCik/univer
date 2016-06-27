@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621133346) do
+ActiveRecord::Schema.define(version: 20160627130835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,24 @@ ActiveRecord::Schema.define(version: 20160621133346) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "bids", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "mail"
+    t.string   "comment"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "city_id"
+    t.integer  "university_id"
+    t.integer  "departament_id"
+    t.integer  "specialty_id"
+  end
+
+  add_index "bids", ["city_id"], name: "index_bids_on_city_id", using: :btree
+  add_index "bids", ["departament_id"], name: "index_bids_on_departament_id", using: :btree
+  add_index "bids", ["specialty_id"], name: "index_bids_on_specialty_id", using: :btree
+  add_index "bids", ["university_id"], name: "index_bids_on_university_id", using: :btree
+
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.string   "image_city"
@@ -66,6 +84,21 @@ ActiveRecord::Schema.define(version: 20160621133346) do
 
   add_index "departaments", ["university_id"], name: "index_departaments_on_university_id", using: :btree
 
+  create_table "magistracies", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "profession"
+    t.integer  "training_period"
+    t.boolean  "ochno"
+    t.boolean  "zaochno"
+    t.integer  "ochno_price"
+    t.integer  "zaochno_price"
+    t.integer  "departament_id"
+  end
+
+  add_index "magistracies", ["departament_id"], name: "index_magistracies_on_departament_id", using: :btree
+
   create_table "qualifications", force: :cascade do |t|
     t.string   "name"
     t.integer  "specialty_id"
@@ -74,6 +107,14 @@ ActiveRecord::Schema.define(version: 20160621133346) do
   end
 
   add_index "qualifications", ["specialty_id"], name: "index_qualifications_on_specialty_id", using: :btree
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "service_image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "specialties", force: :cascade do |t|
     t.string   "name"
@@ -108,7 +149,12 @@ ActiveRecord::Schema.define(version: 20160621133346) do
 
   add_index "universities", ["city_id"], name: "index_universities_on_city_id", using: :btree
 
+  add_foreign_key "bids", "cities"
+  add_foreign_key "bids", "departaments"
+  add_foreign_key "bids", "specialties"
+  add_foreign_key "bids", "universities"
   add_foreign_key "departaments", "universities"
+  add_foreign_key "magistracies", "departaments"
   add_foreign_key "qualifications", "specialties"
   add_foreign_key "specialties", "departaments"
   add_foreign_key "universities", "cities"

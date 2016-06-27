@@ -1,5 +1,5 @@
 ActiveAdmin.register University do
-  menu priority: 3
+  menu label: "Университеты"
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -41,17 +41,16 @@ ActiveAdmin.register University do
     attributes_table :name, :short_name, :description, :city_id , :preparatory_department, :address , :hostel, :initial_cost , :cost_ochno, :cost_zaochno
   end
 
-  index do
-    column :name
-    column :short_name
-    column :description do |object|
+  index title:"Университеты" do
+    column "Название",:name
+    column "Аббревиатура",:short_name
+    column "Описание",:description do |object|
       object.description.slice(0, 100) +"..."
     end
-    column :city
-    column :address
-    column :preparatory_department
-    column :hostel
-    column :initial_cost do |product|
+    column "Город",:city
+    column "Адрес",:address
+    column "Общежитие",:hostel
+    column "Начальная стоимость",:initial_cost do |product|
       number_to_currency product.initial_cost
     end
     actions
