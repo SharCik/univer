@@ -26,20 +26,38 @@ ActiveAdmin.register Magistracy do
 
 
   index title:"Магистратура"  do
-    column :name
-    column :profession
-    column :training_period
+    column "Название",:name
+    column "Квалификация",:profession
+    column "Время обучения",:training_period
     actions
   end
 
   form do |f|
-    f.semantic_errors # shows errors on :base
-    f.inputs          # builds an input field for every attribute
-    f.actions         # adds the 'Submit' and 'Cancel' buttons
+    f.semantic_errors
+    inputs 'Details' do
+      input :departament, :as => :select, :collection => @departaments, label: "Факультет"
+      input :name, label: "Название"
+      input :profession, label: "Квалификация"
+      input :training_period, label: "Время обучения"
+      input :ochno, label: "Очно"
+      input :zaochno, label: "Заочно"
+      input :ochno_price, label: "Очно, цена"
+      input :zaochno_price, label: "Заочно, цена"
+    end
+    actions
   end
 
   show do
-    attributes_table :name, :departament_id, :profession, :ochno, :zaochno, :ochno_price, :zaochno_price, :training_period
+    attributes_table do
+      row("Факультет"){ |r| result = Departament.find(r.departament_id).name }
+      row("Название"){ |r| r.name }
+      row("Квалификация"){ |r| r.profession } 
+      row("Время обучения"){ |r| r.training_period }
+      row("Очно"){ |r| r.ochno  == true ? "Есть" : "Нет" }
+      row("Заочно"){ |r| r.zaochno == true ? "Есть" : "Нет" }
+      row("Очно, стоимость"){ |r| number_to_currency r.ochno_price }
+      row("Заочно, стоимость"){ |r| number_to_currency r.zaochno_price }
+    end
   end
 
   permit_params :name, :departament_id, :ochno, :zaochno, :ochno_price, :zaochno_price,  :profession, :training_period

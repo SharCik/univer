@@ -113,7 +113,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'admin/cities#index'
+  config.root_to = 'cities#index'
 
   # == Admin Comments
   #

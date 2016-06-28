@@ -38,8 +38,22 @@ ActiveAdmin.register University do
 
 
   show do
-    attributes_table :name, :short_name, :description, :city_id , :preparatory_department, :address , :hostel, :initial_cost , :cost_ochno, :cost_zaochno
+    attributes_table do
+      row("Город"){ |r| result = City.find(r.city_id).name }
+      row("Название"){ |r| r.name }
+      row("Аббревиатура"){ |r| r.short_name } 
+      row("Описание"){ |r| r.description }
+      row("Адрес"){ |r| r.address }
+      row("Подготовительное отделение"){ |r| r.preparatory_department == true ? "Есть" : "Нет" }
+      row("Общежитие"){ |r| r.hostel == true ? "Есть" : "Нет" }
+      row("Начальная стоимость"){ |r| number_to_currency r.initial_cost }
+      row("Очно, стоимость"){ |r| number_to_currency r.cost_ochno }
+      row("Заочно, стоимость"){ |r| number_to_currency r.cost_zaochno }
+      row("Рейтинг"){ |r| r.rating }
+    end
   end
+
+
 
   index title:"Университеты" do
     column "Название",:name
@@ -56,6 +70,25 @@ ActiveAdmin.register University do
     actions
   end
 
+  form do |f|
+    f.semantic_errors
+    inputs 'Details' do
+      input :city, :as => :select, :collection => @cities
+      input :name, label: "Название"
+      input :short_name, label: "Аббревиатура"
+      input :description, label: "Описание"
+      input :address, label: "Адрес"
+      input :preparatory_department, label: "Подготовительное отделение"
+      input :hostel, label: "Общежитие"
+      input :initial_cost, label: "Начальная стоимость"
+      input :cost_ochno, label: "Очно, стоимость"
+      input :address, label: "Заочно стоимость"
+      input :rating, label: "Рейтинг"
+      input :image, label: "Картинка"
+    end
+    actions
+  end
+
   filter :departaments
   filter :city
   filter :name
@@ -63,6 +96,6 @@ ActiveAdmin.register University do
   filter :created_at
   filter :updated_at
 
-  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :cost_ochno , :cost_zaochno
+  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :cost_ochno , :cost_zaochno ,:rating
 
 end

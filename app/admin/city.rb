@@ -23,6 +23,16 @@ ActiveAdmin.register City do
   end
 
 
+  form do |f|
+    f.semantic_errors
+    inputs 'Details' do
+      input :name, label: "Название"
+      input :image_city, label: "URL картинки"
+    end
+    actions
+  end
+
+
   filter :created_at
   filter :updated_at
 

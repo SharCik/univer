@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627130835) do
+ActiveRecord::Schema.define(version: 20160628152544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 20160627130835) do
     t.boolean  "hostel"
     t.integer  "cost_ochno"
     t.string   "cost_zaochno"
+    t.integer  "rating"
   end
 
   add_index "universities", ["city_id"], name: "index_universities_on_city_id", using: :btree

@@ -23,6 +23,16 @@ ActiveAdmin.register Service do
     actions
   end
 
+  form do |f|
+    f.semantic_errors
+    inputs 'Details' do
+      input :name, label: "Название"
+      input :description, label: "Описание"
+      input :service_image, label: "Картинка"
+    end
+    actions
+  end
+
   show  do
     attributes_table do
       row("Название"){ |r| r.name }
