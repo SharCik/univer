@@ -4,8 +4,6 @@ class StaticPagesController < ApplicationController
   end
 
   def services
-  end
-
-  def news
+    @services = Service.paginate(:per_page => 5, :page => params[:page])
   end
 end

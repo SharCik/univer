@@ -20,27 +20,37 @@
 
 
 function showHide(element_id) {
-  //Если элемент с id-шником element_id существует
-  if (document.getElementById(element_id)) { 
-    //Записываем ссылку на элемент в переменную obj
+  if (document.getElementById(element_id)) 
+  { 
     var obj = document.getElementById(element_id); 
-    //Если css-свойство display не block, то: 
-    if (obj.style.display != "block") { 
-      obj.style.display = "block"; //Показываем элемент
+
+    if (obj.style.display != "block") 
+    { 
+      obj.style.display = "block"; 
     }
-      else obj.style.display = "none"; //Скрываем элемент
-    }
-}   
+    else 
+    {
+      obj.style.display = "none"; 
+    };
+  };  
+};   
 
 
 
 function changeColor(element_id) {
-  if (document.getElementById(element_id)) { 
+  if (document.getElementById(element_id)) 
+  { 
     var obj = document.getElementById(element_id);
-    if (obj.style.backgroundColor != "#23599b") { 
+    if (obj.style.backgroundColor != "#23599b")  
+    {
       obj.style.backgroundColor = "#23599b";
       obj.style.color = "#fff";
-    } else {
-      obj.style.backgroundColor = "#fff";}
-  }
-}
+    } 
+    else
+    { 
+      obj.style.backgroundColor = "#fff";
+      obj.style.color = "black";
+    };
+  };  
+};
+

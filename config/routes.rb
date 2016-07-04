@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
 
+  get 'news/index'
+
+  get 'news/show'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root  'static_pages#universities'
   match '/main',  to: 'static_pages#universities',            via: 'get'
   match '/services',  to: 'static_pages#services',            via: 'get'
-  match '/news',  to: 'static_pages#news',            via: 'get'
   match '/request',  to: 'bids#new',            via: 'get'
   match '/bids',  to: 'bids#create',            via: 'post'
+  match '/all_news',  to: 'news#index',            via: 'get'
 
 
 
-  resources :universities
+  resources :universities ,only:[ :index, :show]
+  resources :news ,only:[ :show]
 
 
 

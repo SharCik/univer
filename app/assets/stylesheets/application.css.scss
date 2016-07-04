@@ -33,7 +33,11 @@ body{
 
 .logo{
   position: relative;
-  top: 20px !important;
+  top: 13px !important;
+}
+
+.logo:hover{
+  text-decoration: none;
 }
 
 .main_links{
@@ -71,7 +75,7 @@ body{
 
 .image_text_first{
   position: absolute; 
-  top: 60px; 
+  top: 80px; 
   left: 30px; 
   width: 90%; 
 }
@@ -207,6 +211,23 @@ body{
   color: silver;
   font-size: 1.2rem;
   margin-bottom: 5px;
+}
+
+/**   news   **/
+
+.news{
+  border: 1px solid;
+  border-color: silver;
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: #fff;
+  bottom: 45px;
+}
+
+.news_decript{
+  padding-top: 10px;
+  color: #363636;
 }
 
 

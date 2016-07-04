@@ -1,5 +1,6 @@
 ActiveAdmin.register University do
-  menu label: "Университеты"
+  menu priority: 4, label: "Университеты"
+  config.filters = false
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -39,16 +40,17 @@ ActiveAdmin.register University do
 
   show do
     attributes_table do
-      row("Город"){ |r| result = City.find(r.city_id).name }
+      row("Город"){ |r| result = City.find(r.city_id).name if r.city_id != nil }
       row("Название"){ |r| r.name }
       row("Аббревиатура"){ |r| r.short_name } 
       row("Описание"){ |r| r.description }
       row("Адрес"){ |r| r.address }
       row("Подготовительное отделение"){ |r| r.preparatory_department == true ? "Есть" : "Нет" }
       row("Общежитие"){ |r| r.hostel == true ? "Есть" : "Нет" }
-      row("Начальная стоимость"){ |r| number_to_currency r.initial_cost }
-      row("Очно, стоимость"){ |r| number_to_currency r.cost_ochno }
-      row("Заочно, стоимость"){ |r| number_to_currency r.cost_zaochno }
+      row("Магистратура"){ |r| r.magistracy == true ? "Есть" : "Нет" }
+      row("Подготовительное отделение, стоимость"){ |r| number_to_currency r.initial_cost }
+      row("Очно, стоимость"){ |r| r.cost_ochno.to_s + " $" }
+      row("Заочно, стоимость"){ |r| r.cost_zaochno.to_s + " $" }
       row("Рейтинг"){ |r| r.rating }
     end
   end
@@ -63,9 +65,8 @@ ActiveAdmin.register University do
     end
     column "Город",:city
     column "Адрес",:address
-    column "Общежитие",:hostel
     column "Начальная стоимость",:initial_cost do |product|
-      number_to_currency product.initial_cost
+      product.initial_cost.to_s + " $"
     end
     actions
   end
@@ -73,29 +74,24 @@ ActiveAdmin.register University do
   form do |f|
     f.semantic_errors
     inputs 'Details' do
-      input :city, :as => :select, :collection => @cities
+      input :city, :as => :select, :collection => @cities, label:"Город"
       input :name, label: "Название"
       input :short_name, label: "Аббревиатура"
       input :description, label: "Описание"
       input :address, label: "Адрес"
       input :preparatory_department, label: "Подготовительное отделение"
       input :hostel, label: "Общежитие"
-      input :initial_cost, label: "Начальная стоимость"
+      input :magistracy, label: "Магистратура"
+      input :initial_cost, label: "Подготовительное отделение, стоимость"
       input :cost_ochno, label: "Очно, стоимость"
-      input :address, label: "Заочно стоимость"
+      input :cost_zaochno, label: "Заочно стоимость"
       input :rating, label: "Рейтинг"
       input :image, label: "Картинка"
     end
     actions
   end
 
-  filter :departaments
-  filter :city
-  filter :name
-  filter :initial_cost
-  filter :created_at
-  filter :updated_at
 
-  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :cost_ochno , :cost_zaochno ,:rating
+  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :cost_ochno , :cost_zaochno ,:rating, :magistracy
 
 end

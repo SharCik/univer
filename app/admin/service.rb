@@ -1,5 +1,6 @@
 ActiveAdmin.register Service do
-  menu label: "Услуги"
+  menu priority: 8, label: "Услуги"
+  config.filters = false
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -13,7 +14,7 @@ ActiveAdmin.register Service do
 #   permitted
 # end
   sidebar 'Картинка',  :only => :show do
-    image_tag(service.service_image.normal.url)
+    image_tag(service.service_image.serv.url)
   end
 
 

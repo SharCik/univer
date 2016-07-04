@@ -1,7 +1,11 @@
 class UniversitiesController < ApplicationController
 
   def index
-    @univers = University.all
+    @univers = University.paginate(:per_page => 5, :page => params[:page])
+    @city = City.all
+    @univers = @univers.city(params[:city_id]) if params[:city_id].present?
+    @univers = @univers.ochno(params[:ochno]) if params[:ochno].present?
+    @univers = @univers.zaochno(params[:zaochno]) if params[:zaochno].present?
   end
 
   def new

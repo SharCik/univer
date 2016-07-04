@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628152544) do
+ActiveRecord::Schema.define(version: 20160703154944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 20160628152544) do
 
   add_index "magistracies", ["departament_id"], name: "index_magistracies_on_departament_id", using: :btree
 
+  create_table "news", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "news_image"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "short_description"
+  end
+
   create_table "qualifications", force: :cascade do |t|
     t.string   "name"
     t.integer  "specialty_id"
@@ -146,6 +155,7 @@ ActiveRecord::Schema.define(version: 20160628152544) do
     t.integer  "cost_ochno"
     t.string   "cost_zaochno"
     t.integer  "rating"
+    t.boolean  "magistracy"
   end
 
   add_index "universities", ["city_id"], name: "index_universities_on_city_id", using: :btree

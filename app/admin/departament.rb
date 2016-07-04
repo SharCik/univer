@@ -1,7 +1,7 @@
 ActiveAdmin.register Departament do
 
-  menu label: "Факультеты"
-
+  menu priority: 5, label: "Факультеты"
+  config.filters = false
   config.batch_actions = false
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -37,21 +37,26 @@ ActiveAdmin.register Departament do
   index title:"Факультеты" do
     column "Название",:name
     column "Начальная стоимость",:initial_cost do |product|
-      number_to_currency product.initial_cost
+      product.initial_cost.to_s + " $"
     end
     actions
   end
 
   form do |f|
-    f.semantic_errors # shows errors on :base
-    f.inputs          # builds an input field for every attribute
-    f.actions         # adds the 'Submit' and 'Cancel' buttons
+    f.semantic_errors
+    inputs 'Details' do
+      input :university, :as => :select, :collection => @universities, label: "Университет"
+      input :name, label: "Название"
+      input :initial_cost, label: "Начальная стоимость"
+    end
+    actions
   end
+
 
   show do
     attributes_table do
       row("Название"){ |r| r.name }
-      row("Начальная стоимость"){ |r| number_to_currency r.initial_cost } 
+      row("Начальная стоимость"){ |r| r.initial_cost.to_s + " $" } 
     end
     table_for Specialty.joins(:departament).where(:departament_id => departament) do |t|
       t.column("Специальность") { |specialty| link_to specialty.name , admin_specialty_path(specialty) }

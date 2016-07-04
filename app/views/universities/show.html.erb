@@ -4,7 +4,7 @@
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong><%= value %></strong></div>
       <% end %>
-        <div class="container" style="height: 260px;width: 100%;">
+        <div class="container" style="width: 100%;">
           <div class="col-md-3"><%= image_tag(@univer.image.normal.url) %></div>
           <div class="col-md-6"><%= @univer.description %></div>
           <div class="col-md-3">
@@ -27,13 +27,13 @@
         <% @departaments.each do |departament| %>
         <div onclick="showHide('<%= departament.id %>')"  class="container_for_departaments">
           <div id="<%= departament.id.to_s + 'departament' %>" onclick="changeColor('<%= departament.id.to_s + 'departament' %>')" class="container departament_row">
-            <div class="col-md-7 departament_details"><%= departament.name %></div>
+            <div class="col-xs-7 departament_details"><%= departament.name %></div>
             <% if count_specialties(departament) != 1 %>
-            <div class="col-md-3 departament_details"><%= count_specialties(departament) %> специальности</div>
+            <div class="col-xs-3 departament_details"><%= count_specialties(departament) %> специальности</div>
             <% else %>
-            <div class="col-md-3 departament_details"><%= count_specialties(departament) %> специальность</div>
+            <div class="col-xs-3 departament_details"><%= count_specialties(departament) %> специальность</div>
             <% end %>
-            <div class="col-md-2 departament_details">от <%= number_to_currency departament.initial_cost %></div>
+            <div class="col-xs-2 departament_details"> от <%= departament.initial_cost %> $</div>
           </div>
         </div>
         <%= render "universities/departament_specailties", :depart_id => departament.id %>

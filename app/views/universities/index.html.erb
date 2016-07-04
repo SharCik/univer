@@ -1,37 +1,18 @@
-<div class="container" style="padding: 50px;">
-  <div class="col-md-2"></div>
-  <div class="col-md-10">
+<div class="container" style="margin-top: 50px;">
+  <div class="col-md-3">
+    <p style="color: #b7a7ae;">Фильтры</p>
+  </div>
+  <div class="col-md-9">
+  <p style="color: #b7a7ae;">Университетов найдено: <%= count_universities %></p>
+  </div>
+</div>
 
-      <% @univers.each do |univer| %>
-      <div class="container" style="width: 100%;background-color: #fff;padding: 30px;">
-        <div class="col-md-4" style="text-align: center;"><%= link_to image_tag(univer.image.normal.url), university_path(univer) %></div>
-        <div class="col-md-8" style="padding-left: 30px;">
-          <p style="margin-bottom: 5px;"><%= link_to univer.name.mb_chars.upcase!, university_path(univer), style:"color: black;text-decaration: none;"%></p>
-          <p style="margin-bottom: 0px;color: silver;"><%= univer.short_name %></p>
-          <hr style="margin-top: 10px;">
-            <% if univer.preparatory_department == true %>
-            <p style="margin-bottom: 0px;"><span style="margin-right: 10px;"><%= image_tag("green.png", size:"10x10")  %></span><span class="preparatory_department">Подготовительное отделение</span></p>
-            <% end %>
-            <% if univer.hostel == true %>
-            <p style="margin-bottom: 15px;"><span style="margin-right: 10px;"><%= image_tag("blue.jpg", size:"10x10") %></span><span class="preparatory_department">Общежитие</span></p>
-            <% end %>
-          <hr style="margin: 5px;">
-          <row>
-            <div class="col-md-5" style="padding-left: 0px;">
-              <p class="details_silver">СПЕЦИАЛЬНОСТЕЙ</p>
-              <p><%= count_specialties_univer(univer.id) %></p>
-            </div>
-            <div class="col-md-3">
-              <p class="details_silver">ОЧНО</p>
-              <p><%= number_to_currency univer.cost_ochno %></p>
-            </div>
-            <div class="col-md-4">
-              <p class="details_silver">ЗАОЧНО</p>
-              <p><%= number_to_currency univer.cost_zaochno %></p>
-            </div>
-          </row>
-        </div>
-      </div>
-    <% end %>
+<div class="container" style="padding-top: 10px;">
+  <div class="col-md-3">
+    <%= render "universities/filtres" %>
+  </div>
+  <div class="col-md-9">
+    <%= render "universities/universities_list" %>
+    <p><%= will_paginate @univers , :previous_label => "", :next_label => "", style:"margin-left: 30px;color: #363636;font-size: medium;"%></p>
   </div>
 </div>

@@ -1,5 +1,6 @@
 ActiveAdmin.register Magistracy do
-  menu label: "Магистратура"
+  menu priority: 6, label: "Магистратура"
+  config.filters = false
 
 
   config.batch_actions = false
@@ -49,14 +50,14 @@ ActiveAdmin.register Magistracy do
 
   show do
     attributes_table do
-      row("Факультет"){ |r| result = Departament.find(r.departament_id).name }
+      row("Факультет"){ |r| result = Departament.find(r.departament_id).name  if r.departament_id != nil }
       row("Название"){ |r| r.name }
       row("Квалификация"){ |r| r.profession } 
       row("Время обучения"){ |r| r.training_period }
       row("Очно"){ |r| r.ochno  == true ? "Есть" : "Нет" }
       row("Заочно"){ |r| r.zaochno == true ? "Есть" : "Нет" }
-      row("Очно, стоимость"){ |r| number_to_currency r.ochno_price }
-      row("Заочно, стоимость"){ |r| number_to_currency r.zaochno_price }
+      row("Очно, стоимость"){ |r| r.ochno_price.to_s + " $" }
+      row("Заочно, стоимость"){ |r| r.zaochno_price.to_s + " $"}
     end
   end
 

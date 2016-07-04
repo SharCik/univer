@@ -1,0 +1,25 @@
+    <div class="container" style="background-color: #fff;width: 100%;height:300px;padding: 30px 25px;">
+      <p>ГОРОД</p>
+      <div style="position: relative; overflow: hidden; width: 100%; height: 111px;">
+        <div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: scroll; margin-right: -8px; margin-bottom: -8px;">
+      
+        <div>
+        <% form_tag universities_path do %>
+          <% @city.each do |town| %>
+          <%= check_box :city_id, town.id %>
+          <%= label_tag(:city_id, town.name.mb_chars.upcase!) %>
+          <% end %>
+          <%= submit_tag "Filter" %>
+        <% end %>
+
+        </div>
+      
+        </div>
+      </div>
+    </div>
+
+<div style="position: relative; overflow: hidden; width: 100%; height: 111px;">
+  <div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: scroll; margin-right: -8px; margin-bottom: -8px;">
+  
+  </div>
+</div>

@@ -30,7 +30,7 @@
         <%= hidden_field_tag(:specialty, @specialty.id) %>
 
         <%= f.submit "Create!" %>
-        <%= link_to "Back", root_path, {:class => "btn btn-link"} %>
+        <%= link_to "Back", university_path(@university.id), {:class => "btn btn-link"} %>
       <% end %>
     </div>
     <div class="col-md-3"> </div>

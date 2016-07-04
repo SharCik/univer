@@ -1,5 +1,6 @@
 ActiveAdmin.register City do 
-  menu label: "Города"
+  menu priority: 3, label: "Города"
+  config.filters = false
 
   sidebar :new_university,  :only => :show do
     link_to "New university for #{city.name}", new_admin_university_path(city: city)
@@ -32,9 +33,6 @@ ActiveAdmin.register City do
     actions
   end
 
-
-  filter :created_at
-  filter :updated_at
 
 
   permit_params :name, :image_city
