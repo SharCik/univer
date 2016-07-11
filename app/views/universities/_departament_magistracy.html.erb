@@ -1,0 +1,44 @@
+<div id="magis_<%= depart_id %>" class="container cont block_class magis" style="display: none;">
+  <div class="table table-bordered table-striped table-hover">
+    <table class="table_specialties" style="width: 100%;">
+      <thead class="head_table">
+        <tr class="tr_head">
+          <th class="padding_spec">Специальность</th>
+          <th class="padding_spec">Профессия</th>
+          <th class="padding_spec">Форма обучения</th>
+          <th class="padding_spec" style="text-align: center;">Срок, лет</th>
+          <th class="padding_spec">Цена, $</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% magistracies = magis_of_departament(depart_id) %>
+        <% magistracies.each do |magistracy| %>
+        <tr>
+          <td class="padding_spec td_height"><%= magistracy.name %></td>
+          <td class="padding_spec td_height"><%= magistracy.profession %></td>
+          <td class="padding_spec td_height">
+            <% if magistracy.ochno == true  %>
+            <p>Очно</p>
+            <% end %>
+            <% if magistracy.zaochno == true  %>
+            <p>Заочно</p>
+            <% end %>
+          </td>
+          <td class="padding_spec td_height" style="text-align: center;">
+            <p><%= magistracy.training_period %></p>
+            <p><%= magistracy.training_period_zaochno %></p>
+          </td>
+          <td class="padding_spec td_height">
+          <% if magistracy.ochno == true %>
+            <p style="text-align: center;"><%= magistracy.ochno_price %></p>
+          <% end %>
+          <% if magistracy.ochno == true %>
+            <p style="text-align: center;"><%= magistracy.zaochno_price %></p>
+          <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,11 +1,17 @@
 class UniversitiesController < ApplicationController
 
   def index
+    mag = params[:magistracy] if params[:magistracy].present?
+    och = params[:ochno] if params[:ochno].present?
+
     @univers = University.paginate(:per_page => 5, :page => params[:page])
     @city = City.all
-    @univers = @univers.city(params[:city_id]) if params[:city_id].present?
-    @univers = @univers.ochno(params[:ochno]) if params[:ochno].present?
+    @univers = @univers.city(params[:cities]) if params[:cities].present?
+    @univers = @univers.ochno(och["ochno"]) if params[:ochno].present?
     @univers = @univers.zaochno(params[:zaochno]) if params[:zaochno].present?
+    @univers = @univers.magistracy(mag["magistracy"]) if params[:magistracy].present?
+    
+
   end
 
   def new

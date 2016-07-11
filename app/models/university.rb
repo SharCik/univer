@@ -3,7 +3,7 @@ class University < ActiveRecord::Base
   validates :short_name, uniqueness: true
 
   scope :city, -> (city_id) { where city: city_id }
-  scope :ochno, -> (ochno) { where ochno: ochno }
+  scope :ochno, -> (ochno) { where ochno: true }
   scope :zaochno, -> (zaochno) { where zaochno: true }
   scope :magistracy, -> (magistracy) { where magistracy: true }
 

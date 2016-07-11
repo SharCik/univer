@@ -45,12 +45,12 @@ ActiveAdmin.register University do
       row("Аббревиатура"){ |r| r.short_name } 
       row("Описание"){ |r| r.description }
       row("Адрес"){ |r| r.address }
+      row("Очно"){ |r| r.ochno == true ? "Есть" : "Нет" }
+      row("Заочно"){ |r| r.zaochno == true ? "Есть" : "Нет" }
       row("Подготовительное отделение"){ |r| r.preparatory_department == true ? "Есть" : "Нет" }
       row("Общежитие"){ |r| r.hostel == true ? "Есть" : "Нет" }
       row("Магистратура"){ |r| r.magistracy == true ? "Есть" : "Нет" }
       row("Подготовительное отделение, стоимость"){ |r| number_to_currency r.initial_cost }
-      row("Очно, стоимость"){ |r| r.cost_ochno.to_s + " $" }
-      row("Заочно, стоимость"){ |r| r.cost_zaochno.to_s + " $" }
       row("Рейтинг"){ |r| r.rating }
     end
   end
@@ -79,12 +79,12 @@ ActiveAdmin.register University do
       input :short_name, label: "Аббревиатура"
       input :description, label: "Описание"
       input :address, label: "Адрес"
+      input :ochno, label: "Очно"
+      input :zaochno, label: "Заочно"
       input :preparatory_department, label: "Подготовительное отделение"
       input :hostel, label: "Общежитие"
       input :magistracy, label: "Магистратура"
       input :initial_cost, label: "Подготовительное отделение, стоимость"
-      input :cost_ochno, label: "Очно, стоимость"
-      input :cost_zaochno, label: "Заочно стоимость"
       input :rating, label: "Рейтинг"
       input :image, label: "Картинка"
     end
@@ -92,6 +92,6 @@ ActiveAdmin.register University do
   end
 
 
-  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :cost_ochno , :cost_zaochno ,:rating, :magistracy
+  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :ochno , :zaochno ,:rating, :magistracy
 
 end

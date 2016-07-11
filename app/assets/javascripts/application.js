@@ -11,46 +11,36 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap
 //= require jquery_ujs
+//= require bootstrap
 //= require turbolinks
 //= require_tree .
 
 
+var ready;
 
-
-function showHide(element_id) {
-  if (document.getElementById(element_id)) 
-  { 
-    var obj = document.getElementById(element_id); 
-
-    if (obj.style.display != "block") 
-    { 
-      obj.style.display = "block"; 
-    }
-    else 
-    {
-      obj.style.display = "none"; 
-    };
-  };  
-};   
-
-
-
-function changeColor(element_id) {
-  if (document.getElementById(element_id)) 
-  { 
-    var obj = document.getElementById(element_id);
-    if (obj.style.backgroundColor != "#23599b")  
-    {
-      obj.style.backgroundColor = "#23599b";
-      obj.style.color = "#fff";
-    } 
-    else
-    { 
-      obj.style.backgroundColor = "#fff";
-      obj.style.color = "black";
-    };
-  };  
+ready = function(){
+    // enable chosen js
+    $('.chosen-select').chosen();
 };
+
+
+
+$(document).ready(ready);
+// if using turbolinks
+$(document).on("page:load",ready);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

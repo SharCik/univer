@@ -29,16 +29,15 @@ ActiveAdmin.register Departament do
   sidebar 'Добавление магистратуры или специальности', :only => :show do
     ul do
     li link_to "Добавить новую специальность в #{departament.name}", new_admin_specialty_path(departament: departament)
-    li link_to "Добавить магистратуру в #{departament.name}",  new_admin_magistracy_path(departament: departament)    
+    if (University.find(departament.university_id).magistracy == true)
+      li link_to "Добавить магистратуру в #{departament.name}",  new_admin_magistracy_path(departament: departament)
+    end    
     end
   end
 
 
   index title:"Факультеты" do
     column "Название",:name
-    column "Начальная стоимость",:initial_cost do |product|
-      product.initial_cost.to_s + " $"
-    end
     actions
   end
 
@@ -47,7 +46,6 @@ ActiveAdmin.register Departament do
     inputs 'Details' do
       input :university, :as => :select, :collection => @universities, label: "Университет"
       input :name, label: "Название"
-      input :initial_cost, label: "Начальная стоимость"
     end
     actions
   end
@@ -56,20 +54,21 @@ ActiveAdmin.register Departament do
   show do
     attributes_table do
       row("Название"){ |r| r.name }
-      row("Начальная стоимость"){ |r| r.initial_cost.to_s + " $" } 
     end
     table_for Specialty.joins(:departament).where(:departament_id => departament) do |t|
       t.column("Специальность") { |specialty| link_to specialty.name , admin_specialty_path(specialty) }
       t.column("Изменить") { |specialty| link_to image_tag("edit.png", size:"20x20"), edit_admin_specialty_path(specialty) }
     end
-    table_for Magistracy.joins(:departament).where(:departament_id => departament) do |t|
-      t.column("Магистратура") { |magistracy| link_to magistracy.name , admin_magistracy_path(magistracy) }
-      t.column("Изменить") { |magistracy| link_to image_tag("edit.png", size:"20x20"), edit_admin_magistracy_path(magistracy) }
+    if (University.find(departament.university_id).magistracy == true)
+      table_for Magistracy.joins(:departament).where(:departament_id => departament) do |t|
+        t.column("Магистратура") { |magistracy| link_to magistracy.name , admin_magistracy_path(magistracy) }
+        t.column("Изменить") { |magistracy| link_to image_tag("edit.png", size:"20x20"), edit_admin_magistracy_path(magistracy) }
+      end
     end
   end
 
 
-  permit_params :name, :university_id, :initial_cost
+  permit_params :name, :university_id
 
 
 end

@@ -14,18 +14,25 @@
             <p style="margin-bottom: 0px;"><span style="margin-right: 10px;"><%= image_tag("green.png", size:"10x10")  %></span><span class="preparatory_department">Подготовительное отделение</span></p>
             <% end %>
             <% if @univer.hostel == true %>
-            <p style="margin-bottom: 22px;"><span style="margin-right: 10px;"><%= image_tag("blue.jpg", size:"10x10") %></span><span class="preparatory_department">Общежитие</span></p>
+            <p style="margin-bottom: 0px;"><span style="margin-right: 10px;"><%= image_tag("blue.jpg", size:"10x10") %></span><span class="preparatory_department">Общежитие</span></p>
+            <% end %>
+            <% if @univer.magistracy == true %>
+            <p style="margin-bottom: 22px;"><span style="margin-right: 10px;"><%= image_tag("purpure.png", size:"10x10") %></span><span class="preparatory_department">Магистратура</span></p>
             <% end %>
             <p style="font-weight: bold;margin-bottom: 0px;">Подготовительное отделение</p>
-            <p>Цена: <span style="color: #81cf3a;">от <%= number_to_currency @univer.initial_cost %></span></p>
+            <p>Цена: <span style="color: #81cf3a;">от <%=  @univer.initial_cost %> $</span></p>
           </div>
         </div>
         <hr>
-        <div class="container head"><h3 style="margin-bottom: 50px;">Ступени образования</h3>
-          <button class="btn btn-primary btn-lg large-btn">Высшее</button>
+        <div class="container head"><h3 style="margin-bottom: 50px;text-transform: uppercase;">Ступени образования</h3>
+        <% if @univer.magistracy == true %>
+          <button id="button_height" class="btn btn-primary btn-lg large-btn left_bottom" onclick="SetActionHeight()">Высшее</button><button id="button_magis" class="btn btn-primary btn-lg large-btn right_bottom" onclick="SetActionMagis()">Магистратура</button>
+        <% else%>
+          <button id="button_height" class="btn btn-primary btn-lg large-btn_open">Высшее</button>
+        <% end %>
         </div>
         <% @departaments.each do |departament| %>
-        <div onclick="showHide('<%= departament.id %>')"  class="container_for_departaments">
+        <div onclick="showHide('<%= departament.id  %>')"  class="container_for_departaments">
           <div id="<%= departament.id.to_s + 'departament' %>" onclick="changeColor('<%= departament.id.to_s + 'departament' %>')" class="container departament_row">
             <div class="col-xs-7 departament_details"><%= departament.name %></div>
             <% if count_specialties(departament) != 1 %>
@@ -33,10 +40,11 @@
             <% else %>
             <div class="col-xs-3 departament_details"><%= count_specialties(departament) %> специальность</div>
             <% end %>
-            <div class="col-xs-2 departament_details"> от <%= departament.initial_cost %> $</div>
+            <div class="col-xs-2 departament_details">от <%= unitial_cost(departament.id) %> $</div>
           </div>
         </div>
         <%= render "universities/departament_specailties", :depart_id => departament.id %>
+        <%= render "universities/departament_magistracy", :depart_id => departament.id %>
         <% end %>
 
 </div>

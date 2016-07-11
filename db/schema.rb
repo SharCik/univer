@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703154944) do
+ActiveRecord::Schema.define(version: 20160711170446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,14 +79,13 @@ ActiveRecord::Schema.define(version: 20160703154944) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "university_id"
-    t.integer  "initial_cost"
   end
 
   add_index "departaments", ["university_id"], name: "index_departaments_on_university_id", using: :btree
 
   create_table "magistracies", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "name"
     t.string   "profession"
     t.integer  "training_period"
@@ -95,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160703154944) do
     t.integer  "ochno_price"
     t.integer  "zaochno_price"
     t.integer  "departament_id"
+    t.integer  "training_period_zaochno"
   end
 
   add_index "magistracies", ["departament_id"], name: "index_magistracies_on_departament_id", using: :btree
@@ -128,14 +128,15 @@ ActiveRecord::Schema.define(version: 20160703154944) do
   create_table "specialties", force: :cascade do |t|
     t.string   "name"
     t.integer  "departament_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "profession"
     t.integer  "training_period"
     t.boolean  "ochno"
     t.boolean  "zaochno"
     t.integer  "ochno_price"
     t.integer  "zaochno_price"
+    t.integer  "training_period_zaochno"
   end
 
   add_index "specialties", ["departament_id"], name: "index_specialties_on_departament_id", using: :btree
@@ -147,15 +148,15 @@ ActiveRecord::Schema.define(version: 20160703154944) do
     t.string   "image"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "initial_cost"
     t.integer  "city_id"
     t.string   "address"
     t.boolean  "preparatory_department"
     t.boolean  "hostel"
-    t.integer  "cost_ochno"
-    t.string   "cost_zaochno"
     t.integer  "rating"
     t.boolean  "magistracy"
+    t.integer  "initial_cost"
+    t.boolean  "ochno"
+    t.boolean  "zaochno"
   end
 
   add_index "universities", ["city_id"], name: "index_universities_on_city_id", using: :btree

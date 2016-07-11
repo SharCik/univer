@@ -1,4 +1,4 @@
-<div id="<%= depart_id %>" class="container cont block_class" style="display: none;">
+<div id="spec_<%= depart_id %>" class="container cont block_class special" style="display: none;">
   <div class="table table-bordered table-striped table-hover">
     <table class="table_specialties" style="width: 100%;">
       <thead class="head_table">
@@ -25,7 +25,10 @@
             <p>Заочно</p>
             <% end %>
           </td>
-          <td class="padding_spec td_height" style="text-align: center;"><%= specialty.training_period %></td>
+          <td class="padding_spec td_height" style="text-align: center;">
+            <p><%= specialty.training_period %></p>
+            <p><%= specialty.training_period_zaochno %></p>
+          </td>
           <td class="padding_spec td_height">
           <% if specialty.ochno == true %>
             <p style="text-align: center;"><%= specialty.ochno_price %></p>

@@ -29,7 +29,6 @@ ActiveAdmin.register Specialty do
   index title:"Специальности" do
     column "Название",:name
     column "Квалификация",:profession
-    column "Время обучения",:training_period
     actions
   end
 
@@ -39,9 +38,10 @@ ActiveAdmin.register Specialty do
       input :departament, :as => :select, :collection => @departaments, label: "Факультет"
       input :name, label: "Название"
       input :profession, label: "Квалификация"
-      input :training_period, label: "Время обучения"
       input :ochno, label: "Очно"
       input :zaochno, label: "Заочно"
+      input :training_period, label: "Очно, время обучения"
+      input :training_period_zaochno, label: "Заочно, время обучения"
       input :ochno_price, label: "Очно, цена"
       input :zaochno_price, label: "Заочно, цена"
     end
@@ -53,14 +53,15 @@ ActiveAdmin.register Specialty do
       row("Факультет"){ |r| result = Departament.find(r.departament_id).name if r.departament_id != nil }
       row("Название"){ |r| r.name }
       row("Квалификация"){ |r| r.profession } 
-      row("Время обучения"){ |r| r.training_period }
       row("Очно"){ |r| r.ochno  == true ? "Есть" : "Нет" }
       row("Заочно"){ |r| r.zaochno == true ? "Есть" : "Нет" }
+      row("Очно, время обучения"){ |r| r.training_period }
+      row("Зачно, время обучения"){ |r| r.training_period_zaochno}
       row("Очно, стоимость"){ |r| r.ochno_price.to_s + " $" }
       row("Заочно, стоимость"){ |r| r.zaochno_price.to_s + " $" }
     end
   end
 
-  permit_params :name, :departament_id, :ochno, :zaochno, :ochno_price, :zaochno_price,  :profession, :training_period
+  permit_params :name, :departament_id, :ochno, :zaochno, :ochno_price, :zaochno_price,  :profession, :training_period, :training_period_zaochno
 
 end
