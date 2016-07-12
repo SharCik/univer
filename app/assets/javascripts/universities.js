@@ -1,16 +1,16 @@
 
-var ready;
 var active = "height";
 
 var magis = document.getElementsByClassName("magis");
 var special = document.getElementsByClassName("special");
 var departs = document.getElementsByClassName("departament_row");
+var open_departs = document.getElementsByClassName("departament_row_open");
+var button_h = document.getElementById("button_height");
+var button_m = document.getElementById("button_magis");
 
 var button_active  = function(){
-
   var button_h = document.getElementById("button_height");
   var button_m = document.getElementById("button_magis");
-  
   if (active == "height"){
     button_h.classList.remove("large-btn");
     button_h.classList.add("large-btn_active");
@@ -29,26 +29,40 @@ var button_active  = function(){
 
 
 
+
 var SetActionHeight = function(){
+  var magis = document.getElementsByClassName("magis");
   for (i = 0; i < magis.length; i++){
-    magis[i].style.display = 'none'
+    magis[i].style.display = 'none';
   };
   active = "height";
-  button_active()
+  button_active();
+  resetDepartament();
 };
 
+
 var SetActionMagis = function(){
+  var special = document.getElementsByClassName("special");
   for (i = 0; i < special.length; i++){
-    special[i].style.display = 'none'
+    special[i].style.display = 'none';
   };
   active = "magis";
   button_active();
+  resetDepartament();
 };
 
 
+function resetDepartament() {   
+  var open_departs = document.getElementsByClassName("departament_row_open");
+  for (i = 0; i < open_departs.length; i++){
+      open_departs[i].classList.remove("departament_row_open");
+      open_departs[i].classList.add("departament_row");
+  };
+};
 
 
 function showHide(element_id) {
+
   if (document.getElementById(element_id + "departament"))
   { 
     
@@ -79,6 +93,7 @@ function showHide(element_id) {
   };  
 };
 
+
 function changeColor(element_id) {
   var obj = document.getElementById(element_id);
 
@@ -93,8 +108,8 @@ function changeColor(element_id) {
 
 
 
-$(document).ready(ready);
-// if using turbolinks
-$(document).on("page:load",ready);
+window.onload = function() {
+  window.setTimeout(1000);
+  button_active();
+} 
 
-$(document).ready(button_active());

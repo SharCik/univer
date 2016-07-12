@@ -22,7 +22,7 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to image_tag("feedback.png"), "#" , class:"feedback" %></li>
+            <li><%= link_to image_tag("feedback.png"), request_path , {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %></li>
           </ul>
 
         </div>

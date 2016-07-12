@@ -1,14 +1,19 @@
-<div class="container" style="padding: 50px;">
-  <row style="text-align: center;font-family: Roboto,Helvetica Neue,Arial,sans-serif;">
-    <h2>Лучшие вузы</h2>
-    <p style="color: #999;font-family: Roboto,Helvetica Neue,Arial,sans-serif;margin-bottom: 50px;">Самые престижные университеты страны</p>
-  </row>
-  <% @univers.each do |univer| %> 
-    <div class="col-md-3" style="margin-bottom: 20px;">
-    <%= link_to image_tag(univer.image.normal.url), university_path(univer) , class:"image-university"%>
-    <div class="image_text_first"><h3 style="font-size: 1.4rem;font-weight: bold;text-transform: uppercase;"><%= link_to univer.name.upcase!, university_path(univer) ,style:"color: white;" %></h3></div>
-    <div class="image_text_second"><span><%= univer.short_name %></span></div>
-    </div>
-  <% end %>
+<div class="container" style="margin-top: 50px;">
+  <div class="col-md-3">
+    <p style="color: #b7a7ae;">Фильтры</p>
+  </div>
+  <div class="col-md-9">
+  <p style="color: #b7a7ae;">Университетов найдено: </p>
+  </div>
+</div>
 
-</div> 
+<div class="container" style="padding-top: 10px;">
+  <div class="col-md-3">
+    <%= render "static_pages/filtres" %>
+  </div>
+  <div class="col-md-9">
+    <%= render "universities/universities_list" %>
+  <p><%= will_paginate @univers , :previous_label => "", :next_label => "", style:"margin-left: 30px;color: #363636;font-size: medium;"%>
+  </p>
+  </div>
+</div>

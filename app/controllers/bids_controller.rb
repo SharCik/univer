@@ -1,26 +1,37 @@
 class BidsController < ApplicationController
 
   def new
-    @university = University.find(params[:university])
-    @departament = Departament.find(params[:departament])
-    @specialty = Specialty.find(params[:specialty])
-    @bid = Bid.new
+    @universities = University.all 
+    @university  = University.find(params[:university]) if params[:university].present?
+    @departament = Departament.find(params[:departament]) if params[:departament].present?
+    @specialty   = Specialty.find(params[:specialty]) if params[:specialty].present?
+    @bid         = Bid.new
+      
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def create
 
     @bid =  Bid.new(bid_params)
-    spec = Specialty.find(params[:specialty])
-    departament = Departament.where(id: spec.departament_id).first
-    @bid.specialty_id = params[:specialty]
-    @bid.departament_id = departament.id
-    university = University.where(id: departament.university_id).first
-    @bid.university_id = university.id
-    city = City.where(id: university.city_id).first
-    @bid.city_id = city.id
-    if @bid.save!
+    if params[:specialty].present?
+      spec = Specialty.find(params[:specialty]) 
+      departament = Departament.where(id: spec.departament_id).first
+      @bid.specialty_id = params[:specialty]
+      @bid.departament_id = departament.id
+      university = University.where(id: departament.university_id).first
+      @bid.university_id = university.id
+      city = City.where(id: university.city_id).first
+      @bid.city_id = city.id
+    end
+    if @bid.save
 
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+        format.html
+      end
     else
 
       redirect_to request_path
@@ -30,7 +41,7 @@ class BidsController < ApplicationController
   private
 
   def bid_params
-    params.require(:bid).permit(:name, :phone, :mail, :comment, :initial_cost)
+    params.require(:bid).permit(:name, :phone, :mail, :comment)
   end 
 
 end

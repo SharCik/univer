@@ -56,7 +56,7 @@ ActiveAdmin.register Magistracy do
       row("Очно"){ |r| r.ochno  == true ? "Есть" : "Нет" }
       row("Заочно"){ |r| r.zaochno == true ? "Есть" : "Нет" }
       row("Очно, время обучения"){ |r| r.training_period }
-      row("Зачно, время обучения"){ |r| r.training_period_zaochno}
+      row("Заочно, время обучения"){ |r| r.training_period_zaochno}
       row("Очно, стоимость"){ |r| r.ochno_price.to_s + " $" }
       row("Заочно, стоимость"){ |r| r.zaochno_price.to_s + " $"}
     end

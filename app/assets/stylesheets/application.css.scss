@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "rails_bootstrap_forms";
 
 
 /*
@@ -314,4 +315,65 @@ body{
   line-height: 1.8333333333;
   color: #424c58;
   margin-bottom: 0;
+}
+
+
+/****** Modal window ******/
+
+#modal-window {
+  height: 85%;
+  width: 70%;
+  top:10%;
+  left:20%;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#left-modal{
+  width: 50%;
+  height: 100%;
+  padding-left: 0px;
+  background-image: image-url('contact-form.jpg');
+}
+
+.form-control{
+  padding: 3px 5px;
+  border: none;
+  border-bottom: 1px solid #f5f5f5;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.gray{
+  color: #999;
+}
+
+.modal-button{
+  font-size: 1.3rem;
+  line-height: 1.6923076923;
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  border-color: #999;
+
+  font-size: 1.4rem;
+  line-height: 1.5714285714;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: color,background-color,border-color;
+  transition-duration: .25s;
 }

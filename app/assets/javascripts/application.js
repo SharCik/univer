@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap/modal
 //= require turbolinks
 //= require_tree .
 
@@ -24,6 +25,10 @@ ready = function(){
     $('.chosen-select').chosen();
 };
 
+function closeModalWindow(){
+  $("#modal-window").removeClass("show");
+  $("#modal-window").addClass("hide");
+};
 
 
 $(document).ready(ready);

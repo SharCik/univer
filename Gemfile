@@ -32,6 +32,7 @@ gem 'mini_magick', '~> 4.3'
 gem 'rmagick'
 gem 'russian', '~> 0.6.0'
 gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap_form'
 
 
 # Use ActiveModel has_secure_password

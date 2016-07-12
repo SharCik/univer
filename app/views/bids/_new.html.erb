@@ -1,0 +1,37 @@
+<div id="left-modal" class="col-md-6"></div>
+<div class="col-md-6" style="padding-left: 25px;">
+ <div class="modal-header" style="height: 10%;padding: 0px;">
+    <button type="button" class="close" style="padding-top: 5px;" data-dismiss="modal" aria-hidden="true" onClick="closeModalWindow()">×</button>
+    <h3 id="myModalLabel">ВАША ЗАЯВКА</h3>
+    <% if @university == nil %>
+    <p class="gray">Не упустите свой шанс!</p>
+    <% end %>
+  </div>
+  <div class="modal-body" style="padding-left: 0px;">
+      <% if @university != nil %>
+          <p><span style="color: rgb(129, 207, 58);">Университет: </span><%= @university.name %></p>
+          <p><span style="color: rgb(129, 207, 58);"> Факультет: </span><%= @departament.name %></p>
+          <p><span style="color: rgb(129, 207, 58);"> Специальность: </span><%= @specialty.name %></p>
+      <% end %>
+
+      <% if @university == nil%> <p style="margin-bottom: 60px;"> </p><% end %>
+
+        <%= bootstrap_form_for(@bid, remote: :true) do |f| %>
+
+          <div class="form-group modal-form"><%= f.text_area :name, size: "55x1" , hide_label: true, placeholder: "Имя, обязательно"%></div>
+
+
+          <div class="form-group modal-form"><%= f.text_area :phone, size: "55x1", hide_label: true, placeholder: "Телефон,  обязательно" %></div>
+
+
+          <div class="form-group modal-form"><%= f.email_field :mail , size: "55x1", hide_label: true, placeholder: "Email" %></div>
+
+
+          <div class="form-group modal-form"><%= f.text_area :comment, size: "55x2", hide_label: true, placeholder: "Комментарий" %></div>
+          <% if @specialty != nil %>
+          <%= hidden_field_tag(:specialty, @specialty.id) %>
+          <% end %>
+          <%= f.submit "ОТПРАВИТЬ", class:"modal-button", style:"margin-top: 30px;" %>
+        <% end %>
+  </div>
+</div>  
