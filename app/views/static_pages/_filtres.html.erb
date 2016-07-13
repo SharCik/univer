@@ -1,23 +1,50 @@
     <div class="container" style="background-color: #fff;width: 100%;height:300px;padding: 30px 25px;">
-      <p>ГОРОД</p>
-      
-        <div>
-          <%= form_for :universities, method: :get, html: { class: "" } do |f| %>
-              <div class="form-group">
-                <%= f.select(:cities, City.all.collect {|p| [ p.name, p.id ] }, {}, { multiple: true , class: "chosen-select form-control" })%>
-              </div>
-              <%= f.submit "View", class: "btn btn-success" %>
-
-          <% end %>
-
-        </div>
-    <%= form_for(:magistracy,method: :get, :remote => true) do |f| %>
-      <%= f.check_box :magistracy, :onchange => '$(this.form).submit();' %>
-      <%= f.label :Магистратура %>
-    <% end %>
-    <%= form_for(:ochno,method: :get, :remote => true) do |f| %>
-      <%= f.check_box :ochno, :onchange => '$(this.form).submit();' %>
-      <%= f.label :Очно %>
-    <% end %>
+    <h4>Форма обучения</h4>
+      <label class="category-select">
+        <%= check_box_tag 'ochno', true , false,  
+              data: {
+                remote: true,
+                url: "universities",
+                method: "GET"
+              } %>
+        Очно
+      </label>
+      <label class="category-select">
+        <%= check_box_tag 'zaochno', true , false,  
+              data: {
+                remote: true,
+                url: "universities",
+                method: "GET"
+              } %>
+        Заочно
+      </label>
+    <h4>Дополнительно</h4>
+      <label class="category-select">
+        <%= check_box_tag 'magistracy', true , false,  
+              data: {
+                remote: true,
+                url: "universities",
+                method: "GET"
+              } %>
+        Магистратура
+      </label>
+      <label class="category-select">
+        <%= check_box_tag 'preparatory_department', true , false,  
+              data: {
+                remote: true,
+                url: "universities",
+                method: "GET"
+              } %>
+        Подг. отделение
+      </label>
+      <label class="category-select">
+        <%= check_box_tag 'hostel', true , false,  
+              data: {
+                remote: true,
+                url: "universities",
+                method: "GET"
+              } %>
+        Общежитие
+      </label>
     </div>
 

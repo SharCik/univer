@@ -3,7 +3,7 @@
     <p style="color: #b7a7ae;">Фильтры</p>
   </div>
   <div class="col-md-9">
-  <p style="color: #b7a7ae;">Университетов найдено: </p>
+  <p style="color: #b7a7ae;">Университетов найдено: <%= @univers.count %></p>
   </div>
 </div>
 
@@ -12,8 +12,10 @@
     <%= render "static_pages/filtres" %>
   </div>
   <div class="col-md-9">
-    <%= render "universities/universities_list" %>
-  <p><%= will_paginate @univers , :previous_label => "", :next_label => "", style:"margin-left: 30px;color: #363636;font-size: medium;"%>
-  </p>
+    <div class="univers">
+      <%= render "universities/universities_list" %>
+    </div>
+    <p><%= will_paginate @univers , :previous_label => "", :next_label => "", style:"margin-left: 30px;color: #363636;font-size: medium;"%>
+    </p>
   </div>
 </div>

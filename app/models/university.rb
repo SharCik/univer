@@ -6,7 +6,8 @@ class University < ActiveRecord::Base
   scope :ochno, -> (ochno) { where ochno: true }
   scope :zaochno, -> (zaochno) { where zaochno: true }
   scope :magistracy, -> (magistracy) { where magistracy: true }
-
+  scope :preparatory_department, -> (preparatory_department) { where preparatory_department: true }
+  scope :hostel, -> (hostel) { where hostel: true }
 
   has_many :departaments, dependent: :destroy
   belongs_to :city

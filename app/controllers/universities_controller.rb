@@ -1,16 +1,18 @@
 class UniversitiesController < ApplicationController
 
-  def universities_list
-    mag = params[:magistracy] if params[:magistracy].present?
-    och = params[:ochno] if params[:ochno].present?
-
+  def index
+    @univers = University.paginate(:per_page => 5, :page => params[:page])
     @city = City.all
-    @univers = @univers.city(params[:cities]) if params[:cities].present?
-    @univers = @univers.ochno(och["ochno"]) if params[:ochno].present?
+    @univers = @univers.ochno(params[:ochno]) if params[:ochno].present?
     @univers = @univers.zaochno(params[:zaochno]) if params[:zaochno].present?
-    @univers = @univers.magistracy(mag["magistracy"]) if params[:magistracy].present?
+    @univers = @univers.magistracy(params[:magistracy]) if params[:magistracy].present?
+    @univers = @univers.preparatory_department(params[:preparatory_department]) if params[:preparatory_department].present?
+    @univers = @univers.hostel(params[:hostel]) if params[:hostel].present? 
     
-
+      respond_to do |format|
+        format.js 
+        format.html 
+      end   
   end
 
   def new
@@ -28,6 +30,7 @@ class UniversitiesController < ApplicationController
   end
 
   def show
+    
     @univer = University.find(params[:id])
     @city = City.find(@univer.city_id)
     @departaments = Departament.where(university_id: @univer.id)

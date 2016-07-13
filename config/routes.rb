@@ -12,11 +12,10 @@ Rails.application.routes.draw do
   match '/request',  to: 'bids#new',            via: 'get'
   match '/bids',  to: 'bids#create',            via: 'post'
   match '/all_news',  to: 'news#index',            via: 'get'
-  match '/universities',  to: 'static_pages#universities',            via: 'get'
 
 
 
-  resources :universities ,only:[ :show]
+  resources :universities ,only:[ :index ,:show]
   resources :news ,only:[ :show]
 
 

@@ -55,8 +55,9 @@ var SetActionMagis = function(){
 function resetDepartament() {   
   var open_departs = document.getElementsByClassName("departament_row_open");
   for (i = 0; i < open_departs.length; i++){
-      open_departs[i].classList.remove("departament_row_open");
-      open_departs[i].classList.add("departament_row");
+    var something = open_departs[i];
+      open_departs[i].classList.remove("departament_row_open") 
+      something.classList.add("departament_row");
   };
 };
 
@@ -107,9 +108,7 @@ function changeColor(element_id) {
 
 
 
-
 window.onload = function() {
-  window.setTimeout(1000);
   button_active();
 } 
 

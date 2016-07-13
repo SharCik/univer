@@ -41,11 +41,3 @@ $(document).on("page:load",ready);
 
 
 
-
-
-
-
-
-
-
-
