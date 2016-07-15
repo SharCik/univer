@@ -4,5 +4,7 @@ class NewsController < ApplicationController
   end
 
   def show
+    @new = New.find(params[:id])
+    @news = New.last(3)
   end
 end

@@ -18,16 +18,16 @@
 
         <%= bootstrap_form_for(@bid, remote: :true) do |f| %>
 
-          <div class="form-group modal-form"><%= f.text_area :name, size: "55x1" , hide_label: true, placeholder: "Имя, обязательно"%></div>
+          <div class="form-group modal-form"><%= f.text_field :name , hide_label: true, placeholder: "Имя, обязательно"%></div>
 
 
-          <div class="form-group modal-form"><%= f.text_area :phone, size: "55x1", hide_label: true, placeholder: "Телефон,  обязательно" %></div>
+          <div class="form-group modal-form"><%= f.text_field :phone, hide_label: true, placeholder: "Телефон,  обязательно" %></div>
 
 
-          <div class="form-group modal-form"><%= f.email_field :mail , size: "55x1", hide_label: true, placeholder: "Email" %></div>
+          <div class="form-group modal-form"><%= f.email_field :mail , hide_label: true, placeholder: "Email" %></div>
 
 
-          <div class="form-group modal-form"><%= f.text_area :comment, size: "55x2", hide_label: true, placeholder: "Комментарий" %></div>
+          <div class="form-group modal-form"><%= f.text_area :comment, hide_label: true, placeholder: "Комментарий" %></div>
           <% if @specialty != nil %>
           <%= hidden_field_tag(:specialty, @specialty.id) %>
           <% end %>

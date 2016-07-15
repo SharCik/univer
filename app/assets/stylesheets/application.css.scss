@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "rails_bootstrap_forms";
+@import "bootstrap-slider";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
 
 /*
@@ -15,6 +17,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap-slider
  *= require_tree .
  *= require_self
  */
@@ -262,6 +265,13 @@ body{
   color: #363636;
 }
 
+.news-mini{
+  margin-bottom: 0px;
+  bottom: 0px;
+}
+
+
+
 
 /**   footer   **/
 
@@ -379,5 +389,9 @@ body{
 }
 
 
-/****** check box ******/
+/****** news ******/
 
+.news_page{
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+}

@@ -33,6 +33,10 @@ gem 'rmagick'
 gem 'russian', '~> 0.6.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap_form'
+gem 'bootstrap-slider-rails'
+gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
+gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
+gem 'bootstrap-wysihtml5-rails'
 
 
 # Use ActiveModel has_secure_password

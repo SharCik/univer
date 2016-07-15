@@ -108,6 +108,23 @@ function changeColor(element_id) {
 
 
 
+$(function() {
+  $('.slider').slider();
+});
+
+
+function slider(){
+  var mySlider = $("input.slider").slider();
+
+  // Call a method on the slider
+  var value = mySlider.slider('getValue');
+
+  // For non-getter methods, you can chain together commands
+      mySlider
+          .slider('setValue', 5)
+          .slider('setValue', 7);
+};
+
 window.onload = function() {
   button_active();
 } 

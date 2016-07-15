@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 
   resources :universities ,only:[ :index ,:show]
-  resources :news ,only:[ :show]
+  resources :news ,only:[ :show ]
 
 
 

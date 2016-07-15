@@ -18,7 +18,7 @@ ActiveAdmin.register New do
   end
 
 
-  index title:"Услуги" do
+  index title:"Новости" do
     column "Название",:name
     column "Краткое описание",:short_description 
     actions
@@ -29,7 +29,7 @@ ActiveAdmin.register New do
     inputs 'Details' do
       input :name, label: "Название"
       input :short_description, label: "Краткое описание"
-      input :description, label: "Описание"
+      input :description, as: :wysihtml5, commands: [ :bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link, :image, :source], label: "Полное описание" 
       input :news_image, label: "Картинка"
     end
     actions

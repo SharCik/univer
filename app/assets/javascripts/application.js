@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap/modal
+//= require bootstrap-slider
+//= require bootstrap-wysihtml5
 //= require turbolinks
 //= require_tree .
 
@@ -34,8 +36,6 @@ function closeModalWindow(){
 $(document).ready(ready);
 // if using turbolinks
 $(document).on("page:load",ready);
-
-
 
 
 
