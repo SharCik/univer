@@ -27,7 +27,7 @@
           <hr>
           <div class="container head"><h3 style="margin-bottom: 50px;text-transform: uppercase;">Ступени образования</h3>
           <% if @univer.magistracy == true %>
-            <button id="button_height" class="btn btn-primary btn-lg large-btn left_bottom" onclick="SetActionHeight()">Высшее</button><button id="button_magis" class="btn btn-primary btn-lg large-btn right_bottom" onclick="SetActionMagis()">Магистратура</button>
+            <button id="button_height" class="btn btn-primary btn-lg left_bottom large-btn_open" onclick="SetActionHeight()">Высшее</button><button id="button_magis" class="btn btn-primary btn-lg large-btn right_bottom" onclick="SetActionMagis()">Магистратура</button>
           <% else%>
             <button id="button_height" class="btn btn-primary btn-lg large-btn_open">Высшее</button>
           <% end %>

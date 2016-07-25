@@ -1,2 +1,3 @@
+var count = "<%= @univers.count %>";
 $(".univers").html("<%= escape_javascript(render 'universities_list' ) %>"); 
-
+$("#count_univers").html(count); 
