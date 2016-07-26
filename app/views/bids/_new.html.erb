@@ -11,7 +11,12 @@
       <% if @university != nil %>
           <p><span style="color: rgb(129, 207, 58);">Университет: </span><%= @university.name %></p>
           <p><span style="color: rgb(129, 207, 58);"> Факультет: </span><%= @departament.name %></p>
-          <p><span style="color: rgb(129, 207, 58);"> Специальность: </span><%= @specialty.name %></p>
+          <% if @specialty != nil %>
+            <p><span style="color: rgb(129, 207, 58);"> Специальность: </span><%= @specialty.name %></p>
+          <% end %>
+          <% if @magistracy != nil %>
+            <p><span style="color: rgb(129, 207, 58);"> Магистратура: </span><%= @magistracy.name %></p>
+          <% end %>
       <% end %>
 
       <% if @university == nil%> <p style="margin-bottom: 60px;"> </p><% end %>
@@ -30,6 +35,9 @@
           <div class="form-group modal-form"><%= f.text_area :comment, hide_label: true, placeholder: "Комментарий" %></div>
           <% if @specialty != nil %>
           <%= hidden_field_tag(:specialty, @specialty.id) %>
+          <% end %>
+          <% if @magistracy != nil %>
+          <%= hidden_field_tag(:magistracy, @magistracy.id) %>
           <% end %>
           <%= f.submit "ОТПРАВИТЬ", class:"modal-button", style:"margin-top: 30px;" %>
         <% end %>

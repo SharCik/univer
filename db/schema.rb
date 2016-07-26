@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715073453) do
+ActiveRecord::Schema.define(version: 20160726185318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160715073453) do
     t.integer  "university_id"
     t.integer  "departament_id"
     t.integer  "specialty_id"
+    t.integer  "magistracy_id"
   end
 
   add_index "bids", ["city_id"], name: "index_bids_on_city_id", using: :btree

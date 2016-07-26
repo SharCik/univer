@@ -1,26 +1,26 @@
 <div class="row footer_top"> </div>
 <div class="row footer">
   <div class="container">
-    <div class="col-md-3 footer_columns">
+    <div class="col-xs-3 footer_columns">
       <p><span class="logo_footer" style="color: #bb6062;">My</span><span class="logo_footer" style="color: #fff;">Univer</span></p>
       <p>Помощь с поступлением в высшие учебные заведения Беларуси</p>
       <span><%= link_to image_tag("vk.png"), "#", class:"social"%></span>
       <span><%= link_to image_tag("fb.png"), "#", class:"social"%></span>
       <span><%= link_to image_tag("inst.png"), "#", class:"social"%></span>
     </div>
-    <div class="col-md-3 footer_columns"> 
+    <div class="col-xs-3 footer_columns"> 
       <p class="lead footer_apper" style="margin-bottom: 15px;">АБИТУРИЕНТУ</p>
       <p><small><%= link_to "Университеты", universities_path %></small></p>
       <p><small><%= link_to "Услуги", services_path %></small></p>
       <p><small><%= link_to "Новости", all_news_path %></small></p>
     </div>
-    <div class="col-md-3 footer_columns">
+    <div class="col-xs-3 footer_columns">
       <p class="lead footer_apper" style="margin-bottom: 15px;">СВЯЖИТЕСЬ С НАМИ</p>
       <p><small><%= link_to image_tag("mail.png"), "#" %></small><small class="communication"><%= link_to "@myuniver" , "#"%></small></p>
       <p><span><%= link_to image_tag("scype.png"), "#" %></span><small class="communication" style="padding-left: 14px;"><%= link_to "myuniver.by" , "#"%></small></p>
       <p><span><%= link_to image_tag("mail_1.png"), "#" %></span><small class="communication" style="padding-left: 14px;"><%= link_to "info.myuniver@gmail.com" , "#"%></small></p>
     </div>
-    <div class="col-md-3 footer_columns">
+    <div class="col-xs-3 footer_columns">
       <p class="lead footer_apper" style="margin-bottom: 15px;">БЕСПЛАТНАЯ ЗАЯВКА</p>
       <p style="margin-top: 30px;"><%= link_to image_tag("feedback_footer.png"), request_path , {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></p>
     </div>

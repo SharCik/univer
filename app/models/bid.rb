@@ -8,4 +8,5 @@ class Bid < ActiveRecord::Base
   belongs_to :university
   belongs_to :departament
   belongs_to :specialty
+  belongs_to :magistracy
 end

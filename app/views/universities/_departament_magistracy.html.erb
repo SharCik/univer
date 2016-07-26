@@ -36,6 +36,7 @@
             <p style="text-align: center;"><%= magistracy.zaochno_price %></p>
           <% end %>
           </td>
+          <td class="padding_spec td_height" style="text-align: center;"><%= link_to image_tag("request.png", size:"45x35"), request_path(magistracy: magistracy.id, departament: depart_request_magis(magistracy.id), university:university_request_magis(magistracy.id)), {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %></td>
         </tr>
         <% end %>
       </tbody>

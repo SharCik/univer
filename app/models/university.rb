@@ -14,6 +14,10 @@ class University < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  def self.search(search)
+    where("name ILIKE ? OR short_name ILIKE ?", "%#{search}%", "%#{search}%")
+  end
+
 
 
 end

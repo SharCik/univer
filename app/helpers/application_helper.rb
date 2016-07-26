@@ -38,5 +38,17 @@ module ApplicationHelper
     University.where(id: departament.university_id).first.id
   end
 
+  def depart_request_magis(magistracy)
+    magis =Magistracy.find(magistracy)
+    departament = Departament.where(id: magis.departament_id).first
+    departament.id
+  end
+
+  def university_request_magis(magistracy)
+    magis =Magistracy.find(magistracy)
+    departament = Departament.where(id: magis.departament_id).first
+    University.where(id: departament.university_id).first.id
+  end
+
 
 end
