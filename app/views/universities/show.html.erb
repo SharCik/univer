@@ -1,4 +1,22 @@
 <% provide(:title, @univer.name) %>
+
+<div class="container header_image_show">
+  <div class="container" style="padding-top: 150px;">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <h1 class="secondary-font"><%= @univer.name %></h1>
+          <p class="secondary-font"><%= @univer.short_name %></p>
+          <div class="button-group">
+            <p style="margin-top: 30px;"><%= link_to image_tag("feedback_footer.png"), request_path(university: @univer.id) , {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 <div class="container">
   <div class="container" style="padding-top: 50px;padding-bottom: 50px;">
         <% flash.each do |key, value| %>
@@ -7,8 +25,8 @@
             <strong><%= value %></strong></div>
         <% end %>
           <div class="container" style="width: 100%;">
-            <div class="col-md-3"><%= image_tag(@univer.image.normal.url) %></div>
-            <div class="col-md-6"><%= @univer.description %></div>
+            <div class="col-md-3" style="padding-bottom: 20px;text-align:center;"><%= image_tag(@univer.image.normal.url) %></div>
+            <div class="col-md-6" style="padding-bottom: 15px;"><%= @univer.description %></div>
             <div class="col-md-3">
               <p style="margin: 0px;"><span style="font-weight: bold;padding: 0px;"><%= @city.name %></span></p>
               <p style="margin-bottom: 22px;padding: 0px;"><%= @univer.address %></p>

@@ -390,13 +390,30 @@ body{
 }
 
 
-.header_image{
+.header_image_all{
   width: 100%;
   position: relative;
   background-image: image-url('services.jpg');
   background-size: 100% 100%;
   height: 489px;
 }
+
+.header_image_show{
+  width: 100%;
+  position: relative;
+  background-image: image-url('show_univer.jpg');
+  background-size: 100% 100%;
+  height: 489px;
+}
+
+.header_image_news{
+  width: 100%;
+  position: relative;
+  background-image: image-url('news.jpg');
+  background-size: 100% 100%;
+  height: 489px;
+}
+
 
 .input-group{
   width: 100%;

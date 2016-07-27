@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div class="modal-body" style="padding-left: 0px;">
-      <% if @university != nil %>
+      <% if @departament != nil %>
           <p><span style="color: rgb(129, 207, 58);">Университет: </span><%= @university.name %></p>
           <p><span style="color: rgb(129, 207, 58);"> Факультет: </span><%= @departament.name %></p>
           <% if @specialty != nil %>
@@ -18,6 +18,9 @@
             <p><span style="color: rgb(129, 207, 58);"> Магистратура: </span><%= @magistracy.name %></p>
           <% end %>
       <% end %>
+          <% if @university != nil %>
+            <p style="padding-bottom: 80px;"><span style="color: rgb(129, 207, 58);"> Университет: </span><%= @university.name %></p>
+          <% end %>
 
       <% if @university == nil%> <p style="margin-bottom: 60px;"> </p><% end %>
 
@@ -38,6 +41,9 @@
           <% end %>
           <% if @magistracy != nil %>
           <%= hidden_field_tag(:magistracy, @magistracy.id) %>
+          <% end %>
+          <% if @university != nil %>
+          <%= hidden_field_tag(:university, @university.id) %>
           <% end %>
           <%= f.submit "ОТПРАВИТЬ", class:"modal-button", style:"margin-top: 30px;" %>
         <% end %>

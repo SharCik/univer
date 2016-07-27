@@ -1,7 +1,6 @@
 class UniversitiesController < ApplicationController
 
   def index
-    @background = true
     @univers = University.paginate(:per_page => 5, :page => params[:page])
     @city = City.all
     @univers = @univers.ochno(params[:ochno]) if params[:ochno].present?
@@ -17,19 +16,6 @@ class UniversitiesController < ApplicationController
       end   
   end
 
-  def new
-    @univer =  University.new
-  end
-
-  def create
-    @univer =  University.new(univer_params)
-
-    if @univer.save!
-      redirect_to root_path
-    else
-      redirect_to new_university_path
-    end
-  end
 
   def show
     
@@ -38,20 +24,6 @@ class UniversitiesController < ApplicationController
     @departaments = Departament.where(university_id: @univer.id)
   end
 
-  def edit
-    @univer = University.find(params[:id])
-  end
-
-  def update
-    @univer = University.find(params[:id])
-      if @univer.update(univer_params)
-        flash[:notice] = "University updated."
-        redirect_to university_path
-      else
-        flash[:error] = "Could not update user."
-        redirect_to edit_university_path
-      end
-  end
 
   private
 

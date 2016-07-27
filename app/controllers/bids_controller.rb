@@ -17,7 +17,7 @@ class BidsController < ApplicationController
   def create
 
     @bid =  Bid.new(bid_params)
-    if params[:specialty].present?
+    if (params[:specialty].present? and params[:university].present?)
       spec = Specialty.find(params[:specialty]) 
       departament = Departament.where(id: spec.departament_id).first
       @bid.specialty_id = params[:specialty]
@@ -37,6 +37,14 @@ class BidsController < ApplicationController
       city = City.where(id: university.city_id).first
       @bid.city_id = city.id
     end
+
+    if (params[:specialty] == nil and params[:university].present?)
+      university = University.find(params[:university])
+      @bid.university_id = university.id
+      city = City.where(id: university.city_id).first
+      @bid.city_id = city.id
+    end
+
     if @bid.save
 
       respond_to do |format|
