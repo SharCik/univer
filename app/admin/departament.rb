@@ -36,6 +36,11 @@ ActiveAdmin.register Departament do
   end
 
 
+  sidebar '   ', :only => :show do
+    link_to "Вернуться к институту #{University.find(departament.university_id).name}", admin_university_path(University.find(departament.university_id).id)
+  end
+
+
   index title:"Факультеты" do
     column "Название",:name
     actions

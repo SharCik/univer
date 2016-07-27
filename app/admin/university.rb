@@ -65,7 +65,7 @@ ActiveAdmin.register University do
     end
     column "Город",:city
     column "Адрес",:address
-    column "Начальная стоимость",:initial_cost do |product|
+    column "Подготовительное отделение",:initial_cost do |product|
       product.initial_cost.to_s + " $"
     end
     actions

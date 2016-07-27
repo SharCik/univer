@@ -25,6 +25,9 @@ ActiveAdmin.register Magistracy do
       private 
   end 
 
+  sidebar '   ', :only => :show do
+    link_to "Вернуться к факультету #{Departament.find(magistracy.departament_id).name}", admin_departament_path(Departament.find(magistracy.departament_id).id)
+  end
 
   index title:"Магистратура"  do
     column "Название",:name
