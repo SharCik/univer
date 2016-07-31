@@ -1,6 +1,7 @@
 class University < ActiveRecord::Base
   validates :name, presence: true , uniqueness: true
   validates :short_name, uniqueness: true
+  validates :rating, presence: true 
 
   scope :city, -> (city_id) { where city: city_id }
   scope :ochno, -> (ochno) { where ochno: true }

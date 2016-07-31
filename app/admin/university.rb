@@ -1,6 +1,6 @@
 ActiveAdmin.register University do
   menu priority: 4, label: "Университеты"
-  config.filters = false
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -15,6 +15,7 @@ ActiveAdmin.register University do
 # end
 
   config.batch_actions = false
+
 
   controller do
     def new
@@ -37,6 +38,10 @@ ActiveAdmin.register University do
     image_tag(university.image.normal.url)
   end
 
+  action_item only: [:show,:edit,:new] do
+    link_to "Список университетов", admin_universities_path ,style:"background: white;color: green;margin-top:10px;"
+  end
+
 
   show do
     attributes_table do
@@ -50,7 +55,7 @@ ActiveAdmin.register University do
       row("Подготовительное отделение"){ |r| r.preparatory_department == true ? "Есть" : "Нет" }
       row("Общежитие"){ |r| r.hostel == true ? "Есть" : "Нет" }
       row("Магистратура"){ |r| r.magistracy == true ? "Есть" : "Нет" }
-      row("Подготовительное отделение, стоимость"){ |r| number_to_currency r.initial_cost }
+      row("Подготовительное отделение, стоимость"){ |r| r.initial_cost }
       row("Рейтинг"){ |r| r.rating }
     end
   end
@@ -88,8 +93,10 @@ ActiveAdmin.register University do
       input :rating, label: "Рейтинг"
       input :image, label: "Картинка"
     end
-    actions
+    action(:submit)
   end
+
+  filter :city,  collection: proc { City.all },label: 'Город'
 
 
   permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :ochno , :zaochno ,:rating, :magistracy

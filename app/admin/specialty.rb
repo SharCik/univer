@@ -1,5 +1,5 @@
 ActiveAdmin.register Specialty do
-  menu priority: 7, label: "Специальности"
+  menu false
   config.filters = false
 
 
@@ -25,19 +25,20 @@ ActiveAdmin.register Specialty do
       private 
   end 
 
-  sidebar '   ', :only => :show do
-    link_to "Вернуться к факультету #{Departament.find(specialty.departament_id).name}", admin_departament_path(Departament.find(specialty.departament_id).id)
-  end
-
   index title:"Специальности" do
     column "Название",:name
     column "Квалификация",:profession
     actions
   end
 
-  action_item only: [:edit,:new] do
-    link_to "Вернуться к факультету", admin_departament_path(Departament.find(specialty.departament_id).id)
+  action_item only: [:new,:show] do
+    link_to "Вернуться к факультету", admin_departament_path(Departament.find(specialty.departament_id).id),style:"background: white;color: green;margin-top:10px;"
   end
+
+  action_item only: [:edit] do
+    link_to "Специальность '#{specialty.name}'", admin_specialty_path(specialty.id),style:"background: white;color: green;margin-top:10px;"
+  end
+
 
   form do |f|
     f.semantic_errors
@@ -52,8 +53,7 @@ ActiveAdmin.register Specialty do
       input :ochno_price, label: "Очно, цена"
       input :zaochno_price, label: "Заочно, цена"
     end
-    actions
-    link_to "Вернуться к факультету", admin_departament_path(Departament.find(specialty.departament_id).id)
+    action(:submit)
   end
 
   show do

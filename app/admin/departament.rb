@@ -1,6 +1,6 @@
 ActiveAdmin.register Departament do
 
-  menu priority: 5, label: "Факультеты"
+  menu false
   config.filters = false
   config.batch_actions = false
 # See permitted parameters documentation:
@@ -35,10 +35,14 @@ ActiveAdmin.register Departament do
     end
   end
 
-
-  sidebar '   ', :only => :show do
-    link_to "Вернуться к институту #{University.find(departament.university_id).name}", admin_university_path(University.find(departament.university_id).id)
+  action_item  do
+    link_to "Вернуться к университету", admin_university_path(University.find(departament.university_id).id) ,style:"background: white;color: green;margin-top:10px;"
   end
+
+  action_item only: [:edit] do
+    link_to "Назад в факультет", admin_departament_path(departament.id),style:"background: white;color: green;margin-top:10px;"
+  end
+
 
 
   index title:"Факультеты" do
@@ -52,7 +56,7 @@ ActiveAdmin.register Departament do
       input :university, :as => :select, :collection => @universities, label: "Университет"
       input :name, label: "Название"
     end
-    actions
+    action(:submit)
   end
 
 

@@ -1,21 +1,29 @@
 module UniversitiesHelper
 
   def univer_cost_ochno(univer_id)
-    depart = Departament.where(university_id: univer_id).first
-    if !(depart.specialties.empty?)  
-      specialties = Specialty.where(departament_id: depart.id)
-      specialties.order(ochno_price: :asc).first.ochno_price
-    end  
+    all_spec = []
+    departs = Departament.where(university_id: univer_id)
+    if departs != nil 
+      departs.each do |depart|
+        specialties = Specialty.where(departament_id: depart.id)
+        all_spec << specialties.order(ochno_price: :asc).first.ochno_price
+      end
+    end
+    all_spec.compact.sort!
+    all_spec[0]  
   end
 
   def univer_cost_zaochno(univer_id)
-    depart = Departament.where(university_id: univer_id).first
-    if !(depart.specialties.empty?) 
-      specialties = Specialty.where(departament_id: depart.id)
-      specialties.order(zaochno_price: :asc).first.zaochno_price
-    else
-
+    all_spec = []
+    departs = Departament.where(university_id: univer_id)
+    if departs != nil
+      departs.each do |depart|  
+        specialties = Specialty.where(departament_id: depart.id)
+        all_spec << specialties.order(zaochno_price: :asc).first.zaochno_price
+      end
     end 
+    all_spec.compact.sort!
+    all_spec[0]  
   end
 
 

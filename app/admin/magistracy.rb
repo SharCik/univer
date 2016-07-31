@@ -1,5 +1,5 @@
 ActiveAdmin.register Magistracy do
-  menu priority: 6, label: "Магистратура"
+  menu false
   config.filters = false
 
 
@@ -25,8 +25,12 @@ ActiveAdmin.register Magistracy do
       private 
   end 
 
-  sidebar '   ', :only => :show do
-    link_to "Вернуться к факультету #{Departament.find(magistracy.departament_id).name}", admin_departament_path(Departament.find(magistracy.departament_id).id)
+  action_item only: [:new,:show] do
+    link_to "Вернуться к факультету", admin_departament_path(Departament.find(magistracy.departament_id).id),style:"background: white;color: green;margin-top:10px;"
+  end
+
+  action_item only: [:edit] do
+    link_to "Магистратура '#{magistracy.name}'", admin_magistracy_path(magistracy.id),style:"background: white;color: green;margin-top:10px;"
   end
 
   index title:"Магистратура"  do
@@ -48,7 +52,7 @@ ActiveAdmin.register Magistracy do
       input :ochno_price, label: "Очно, цена"
       input :zaochno_price, label: "Заочно, цена"
     end
-    actions
+    action(:submit)
   end
 
   show do
