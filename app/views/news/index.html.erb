@@ -1,14 +1,16 @@
 <% provide(:title, 'Новости о высшем образовании в Беларуси') %>
 
 <div class="container header_image_news">
-  <div class="container" style="padding-top: 200px;">
+  <div class="container cont_new">
 
     <div class="container">
       <div class="row">
+
         <div class="col-xs-12 col-md-8 col-md-offset-2">
           <h1 class="secondary-font">Новости о высшем образовании в Беларуси</h1>
           <p class="secondary-font">Статьи о тонкостях поступления и учебе в высших учебных заведениях Республики Беларусь</p>
         </div>
+
       </div>
     </div>
 
@@ -18,19 +20,24 @@
 <div class="container">
   <div class="col-md-1" ></div>
     <div class="col-md-10">
+
       <% @news.each do |now| %>
+
       <div class="container news">
-        <div class="col-md-8" style="padding-top: 20px;">
-          <h4 style="color: black;"><%= link_to now.name, news_path(now.id) %></h4>
+
+        <div class="col-md-8 cont_news_descript">
+          <h4 class="news_h"><%= link_to now.name, news_path(now.id) %></h4>
           <p class="news_decript"><%= Russian::strftime(now.created_at.to_time,'%e %b %Y') %></p>
           <p class="news_decript"><%= now.short_description %></p>
         </div>
-        <div class="col-md-4" style="text-align: center;padding-top: 20px;padding-bottom: 20px;">
+        <div class="col-md-4 news_ava">
           <%= link_to image_tag(now.news_image.normal.url, size:"210x160"), news_path(now.id) %>
         </div>
       </div>
+
       <% end %>
-      <p><%= will_paginate @news , :previous_label => "", :next_label => "", style:"margin-left: 30px;color: #363636;font-size: medium;"%></p>
+
+      <p><%= will_paginate @news , :previous_label => "", :next_label => "", class:"paginate_univers"%></p>
     </div>
   <div class="col-md-1"></div>
 </div>

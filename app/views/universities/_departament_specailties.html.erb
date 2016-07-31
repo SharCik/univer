@@ -1,46 +1,66 @@
+<% specialties = spec_of_departament(depart_id) %>
+<% if specialties != nil %>
+
 <div id="spec_<%= depart_id %>" class="container cont block_class special" style="display: none;">
   <div class="table table-bordered table-striped table-hover">
-    <table class="table_specialties" style="width: 100%;">
+    <table class="table_specialties">
       <thead class="head_table">
         <tr class="tr_head">
           <th class="padding_spec">Специальность</th>
           <th class="padding_spec">Профессия</th>
           <th class="padding_spec">Форма обучения</th>
-          <th class="padding_spec" style="text-align: center;">Срок, лет</th>
-          <th class="padding_spec" style="text-align: center;">Цена, $</th>
-          <th class="padding_spec" style="text-align: center;">Оставить заявку</th>
+          <th class="padding_spec table_align" >Срок, лет</th>
+          <th class="padding_spec table_align" >Цена, $</th>
+          <th class="padding_spec table_align" >Оставить заявку</th>
         </tr>
       </thead>
       <tbody>
-        <% specialties = spec_of_departament(depart_id) %>
+
+
         <% specialties.each do |specialty| %>
+
         <tr>
           <td class="padding_spec td_height"><%= specialty.name %></td>
           <td class="padding_spec td_height"><%= specialty.profession %></td>
           <td class="padding_spec td_height">
+
             <% if specialty.ochno == true  %>
+
             <p>Очно</p>
+
             <% end %>
             <% if specialty.zaochno == true  %>
+
             <p>Заочно</p>
+
             <% end %>
           </td>
-          <td class="padding_spec td_height" style="text-align: center;">
+          <td class="padding_spec td_height td_align">
             <p><%= specialty.training_period %></p>
             <p><%= specialty.training_period_zaochno %></p>
           </td>
           <td class="padding_spec td_height">
+
           <% if specialty.ochno == true %>
-            <p style="text-align: center;"><%= specialty.ochno_price %></p>
+
+            <p class="td_align"><%= specialty.ochno_price %></p>
+
           <% end %>
           <% if specialty.ochno == true %>
-            <p style="text-align: center;"><%= specialty.zaochno_price %></p>
+
+            <p class="td_align"><%= specialty.zaochno_price %></p>
+
           <% end %>
+
           </td>
-          <td class="padding_spec td_height" style="text-align: center;"><%= link_to image_tag("request.png", size:"45x35"), request_path(specialty: specialty.id, departament: depart_request(specialty.id), university:university_request(specialty.id)), {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %></td>
+          <td class="padding_spec td_height td_align"><%= link_to image_tag("request.png", size:"45x35"), request_path(specialty: specialty.id, departament: depart_request(specialty.id), university:university_request(specialty.id)), {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %></td>
         </tr>
+
         <% end %>
+        
       </tbody>
     </table>
   </div>
 </div>
+
+<% end %>

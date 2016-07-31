@@ -1,43 +1,53 @@
 <% provide(:title, 'Каталог университетов Беларусии') %>
-<div class="container header_image_all">
-  <div class="container" style="padding-top: 150px;">
 
+<div class="container header_image_all">
+  <div class="container cont_image">
     <div class="container">
       <div class="row">
+
         <div class="col-xs-12 col-md-8 col-md-offset-2">
           <h1 class="secondary-font">Высшее образование в Беларуси</h1>
           <p class="secondary-font">Куда вы хотите поступить?</p>
           <section class="search-bar">
+
             <form>
+
             <%= form_tag('/universities', method: 'get', remote: true ) do %>
+
               <div class="input-group">
                 <div id="text_search" class="cell">
                   <%= text_field_tag(:search,)%>
                 </div>
-                <div style="text-align:right;">
+                <div class="button_right">
                   <%= submit_tag "Найти", :name => nil , class:"button_search" %>
                 </div>
               </div>
-              <% end %>
+
+            <% end %>
+
             </form>
+
           </section>
         </div>
+
       </div>
     </div>
-
   </div>
 </div>
+
 <div class="container">
-  <div class="container" style="margin-top: 50px;">
-    <div class="col-md-3">
-      <p style="color: #b7a7ae;">Фильтры</p>
+  <div class="container cont_filtr">
+
+    <div class="col-xs-2 col-md-3">
+      <p class="text-filtres">Фильтры</p>
     </div>
-    <div class="col-md-9">
-    <p style="color: #b7a7ae;">Университетов найдено: <span id='count_univers'><%= @univers.count %></span></p>
+
+    <div class="col-xs-8 col-md-9">
+      <p class="count_univers">Университетов найдено: <span id='count_univers'><%= @univers.count %></span></p>
     </div>
   </div>
 
-  <div class="container" style="padding-top: 10px;">
+  <div class="container">
     <div class="col-md-3">
       <%= render "universities/filtres" %>
     </div>
@@ -45,7 +55,7 @@
       <div class="univers">
         <%= render "universities/universities_list" %>
       </div>
-      <p><%= will_paginate @univers , :previous_label => "", :next_label => "", style:"margin-left: 30px;color: #363636;font-size: medium;"%>
+      <p><%= will_paginate @univers , :previous_label => "", :next_label => "", class:"paginate_univers"%>
       </p>
     </div>
   </div>

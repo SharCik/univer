@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root  'static_pages#main'
   match '/main',  to: 'static_pages#main',            via: 'get'
-  match '/services',  to: 'static_pages#services',            via: 'get'
   match '/request',  to: 'bids#new',            via: 'get'
   match '/bids',  to: 'bids#create',            via: 'post'
   match '/all_news',  to: 'news#index',            via: 'get'

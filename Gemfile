@@ -37,6 +37,7 @@ gem 'bootstrap-slider-rails'
 gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
 gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 gem 'bootstrap-wysihtml5-rails'
+gem 'seed_dump'
 
 
 

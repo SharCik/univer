@@ -25,12 +25,12 @@ ActiveAdmin.register University do
   end 
 
 
-  sidebar 'Departaments by this University', :only => :show do
+  sidebar 'Факультеты', :only => :show do
     table_for Departament.joins(:university).where(:university_id => university.id) do |t|
       t.column("Show") { |departament| link_to departament.name , admin_departament_path(departament) }
       t.column("Edit") { |departament| link_to image_tag("edit.png", size:"20x20"), edit_admin_departament_path(departament) }
     end
-    link_to "New departament for #{university.short_name}", new_admin_departament_path(univer: university)
+    link_to "Добавить факультет к #{university.short_name}", new_admin_departament_path(univer: university)
   end
 
   sidebar :picture,  :only => :show do
