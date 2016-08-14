@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-select
 //= require bootstrap
 //= require bootstrap/modal
 //= require bootstrap-slider
 //= require bootstrap-wysihtml5
 //= require turbolinks
 //= require_tree .
+
 
 
 var ready;
@@ -36,6 +38,25 @@ function closeModalWindow(){
 $(document).ready(ready);
 // if using turbolinks
 $(document).on("page:load",ready);
+
+
+$(function() {
+  $( "#'button-filter" ).click(function() {
+    $( "#'button-filter" ).addClass( "onclic", 250, validate);
+  });
+
+  function validate() {
+    setTimeout(function() {
+      $( "#'button-filter" ).removeClass( "onclic" );
+      $( "#'button-filter" ).addClass( "validate", 450, callback );
+    }, 2250 );
+  }
+    function callback() {
+      setTimeout(function() {
+        $( "#'button-filter" ).removeClass( "validate" );
+      }, 1250 );
+    }
+  });
 
 
 

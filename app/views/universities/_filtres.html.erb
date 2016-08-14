@@ -1,55 +1,66 @@
-    <div class="container" style="background-color: #fff;width: 100%;height:300px;padding: 30px 25px;">
-
-    <input type="text" class="slider" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after"data-slider-tooltip="hide">
+    <div class="container" style="background-color: #fff;width: 100%;padding: 30px 25px;margin-bottom: 20px;">
 
 
-
-    <h4>Форма обучения</h4>
-      <label class="category-select">
-        <%= check_box_tag 'ochno', true , false,  
-              data: {
-                remote: true,
-                url: "universities",
-                method: "GET"
-              } %>
-        Очно
-      </label>
-      <label class="category-select">
-        <%= check_box_tag 'zaochno', true , false,  
-              data: {
-                remote: true,
-                url: "universities",
-                method: "GET"
-              } %>
-        Заочно
-      </label>
-    <h4>Дополнительно</h4>
-      <label class="category-select">
-        <%= check_box_tag 'magistracy', true , false,  
-              data: {
-                remote: true,
-                url: "universities",
-                method: "GET"
-              } %>
-        Магистратура
-      </label>
-      <label class="category-select">
-        <%= check_box_tag 'preparatory_department', true , false,  
-              data: {
-                remote: true,
-                url: "universities",
-                method: "GET"
-              } %>
-        Подг. отделение
-      </label>
-      <label class="category-select">
-        <%= check_box_tag 'hostel', true , false,  
-              data: {
-                remote: true,
-                url: "universities",
-                method: "GET"
-              } %>
-        Общежитие
-      </label>
-    </div>
-
+    <%= bootstrap_form_for('universities#index', method: :get, remote: :true) do %>
+      <div class="form-group modal-form">
+        <div class="customSelect">
+          <%= select_tag "City", options_from_collection_for_select(@city, "id", "name"), :include_blank => 'Выбрать город', class:"selectpicker" %>
+          </div>
+      </div>
+      <h4>Форма обучения</h4>
+      <div class="form-group modal-form">
+        <div class="roundedOne">  
+          <%= check_box_tag 'ochno', true , false, id:"roundedOne", 
+                data: {
+                  url: "universities",
+                  method: "GET"
+                } %>
+          <label for="roundedOne" ><span class="label_checkbox"> Очно  </span></label>
+        </div>
+      </div>
+      <div class="form-group modal-form">
+        <div class="roundedTwo">  
+          <%= check_box_tag 'zaochno', true , false, id:"roundedTwo", 
+                data: {
+                  url: "universities",
+                  method: "GET"
+                } %>
+          <label for="roundedTwo" ><span class="label_checkbox"> Заочно  </span></label>
+        </div>
+      </div>
+      <h4>Дополнительно</h4>
+      <div class="form-group modal-form">
+        <div class="roundedThree">  
+          <%= check_box_tag 'magistracy', true , false, id:"roundedThree", 
+                data: {
+                  url: "universities",
+                  method: "GET"
+                } %>
+          <label for="roundedThree" ><span class="label_checkbox"> Магистратура </span></label>
+        </div>
+      </div>
+      <div class="form-group modal-form">
+        <div class="roundedFour">  
+          <%= check_box_tag 'hostel', true , false, id:"roundedFour", 
+                data: {
+                  url: "universities",
+                  method: "GET"
+                } %>
+          <label for="roundedFour" ><span class="label_checkbox"> Общежитие </span></label>
+        </div>
+      </div>
+      <div class="form-group modal-form">
+        <div class="roundedFive">  
+          <%= check_box_tag 'preparatory_department', true , false, id:"roundedFive", 
+                data: {
+                  url: "universities",
+                  method: "GET"
+                } %>
+          <label for="roundedFive" ><span class="label_checkbox"> Подг.<span>отделение</span> </span></label>
+        </div>
+      </div>
+        <div class="container-button">
+          <%= submit_tag "Показать", id:'button-filter' %>
+        </div>
+    <% end %>
+  </div>

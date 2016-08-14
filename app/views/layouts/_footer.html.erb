@@ -1,20 +1,20 @@
 <div class="row footer_top"> </div>
 <div class="row footer">
-  <div class="container">
+  <div class="container foot_main">
 
     <div class="col-xs-3 footer_columns">
-      <p><span class="logo_footer_red">My</span><span class="logo_footer_white">Univer</span></p>
+      <p style="margin-top:5px;;margin-bottom:15px;"><span class="logo_footer_red">My</span><span class="logo_footer_white">Univer</span></p>
       <p>Помощь с поступлением в высшие учебные заведения Беларуси</p>
-      <span><%= link_to image_tag("vk.png"), "#", class:"social"%></span>
-      <span><%= link_to image_tag("fb.png"), "#", class:"social"%></span>
-      <span><%= link_to image_tag("inst.png"), "#", class:"social"%></span>
+      <span><%= link_to image_tag("vk.png"), "https://vk.com/myuniver_by", class:"social", target:"_blank"%></span>
+      <span><%= link_to image_tag("fb.png"), "https://www.facebook.com/myuniverby/", class:"social", target:"_blank"%></span>
+      <span><%= link_to image_tag("inst.png"), "https://www.instagram.com/myuniver_by/", class:"social", target:"_blank"%></span>
     </div>
 
     <div class="col-xs-3 footer_columns"> 
       <p class="lead footer_apper">АБИТУРИЕНТУ</p>
-      <p><small><%= link_to "ГЛАВНАЯ", root_path %></small></p>
-      <p><small><%= link_to "Университеты", universities_path %></small></p>
-      <p><small><%= link_to "Новости", all_news_path %></small></p>
+      <p><%= link_to "Главная", root_path %></p>
+      <p><%= link_to "Университеты", universities_path %></p>
+      <p><%= link_to "Новости", all_news_path %></p>
     </div>
 
     <div class="col-xs-3 footer_columns">

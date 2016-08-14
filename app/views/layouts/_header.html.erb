@@ -1,15 +1,15 @@
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top"style="padding-top: 5px;padding-bottom: 5px;">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"><%= link_to image_tag('logo.png',class:'logo_header'),root_path %></a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <%= link_to image_tag('logo.png',class:'navbar-brand', style:'padding-bottom: 0px;padding-top: 0px;padding-right: 80px;height: 50px;'),root_path %>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav pages">
+          <ul class="nav navbar-nav" style="margin-top: 5px;">
             <li>
               <%= link_to "ГЛАВНАЯ", root_path, class:"main_links"   %>
             </li>
@@ -22,9 +22,13 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to image_tag("feedback.png"), request_path , {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %></li>
+            <li>
+              <p class="navbar-btn" style="margin-top: 12px;padding-left: 5px;">
+              <%= link_to " Оставить заявку", request_path , {class:"btn_nav",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %></li>
+              </p>
           </ul>
 
         </div>
       </div>
     </div>
+

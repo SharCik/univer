@@ -2,6 +2,8 @@
 @import "bootstrap";
 @import "rails_bootstrap_forms";
 @import "bootstrap-slider";
+@import "bootstrap-select";
+
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
 
@@ -37,11 +39,31 @@ body{
   border: none;
 }
 
-
-.logo_header{
-  padding-top: 10px;
-  height: 50px;
+.btn_nav {
+  background: #fff;
+  background-image: -webkit-linear-gradient(top, #fff, #fff);
+  background-image: -moz-linear-gradient(top, #fff, #fff);
+  background-image: -ms-linear-gradient(top, #fff, #fff);
+  background-image: -o-linear-gradient(top, #fff, #fff);
+  background-image: linear-gradient(to bottom, #fff, #fff);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: rgb(35, 89, 155);
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 5px 10px 5px 10px;
+  border: solid #1f628d 2px;
+  text-decoration: none;
 }
+
+.btn_nav:hover {
+  background: #fff;
+  text-decoration: none;
+}
+
+
 
 .main_links{
   font-family: sans-serif;
@@ -53,11 +75,6 @@ body{
   color: #c1c1c2 !important;
 }
 
-.pages{
-  position: relative;
-  top: 8px !important;
-  padding-left: 50px;
-}
 
 .feedback{
   padding: 10px !important;
@@ -377,8 +394,11 @@ body{
 
 .footer_apper{
   margin-top: 10px;
-  font-size: 11pt;
   margin-bottom: 15px;
+}
+
+.foot_main{
+  margin-bottom: 20px;
 }
 
 .communication{
@@ -413,7 +433,7 @@ body{
 
 .social{
   position: relative;
-  top: 10px;
+  top: 20px;
   padding-right: 20px;
 }
 
@@ -460,13 +480,6 @@ body{
   background-image: image-url('contact-form.jpg');
 }
 
-.form-control{
-  padding: 3px 5px;
-  border: none;
-  border-bottom: 1px solid #f5f5f5;
-  border-radius: 0;
-  box-shadow: none;
-}
 
 .gray{
   color: #999;
@@ -634,3 +647,375 @@ body{
   color: gray;
 }
 
+
+
+/*******   checkboxes *******/
+
+$activeColor: #2EFE2E; //green
+$darkenColor: darken($activeColor, 20%);
+
+/* .roundedOne */
+.roundedOne {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  label {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    &:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      background: $activeColor;
+      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      opacity: 0;
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+
+.roundedTwo {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  label {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    &:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      background: $activeColor;
+      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      opacity: 0;
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+
+
+.roundedThree {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  label {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    &:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      background: $activeColor;
+      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      opacity: 0;
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+
+.roundedFour {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  label {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    &:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      background: $activeColor;
+      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      opacity: 0;
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+
+
+.roundedFive {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  label {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    &:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      background: $activeColor;
+      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      opacity: 0;
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+
+.label_checkbox{
+  font-weight: lighter;
+  padding-left: 30px;
+}
+
+#selectpicker-id{
+  width: 200px;
+}
+
+
+/******   button ******/
+
+$green: #2EFE2E;
+$gray: #bbbbbb;
+* {
+  font-family: 'Roboto', sans-serif;
+}
+.container-button {
+  padding-top: 10px;
+  padding-left: 30px;
+  width: 130px;
+  height: 40px;
+  text-align: center;
+}
+#button-filter {
+  text-align: center;
+  outline:none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius:40px;
+  background: #fff;
+  border: 1px solid $green;
+  color:$green;
+  letter-spacing:1px;
+  text-shadow:0;
+  font:{
+    size:12px;
+    weight: 550;
+  }
+  cursor: pointer;
+  transition: all 0.25s ease;
+  &:hover {
+    color:white;
+    background: $green;
+  }
+  &:active {
+    //letter-spacing: 2px;
+    letter-spacing: 2px ;
+  }
+  &:after {
+    content:"SUBMIT";
+  }
+}
+.onclic {
+  width: 40px;
+  border-color:$gray;
+  border-width:3px;
+  font-size:0;
+  border-left-color:$green;
+  animation: rotating 2s 0.25s linear infinite;
+
+  &:after {
+    content:"";
+  }
+  &:hover {
+    color:$green;
+    background: white;
+  }
+}
+.validate {
+  font-size:13px;
+  color: white;
+  background: $green;
+  &:after {
+    font-family:'FontAwesome';
+    content:"\f00c";
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+#first{
+  background-image: -moz-linear-gradient(center top , rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-image: image-url('c2391bc0-1657-49f4-b2be-236c0183cde6__14408938623_e90b2d5aca_h.jpg');
+  background-repeat: no-repeat;
+  background: cover;
+  background-size: 100%;
+  position: relative;
+  top: -120px;
+}
+
+#blockimg1{
+  background-image: image-url('tild3064-3838-4663-a331-353765373963__azjk36w8tze.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+#blockimg2{
+  background-image: image-url('tild3839-3539-4530-b330-333539333233__6ouc7i69cb0.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+#blockimg3{
+  background-image: image-url('tild3132-3535-4538-a132-303861373333__5ihczofelg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+
+.hr_style{
+    width: 20%;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(35, 89, 155);
+}    
+
+.t-cover__carrier{
+  background-image: image-url('tild6266-6464-4661-b434-373630323433__430173.jpg');
+}
+
+#first_comment{
+  background-image: image-url('tild3731-3362-4965-a232-623362633639__7cmlcgbtxq0.jpg');
+}
+
+#second_comment{
+  background-image: image-url('tild3539-3263-4737-b362-613535303661__u31rgwheua.jpg');
+}
+
+#third_comment{
+  background-image: image-url('tild3034-3933-4336-b139-336639643638__nqpytsf5q30.jpg');
+}
+
+#coverCarry7248904{
+  background-image: image-url('tild6137-6533-4534-b264-376631373463__smoothtouchworkspace.jpg');
+}
