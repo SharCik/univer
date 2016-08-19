@@ -39,6 +39,8 @@ gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 gem 'bootstrap-wysihtml5-rails'
 gem 'seed_dump'
 gem 'bootstrap-select-rails'
+gem 'frontend-generators'
+gem 'figaro'
 
 
 # Use ActiveModel has_secure_password
@@ -69,6 +71,6 @@ group :development do
 end
 
 group :production do
-  gem 'puma'
+  gem 'pg'
 end
 

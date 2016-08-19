@@ -22,17 +22,18 @@
 
 
 
+
+
 var ready;
 
-ready = function(){
-    // enable chosen js
-    $('.chosen-select').chosen();
-};
 
 function closeModalWindow(){
   $("#modal-window").removeClass("show");
   $("#modal-window").addClass("hide");
 };
+
+
+
 
 
 $(document).ready(ready);

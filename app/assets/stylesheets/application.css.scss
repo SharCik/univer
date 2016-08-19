@@ -3,6 +3,7 @@
 @import "rails_bootstrap_forms";
 @import "bootstrap-slider";
 @import "bootstrap-select";
+@import "font_awesome";
 
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
@@ -138,6 +139,7 @@ body{
 }
 
 .right_bottom{
+  padding: 10px 6px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -393,6 +395,7 @@ body{
 }
 
 .footer_apper{
+  font-weight: 500;
   margin-top: 10px;
   margin-bottom: 15px;
 }
@@ -424,6 +427,14 @@ body{
 
 .footer a:hover{
   color: #fff;
+}
+
+a:hover{
+  text-decoration: none !important;
+}
+
+.modal a {
+  text-decoration: none !important;
 }
 
 .footer_columns{
@@ -463,57 +474,68 @@ body{
 
 
 /****** Modal window ******/
+@import "bourbon";
 
-#modal-window {
-  height: 85%;
-  width: 70%;
-  top:10%;
-  left:20%;
-  outline: none;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-#left-modal{
-  width: 50%;
-  height: 100%;
-  padding-left: 0px;
-  background-image: image-url('contact-form.jpg');
+.modal{
+  overflow-y: auto !important; 
+  background-color: rgba(0,0,0,0.4);
 }
 
 
-.gray{
-  color: #999;
+.wrapper {  
+    margin-top: 80px;
+  margin-bottom: 80px;
 }
 
-.modal-button{
-  font-size: 1.3rem;
-  line-height: 1.6923076923;
-  width: 100%;
-  height: 50px;
-  margin-top: 10px;
-  margin-bottom: 0;
-  border-color: #999;
+.form-signin {
+  margin-bottom: 30px;
+  max-width: 480px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);  
 
-  font-size: 1.4rem;
-  line-height: 1.5714285714;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 13px 28px;
-  border: 1px solid transparent;
-  border-radius: 30px;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  transition: color,background-color,border-color;
-  transition-duration: .25s;
+  .form-signin-heading,
+    .checkbox {
+      margin-bottom: 30px;
+    }
+
+    .checkbox {
+      font-weight: normal;
+    }
+
+    .form-control {
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+        @include box-sizing(border-box);
+
+        &:focus {
+          z-index: 2;
+        }
+    }
+
+    input[type="text"] {
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    input[type="password"] {
+      margin-bottom: 20px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
 }
+
+
+
+
+
+
+
+
 
 
 .header_image_all{
@@ -523,6 +545,7 @@ body{
   background-size: 100% 100%;
   height: 489px;
 }
+
 
 .header_image_show{
   width: 100%;
@@ -580,6 +603,27 @@ body{
 .secondary-font{
   color: white;
 }
+
+.cont_image_main{
+  padding-top: 250px;
+}
+
+.secondary-font_main{
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-size: 48px;
+}
+
+.secondary-font_main_mini{
+  padding-top: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  opacity: 0.7;
+  line-height: 1.55;
+  color: #fff;
+  font-size: 20px;  
+}
+
 
 .cont_image{
   padding-top: 150px;
@@ -962,17 +1006,6 @@ $gray: #bbbbbb;
 }
 
 
-
-
-#first{
-  background-image: -moz-linear-gradient(center top , rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  background-image: image-url('c2391bc0-1657-49f4-b2be-236c0183cde6__14408938623_e90b2d5aca_h.jpg');
-  background-repeat: no-repeat;
-  background: cover;
-  background-size: 100%;
-  position: relative;
-  top: -120px;
-}
 
 #blockimg1{
   background-image: image-url('tild3064-3838-4663-a331-353765373963__azjk36w8tze.jpg');

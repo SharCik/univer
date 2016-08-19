@@ -3,9 +3,6 @@ class BidsController < ApplicationController
   def new
     @universities = University.all 
     @university  = University.find(params[:university]) if params[:university].present?
-    @departament = Departament.find(params[:departament]) if params[:departament].present?
-    @specialty   = Specialty.find(params[:specialty]) if params[:specialty].present?
-    @magistracy  = Magistracy.find(params[:magistracy]) if params[:magistracy].present?
     @bid         = Bid.new
       
     respond_to do |format|
@@ -15,30 +12,9 @@ class BidsController < ApplicationController
   end
 
   def create
-
     @bid =  Bid.new(bid_params)
-    if (params[:specialty].present? and params[:university].present?)
-      spec = Specialty.find(params[:specialty]) 
-      departament = Departament.where(id: spec.departament_id).first
-      @bid.specialty_id = params[:specialty]
-      @bid.departament_id = departament.id
-      university = University.where(id: departament.university_id).first
-      @bid.university_id = university.id
-      city = City.where(id: university.city_id).first
-      @bid.city_id = city.id
-    end
-    if params[:magistracy].present?
-      magis = Magistracy.find(params[:magistracy]) 
-      departament = Departament.where(id: magis.departament_id).first
-      @bid.magistracy_id = params[:magistracy]
-      @bid.departament_id = departament.id
-      university = University.where(id: departament.university_id).first
-      @bid.university_id = university.id
-      city = City.where(id: university.city_id).first
-      @bid.city_id = city.id
-    end
 
-    if (params[:specialty] == nil and params[:university].present?)
+    if params[:university].present?
       university = University.find(params[:university])
       @bid.university_id = university.id
       city = City.where(id: university.city_id).first
@@ -47,12 +23,14 @@ class BidsController < ApplicationController
 
     if @bid.save
 
+      BidMailer.bid_new(@bid.id).deliver
+
       respond_to do |format|
         format.js
         format.html
       end
     else
-
+      flash[:bid_error] = 'Заявка не отправлена!'
       redirect_to request_path
     end
   end

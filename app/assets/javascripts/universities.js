@@ -125,10 +125,12 @@ function slider(){
           .slider('setValue', 7);
 };
 
+
 $(document).ready(function(){
     $(".hiddenSelect").change(function(){ 
       $(this).nextAll(".visibleInput").val($(this).val());
     });
+  
 });
 
 

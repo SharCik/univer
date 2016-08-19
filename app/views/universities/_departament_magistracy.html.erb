@@ -9,8 +9,7 @@
           <th class="padding_spec">Профессия</th>
           <th class="padding_spec">Форма обучения</th>
           <th class="padding_spec table_align">Срок, лет</th>
-          <th class="padding_spec table_align">Цена, $</th>
-          <th class="padding_spec table_align">Оставить заявку</th>
+          <th class="padding_spec table_align" style="padding-right: 15px;">Цена, $</th>
         </tr>
       </thead>
       <tbody>
@@ -53,7 +52,6 @@
             <% end %>
 
           </td>
-          <td class="padding_spec td_height td_align"><%= link_to image_tag("request.png", size:"45x35"), request_path(magistracy: magistracy.id, departament: depart_request_magis(magistracy.id), university: university_request_magis(magistracy.id)), {class:"feedback",:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %></td>
         </tr>
 
         <% end %>

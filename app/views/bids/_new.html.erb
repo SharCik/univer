@@ -1,30 +1,15 @@
-<div id="left-modal" class="col-md-6"></div>
-<div class="col-md-6" style="padding-left: 25px;">
- <div class="modal-header" style="height: 10%;padding: 0px;">
-    <button type="button" class="close" style="padding-top: 5px;" data-dismiss="modal" aria-hidden="true" onClick="closeModalWindow()">×</button>
-    <h3 id="myModalLabel">ВАША ЗАЯВКА</h3>
-    <% if @university == nil %>
-    <p class="gray">Не упустите свой шанс!</p>
-    <% end %>
-  </div>
-  <div class="modal-body" style="padding-left: 0px;">
-      <% if @departament != nil %>
-          <p><span style="color: rgb(129, 207, 58);">Университет: </span><%= @university.name %></p>
-          <p><span style="color: rgb(129, 207, 58);"> Факультет: </span><%= @departament.name %></p>
-          <% if @specialty != nil %>
-            <p><span style="color: rgb(129, 207, 58);"> Специальность: </span><%= @specialty.name %></p>
+  <div class="wrapper">
+    <div class="form-signin">   
+    <button type="button" class="close" style="padding-top: 5px;" data-dismiss="modal" aria-hidden="true" onClick="closeModalWindow()">×</button>    
+      <h2 class="form-signin-heading text-center">Получить консультацию</h2>
+      <p class="text-center">Оставьте свои контактные данные, чтобы мы могли связаться с Вами</p>
+          <% if flash[:bid_error] %>
+            <p class="error text-center" style="color: rgb(129, 207, 58);"><%= flash[:bid_error] %></p>
           <% end %>
-          <% if @magistracy != nil %>
-            <p><span style="color: rgb(129, 207, 58);"> Магистратура: </span><%= @magistracy.name %></p>
-          <% end %>
-      <% end %>
           <% if @university != nil %>
-            <p style="padding-bottom: 80px;"><span style="color: rgb(129, 207, 58);"> Университет: </span><%= @university.name %></p>
+            <p style="color: #23599b;text-align: center;"><%= @university.name %></p>
           <% end %>
-
-      <% if @university == nil%> <p style="margin-bottom: 60px;"> </p><% end %>
-
-        <%= bootstrap_form_for(@bid, remote: :true) do |f| %>
+        <%= bootstrap_form_for(@bid,:url => bids_path, remote: :true, class:'form-signin') do |f| %>
 
           <div class="form-group modal-form"><%= f.text_field :name , hide_label: true, placeholder: "Имя, обязательно"%></div>
 
@@ -35,17 +20,12 @@
           <div class="form-group modal-form"><%= f.email_field :mail , hide_label: true, placeholder: "Email" %></div>
 
 
-          <div class="form-group modal-form"><%= f.text_area :comment, hide_label: true, placeholder: "Комментарий" %></div>
-          <% if @specialty != nil %>
-          <%= hidden_field_tag(:specialty, @specialty.id) %>
-          <% end %>
-          <% if @magistracy != nil %>
-          <%= hidden_field_tag(:magistracy, @magistracy.id) %>
-          <% end %>
+          <div class="form-group modal-form"><%= f.text_area :comment, hide_label: true, placeholder: "Комментарий" %></div>  
           <% if @university != nil %>
-          <%= hidden_field_tag(:university, @university.id) %>
+            <%= hidden_field_tag(:university, @university.id) %>
           <% end %>
-          <%= f.submit "ОТПРАВИТЬ", class:"modal-button", style:"margin-top: 30px;" %>
-        <% end %>
+          <%= f.submit "ОТПРАВИТЬ", class:"btn btn-lg btn-primary btn-block"%>
+        <% end %> 
+    </div>
   </div>
-</div>  
+
