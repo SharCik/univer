@@ -41,6 +41,7 @@ gem 'seed_dump'
 gem 'bootstrap-select-rails'
 gem 'frontend-generators'
 gem 'figaro'
+gem 'seed_dump'
 
 
 # Use ActiveModel has_secure_password

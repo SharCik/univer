@@ -57,3 +57,15 @@ function closeModalWindow(){
   $("#modal-window").addClass("hide");
 };
 
+
+function open_sertificates(){
+  if ($('#sertifiacts').hasClass('hide')){
+    $("#sertifiacts").removeClass("hide");
+    $("#sertifiacts").addClass("show");
+  } else {
+    $("#sertifiacts").removeClass("show");
+    $("#sertifiacts").addClass("hide");
+  };
+};
+
+
