@@ -714,6 +714,15 @@ body {
 }
 
 @media (max-width: 991px) {
+    header .header-content {
+      padding: 130px 15px;
+    }
+    .blue-btn{
+      margin-top: 10px!important;
+    }
+    .white-btn{
+      margin-top: 10px!important;
+    }
     .cont-nav{
       width: 100%;
       margin-left: 5px;
@@ -722,12 +731,41 @@ body {
     .navbar-header {
         float: none;
     }
+    .black_white{
+      -webkit-filter: none;
+      -moz-filter: none;
+      -ms-filter: none;
+      filter: none; 
+    }
+    .navbar-brand{
+      height: 60%!important;
+      margin-top: 10px;
+      margin-left: 20px!important;
+    }
     .navbar-toggle {
+        border: none;
         display: block;
+        height: 85px;
+    }
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: #23599B;
+        border: 1px solid white !important;
+        cursor: pointer;
+    }
+    .navbar-toggle .icon-bar{
+        background-color: white!important;
+        width: 70px;
+        height: 5px;
+        margin: 12px 14px 12px 14px;
     }
     .navbar-collapse {
+        padding-top: 40px; 
+        text-align: center;
         border-top: 1px solid transparent;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-default .navbar-collapse{
+      margin-top: 20px;
     }
     .navbar-collapse.collapse {
         display: none!important;
@@ -740,8 +778,21 @@ body {
         float: none;
     }
     .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .main_links{
+      font-size: 32px;
+    }
+    .btn_nav, .btn_nav:focus, .btn_nav:active, .btn_nav:hover{
+      font-size: 32px;
+      background: none;
+      background-image: none;
+      border-radius: none;
+      font-family: Arial;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
     }
     .navbar-text {
         float: none;
