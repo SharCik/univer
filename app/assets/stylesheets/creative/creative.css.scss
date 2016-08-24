@@ -104,7 +104,6 @@ body{
   font-size: 20px;
   margin-top: 10px;
   padding: 5px 10px 5px 10px;
-  border: solid #1f628d 2px;
   text-decoration: none;
 }
 
@@ -536,6 +535,8 @@ body {
 .footer_apper{
   margin-top: 10px;
   margin-bottom: 15px;
+  font-size: 18px;
+  color: white;
 }
 
 .foot_main{
@@ -574,8 +575,9 @@ body {
 
 .social{
   position: relative;
-  top: 20px;
+  top: 5px;
   padding-right: 20px;
+  opacity: 0.8;
 }
 
 .logo_footer_red{
@@ -600,6 +602,7 @@ body {
 
 .footer_info{
   margin: 0;
+  font-size: 14px;
 }
 
 .width_service{
@@ -808,4 +811,32 @@ body {
     .white-btn{
       margin-left: 0px!important;
     }
+}
+
+
+
+
+.footer_pages{
+  top: 3px;
+  margin-bottom: 5px;
+}
+
+.btn_footer{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: white!important;
+  font-size: 20px;
+  background: #7c94a3;
+  padding: 10px 30px 10px 30px !important;
+  text-decoration: none;
+}
+
+.footer_descr{
+  font-size: 15px !important;
+}
+
+#mail_footer{
+  opacity: 0.7;
 }

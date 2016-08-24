@@ -55,7 +55,6 @@ body{
   font-size: 20px;
   margin-top: 10px;
   padding: 5px 10px 5px 10px;
-  border: solid #1f628d 2px;
   text-decoration: none;
 }
 
@@ -397,6 +396,8 @@ body{
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 15px;
+  font-size: 18px;
+  color: white;
 }
 
 .foot_main{
@@ -419,6 +420,15 @@ body{
   margin-top: 30px;
 }
 
+a:hover{
+  text-decoration: none !important;
+}
+
+.modal a {
+  text-decoration: none !important;
+}
+
+
 .footer a{
   color: silver;
   text-decoration: none;
@@ -428,14 +438,6 @@ body{
   color: #fff;
 }
 
-a:hover{
-  text-decoration: none !important;
-}
-
-.modal a {
-  text-decoration: none !important;
-}
-
 .footer_columns{
   margin-top: 30px;
   color: silver;
@@ -443,8 +445,9 @@ a:hover{
 
 .social{
   position: relative;
-  top: 20px;
+  top: 5px;
   padding-right: 20px;
+  opacity: 0.8;
 }
 
 .logo_footer_red{
@@ -469,8 +472,8 @@ a:hover{
 
 .footer_info{
   margin: 0;
+  font-size: 14px;
 }
-
 
 /****** Modal window ******/
 @import "bourbon";
@@ -1152,4 +1155,30 @@ $gray: #bbbbbb;
     .white-btn{
       margin-left: 0px!important;
     }
+}
+
+
+
+
+
+.footer_pages{
+  top: 3px;
+  margin-bottom: 5px;
+}
+
+.btn_footer{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: white!important;
+  font-size: 20px;
+  background: #7c94a3;
+  padding: 10px 30px 10px 30px !important;
+  text-decoration: none;
+}
+
+
+#mail_footer{
+  opacity: 0.7;
 }
