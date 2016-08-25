@@ -1,6 +1,4 @@
-AdminUser.create([
-  {id: 1, email: "sharcik14@gmail.com", encrypted_password: "$2a$10$CSQ1cHi/Il.jL8gMsyARDOVBemmJJJaJCcga85xU4hvoSypJjGccO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: "2016-07-12 08:03:16", sign_in_count: 40, current_sign_in_at: "2016-08-19 09:25:36", last_sign_in_at: "2016-08-18 16:43:17", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", created_at: "2016-06-16 06:58:46", updated_at: "2016-08-19 09:25:36"}
-])
+AdminUser.create(:email => 'sharcik14@gmail.com', :password => '987654321', :password_confirmation => '987654321')
 City.create([
   {id: 1, name: "Минск", image_city: "minsk.jpg", created_at: "2016-06-18 16:38:35", updated_at: "2016-06-18 16:38:35"},
   {id: 2, name: "Гродно", image_city: nil, created_at: "2016-06-29 11:08:14", updated_at: "2016-06-29 11:08:14"}

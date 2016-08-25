@@ -696,7 +696,7 @@ body {
 }
 
 .img_univers{
-  width: 100%;
+  max-width: 100%;
   padding: 10px 10px;
 }
 
@@ -839,4 +839,14 @@ body {
 
 #mail_footer{
   opacity: 0.7;
+}
+
+
+
+@media (min-width: 991px) {
+
+  .wid{
+    width: 16.2%;
+  }
+
 }
