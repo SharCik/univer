@@ -22,8 +22,15 @@ ActiveAdmin.register Specialty do
       @specialty = Specialty.new(departament_id: params[:departament])
       super
     end 
+
       private 
   end 
+
+  sidebar " ", only: [:show] do
+    ul do
+      li link_to "Добавить Студента",    new_admin_student_path(specialty: specialty)
+    end
+  end
 
   index title:"Специальности" do
     column "Название",:name
@@ -68,7 +75,14 @@ ActiveAdmin.register Specialty do
       row("Очно, стоимость"){ |r| r.ochno_price.to_s + " $" }
       row("Заочно, стоимость"){ |r| r.zaochno_price.to_s + " $" }
     end
+    table_for Student.joins(:specialty).where(:specialty_id => specialty) do |t|
+      t.column("Студент") { |student| student.full_name }
+      t.column("Личный номер") { |student| student.username }
+      t.column(" ") { |student| link_to "Профиль", admin_student_path(student) }
+      t.column(" ") { |student| link_to "Изменить", edit_admin_student_path(student) }
+    end
   end
+ 
 
   permit_params :name, :departament_id, :ochno, :zaochno, :ochno_price, :zaochno_price,  :profession, :training_period, :training_period_zaochno
 

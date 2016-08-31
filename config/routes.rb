@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :students
   get 'news/index'
 
   get 'news/show'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   match '/request',  to: 'bids#new',            via: 'get'
   match '/bids',  to: 'bids#create',            via: 'post'
   match '/all_news',  to: 'news#index',            via: 'get'
+  
 
 
 
