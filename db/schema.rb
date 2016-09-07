@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831151250) do
+ActiveRecord::Schema.define(version: 20160907053413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20160831151250) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "assessments", force: :cascade do |t|
+    t.string  "subject"
+    t.integer "value"
+    t.string  "data"
+    t.integer "semester_id"
+    t.integer "student_id"
+  end
 
   create_table "assets", force: :cascade do |t|
     t.string   "storage_uid"
@@ -89,6 +97,13 @@ ActiveRecord::Schema.define(version: 20160831151250) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "credits", force: :cascade do |t|
+    t.string  "subject"
+    t.boolean "value",       default: false
+    t.string  "data"
+    t.integer "semester_id"
+  end
+
   create_table "departaments", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",    null: false
@@ -97,6 +112,15 @@ ActiveRecord::Schema.define(version: 20160831151250) do
   end
 
   add_index "departaments", ["university_id"], name: "index_departaments_on_university_id", using: :btree
+
+  create_table "diff_credits", force: :cascade do |t|
+    t.string   "subject"
+    t.integer  "value"
+    t.string   "data"
+    t.integer  "semester_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "magistracies", force: :cascade do |t|
     t.datetime "created_at",              null: false
@@ -114,6 +138,13 @@ ActiveRecord::Schema.define(version: 20160831151250) do
 
   add_index "magistracies", ["departament_id"], name: "index_magistracies_on_departament_id", using: :btree
 
+  create_table "months", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "semester_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "news", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -121,6 +152,13 @@ ActiveRecord::Schema.define(version: 20160831151250) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.text     "short_description"
+  end
+
+  create_table "omissions", force: :cascade do |t|
+    t.integer  "hours"
+    t.integer  "month_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "qualifications", force: :cascade do |t|

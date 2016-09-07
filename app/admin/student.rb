@@ -8,8 +8,8 @@ ActiveAdmin.register Student do
 
 
   index do
-    column 'Личный номер', :username 
     column 'Полное имя', :full_name
+    column 'Личный номер', :username 
     column 'Страна', :country
     # column :current_sign_in_at
     # column :last_sign_in_at
@@ -82,11 +82,13 @@ ActiveAdmin.register Student do
       row("Возраст"){ |r| r.age}
       row("Страна"){ |r| r.country }
     end
-    table_for Semester.joins(:student).where(:student_id => student).order(number: :asc) do |t|
-      t.column("Семестр") { |semester| semester.number }
-      t.column("Период") { |semester| semester.period }
-      t.column(" ") { |semester| link_to "Открыть", admin_student_semester_path(student,semester) }
-      t.column(" ") { |semester| link_to "Изменить", edit_admin_student_semester_path(student,semester) }
+    panel "Семестры" do
+      table_for Semester.joins(:student).where(:student_id => student).order(number: :asc) do |t|
+        t.column("Семестр") { |semester| semester.number }
+        t.column("Период") { |semester| semester.period }
+        t.column(" ") { |semester| link_to "Открыть", admin_student_semester_path(student,semester) }
+        t.column(" ") { |semester| link_to "Изменить", edit_admin_student_semester_path(student,semester) }
+      end
     end
   end
 
