@@ -24,6 +24,12 @@ ActiveAdmin.register Month do
 
       private 
   end
+  sidebar "Выговоры и замечания", only: [:show] do
+    ul do
+      li link_to "Добавить выговор или замечание",    new_admin_month_penalty_path(month)
+    end
+  end
+
 
   sidebar "Пропуски", only: [:show] do
     table_for Omission.joins(:month).where(:month_id => month.id) do |t|
@@ -57,6 +63,14 @@ ActiveAdmin.register Month do
     attributes_table do
       row("Название"){ |r| r.name }
       row("Семестр"){ |r| r.semester_id } 
+    end
+    panel "Выговоры или замечания за месяц" do
+      table_for Penalty.joins(:month).where(:month_id => month) do |t|
+        t.column("Название") { |penalty| penalty.title }
+        t.column("Дата получения") { |penalty| penalty.data }
+        t.column(" ") { |penalty| link_to "Открыть", admin_month_penalty_path(month,penalty) }
+        t.column(" ") { |penalty| link_to "Изменить", edit_admin_month_penalty_path(month,penalty) }
+      end
     end
   end
 

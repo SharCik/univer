@@ -1,4 +1,4 @@
-ActiveAdmin.register Omission do
+ActiveAdmin.register Penalty do
   menu false
   belongs_to :month
   navigation_menu :default
@@ -8,7 +8,8 @@ ActiveAdmin.register Omission do
 
 
   index do
-    column 'Количество пропусков:', :hours 
+    column 'Название', :title 
+    column 'Дата получения', :data 
     column 'Месяц', :month_id
     actions
   end
@@ -16,7 +17,7 @@ ActiveAdmin.register Omission do
   controller do
 
     def new
-      @omission = Omission.new(month_id: params[:month_id])
+      @penalty = Penalty.new(month_id: params[:month_id])
 
       super
     end  
@@ -26,7 +27,7 @@ ActiveAdmin.register Omission do
   end
 
   action_item only: [:edit,:show] do
-    link_to "Открыть месяц", admin_semester_month_path(Semester.find(Month.find(omission.month_id).semester_id), Month.find(omission.month_id)),style:"background: white;color: green;margin-top:10px;"
+    link_to "Открыть месяц", admin_semester_month_path(Semester.find(Month.find(penalty.month_id).semester_id), Month.find(penalty.month_id)),style:"background: white;color: green;margin-top:10px;"
   end
 
   action_item only: [:new] do
@@ -36,9 +37,11 @@ ActiveAdmin.register Omission do
 
   form do |f|
     f.semantic_errors
-    f.inputs "Месяц" do
+    f.inputs "Выговор или замечание" do
       f.input :month, :as => :select, :collection => Month.all.map{|u| ["#{u.name}", u.id]}, label: "Месяц"
-      f.input :hours,label: "Кол-во часов:"
+      f.input :title,label: "Название"
+      f.input :description,label: "Описание"
+      f.input :data,label: "Дата получения"
     end
     action(:submit)
   end
@@ -46,7 +49,9 @@ ActiveAdmin.register Omission do
   show do
     attributes_table do
       row("Месяц"){ |r| link_to Month.find(r.month_id).name, admin_semester_month_path(Semester.find(Month.find(r.month_id).semester_id), Month.find(r.month_id)) } 
-      row("Кол-во часов:"){ |r| r.hours }
+      row("Название"){ |r| r.title }
+      row("Описание"){ |r| r.description }
+      row("Дата получения"){ |r| r.data }
     end
   end
 
@@ -54,7 +59,7 @@ ActiveAdmin.register Omission do
   # Here we replace :email with :username.
   controller do
     def permitted_params
-      params.permit omission: [:hours, :month_id]
+      params.permit penalty: [:title, :title, :description, :data, :month_id]
     end
   end
 
