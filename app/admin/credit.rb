@@ -49,7 +49,7 @@ ActiveAdmin.register Credit do
   show do
     attributes_table do
       row("Предмет"){ |r| r.subject }
-      row("Оценка"){ |r| r.value } 
+      row("Оценка"){ |r| r.value ? 'Зачтено' : 'Не зачтено'} 
       row("Дата"){ |r| r.data } 
     end
   end

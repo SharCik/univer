@@ -75,11 +75,13 @@ ActiveAdmin.register Specialty do
       row("Очно, стоимость"){ |r| r.ochno_price.to_s + " $" }
       row("Заочно, стоимость"){ |r| r.zaochno_price.to_s + " $" }
     end
-    table_for Student.joins(:specialty).where(:specialty_id => specialty) do |t|
-      t.column("Студент") { |student| student.full_name }
-      t.column("Личный номер") { |student| student.username }
-      t.column(" ") { |student| link_to "Профиль", admin_student_path(student) }
-      t.column(" ") { |student| link_to "Изменить", edit_admin_student_path(student) }
+    panel "Студенты" do
+      table_for Student.joins(:specialty).where(:specialty_id => specialty) do |t|
+        t.column("Студент") { |student| student.full_name }
+        t.column("Личный номер") { |student| student.username }
+        t.column(" ") { |student| link_to "Профиль", admin_student_path(student) }
+        t.column(" ") { |student| link_to "Изменить", edit_admin_student_path(student) }
+      end
     end
   end
  

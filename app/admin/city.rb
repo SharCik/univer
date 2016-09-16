@@ -3,7 +3,7 @@ ActiveAdmin.register City do
   config.filters = false
 
   sidebar 'Создать новый университет:',  :only => :show do
-    link_to "Добавить университет к #{city.name}", new_admin_university_path(city: city)
+    link_to "Добавить университет к \"#{city.name}\"", new_admin_university_path(city: city)
   end
 
   sidebar :picture,  :only => :show do
@@ -17,10 +17,12 @@ ActiveAdmin.register City do
   end
 
   show do
-      attributes_table :name
-    table_for University.joins(:city).where(:city_id => city.id) do |t|
-      t.column("Университеты") { |university| link_to university.name , admin_university_path(university) }
-      t.column("Изменить") { |university| link_to image_tag("edit.png", size:"20x20"), edit_admin_university_path(university) }
+    attributes_table :name
+    panel "Университеты" do
+      table_for University.joins(:city).where(:city_id => city.id) do |t|
+        t.column("Название") { |university| link_to university.name , admin_university_path(university) }
+        t.column("Изменить") { |university| link_to image_tag("edit.png", size:"20x20"), edit_admin_university_path(university) }
+      end
     end
   end
 

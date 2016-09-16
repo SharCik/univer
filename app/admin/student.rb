@@ -66,6 +66,7 @@ ActiveAdmin.register Student do
       f.input :age, label: "Возраст"
       f.input :country, :as => :string, label: "Страна"
       f.input :avatar, label:"Фото" 
+      f.input :hostel, label: "Общежитие"
     end
     action(:submit)
   end
@@ -81,6 +82,7 @@ ActiveAdmin.register Student do
       row("Полное имя"){ |r| r.full_name } 
       row("Возраст"){ |r| r.age}
       row("Страна"){ |r| r.country }
+      row("Общежитие"){ |r| r.hostel ? 'Есть' : 'Нет' }
     end
     panel "Семестры" do
       table_for Semester.joins(:student).where(:student_id => student).order(number: :asc) do |t|
@@ -96,7 +98,7 @@ ActiveAdmin.register Student do
   # Here we replace :email with :username.
   controller do
     def permitted_params
-      params.permit student: [:username, :password, :password_confirmation, :specialty_id, :full_name, :age, :avatar, :country]
+      params.permit student: [:username, :password, :password_confirmation, :specialty_id, :full_name, :age, :avatar, :country, :hostel]
     end
   end
 

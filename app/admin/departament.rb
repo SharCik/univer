@@ -64,14 +64,18 @@ ActiveAdmin.register Departament do
     attributes_table do
       row("Название"){ |r| r.name }
     end
-    table_for Specialty.joins(:departament).where(:departament_id => departament) do |t|
-      t.column("Специальность") { |specialty| link_to specialty.name , admin_specialty_path(specialty) }
-      t.column("Изменить") { |specialty| link_to image_tag("edit.png", size:"20x20"), edit_admin_specialty_path(specialty) }
+    panel "Специальности" do
+      table_for Specialty.joins(:departament).where(:departament_id => departament) do |t|
+        t.column("Специальность") { |specialty| link_to specialty.name , admin_specialty_path(specialty) }
+        t.column("Изменить") { |specialty| link_to image_tag("edit.png", size:"20x20"), edit_admin_specialty_path(specialty) }
+      end
     end
     if (University.find(departament.university_id).magistracy == true)
-      table_for Magistracy.joins(:departament).where(:departament_id => departament) do |t|
-        t.column("Магистратура") { |magistracy| link_to magistracy.name , admin_magistracy_path(magistracy) }
-        t.column("Изменить") { |magistracy| link_to image_tag("edit.png", size:"20x20"), edit_admin_magistracy_path(magistracy) }
+      panel "Магистратура" do
+        table_for Magistracy.joins(:departament).where(:departament_id => departament) do |t|
+          t.column("Магистратура") { |magistracy| link_to magistracy.name , admin_magistracy_path(magistracy) }
+          t.column("Изменить") { |magistracy| link_to image_tag("edit.png", size:"20x20"), edit_admin_magistracy_path(magistracy) }
+        end
       end
     end
   end
