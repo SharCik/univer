@@ -1,0 +1,15 @@
+  <div class="wrapper">
+    <div class="form-signin">   
+    <button type="button" class="close" style="padding-top: 5px;" data-dismiss="modal" aria-hidden="true" onClick="closeModalWindow()">×</button>
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>" style="padding: 0px;color: red;"><%= value %></div>
+        <% end %>    
+        <%= bootstrap_form_for(:session, url: sessions_path) do |f| %>
+          <div class="form-group modal-form"><%= f.text_field :username , hide_label: true, autofocus: true, placeholder: "Логин"%></div>
+
+          <div class="form-group modal-form"><%= f.password_field :password,  hide_label: true, autocomplete: "off", placeholder: "Пароль" %></div>
+
+          <%= f.submit "Войти", class:"btn btn-lg btn-primary btn-block"%>
+        <% end %> 
+    </div>
+  </div>

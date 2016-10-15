@@ -5,21 +5,7 @@ class Student < ActiveRecord::Base
   has_many :semesters, dependent: :destroy 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
-         :rememberable,
-         :trackable,
-         :validatable,
-         :authentication_keys => [:username]
-
+  has_secure_password
 
   mount_uploader :avatar, ImageUploader
-
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
-  end
-
 end

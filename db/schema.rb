@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916094333) do
+ActiveRecord::Schema.define(version: 20161015120747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,27 +214,25 @@ ActiveRecord::Schema.define(version: 20160916094333) do
   add_index "specialties", ["departament_id"], name: "index_specialties_on_departament_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.string   "username",               default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.string   "username",            default: "",    null: false
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",       default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "specialty_id"
-    t.integer  "age"
     t.string   "country"
     t.string   "full_name"
     t.string   "avatar"
-    t.boolean  "hostel",                 default: false
+    t.boolean  "hostel",              default: false
+    t.string   "password_digest"
+    t.string   "birthday"
+    t.string   "rating"
   end
 
-  add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
   add_index "students", ["specialty_id"], name: "index_students_on_specialty_id", using: :btree
   add_index "students", ["username"], name: "index_students_on_username", unique: true, using: :btree
 

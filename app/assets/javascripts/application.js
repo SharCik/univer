@@ -18,6 +18,9 @@
 //= require bootstrap-slider
 //= require bootstrap-wysihtml5
 //= require turbolinks
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 
 

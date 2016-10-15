@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :students
   get 'news/index'
 
   get 'news/show'
@@ -14,13 +13,15 @@ Rails.application.routes.draw do
   match '/request',  to: 'bids#new',            via: 'get'
   match '/bids',  to: 'bids#create',            via: 'post'
   match '/all_news',  to: 'news#index',            via: 'get'
+  match '/parents',  to: 'static_pages#parents',            via: 'get'
   
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
 
-
-
+  resources :sessions, only: [:new, :create, :destroy]
   resources :universities ,only:[ :index ,:show]
   resources :news ,only:[ :show ]
-
+  resources :students ,only:[ :show ]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -63,10 +63,11 @@ ActiveAdmin.register Student do
       f.input :password,label: "Пароль"
       f.input :password_confirmation, label: "Повторить пароль"
       f.input :full_name, label: "Полное имя"
-      f.input :age, label: "Возраст"
+      f.input :birthday, label: "Дата рождения"
       f.input :country, :as => :string, label: "Страна"
       f.input :avatar, label:"Фото" 
       f.input :hostel, label: "Общежитие"
+      f.input :rating, label: "Рэйтинг"
     end
     action(:submit)
   end
@@ -80,9 +81,10 @@ ActiveAdmin.register Student do
       row("Специальность"){ |r| result = Specialty.find(r.specialty_id).name if r.specialty_id != nil }
       row("Личный номер"){ |r| r.username }
       row("Полное имя"){ |r| r.full_name } 
-      row("Возраст"){ |r| r.age}
+      row("Дата рождения"){ |r| r.birthday}
       row("Страна"){ |r| r.country }
       row("Общежитие"){ |r| r.hostel ? 'Есть' : 'Нет' }
+      row("Рэйтинг"){ |r| r.rating}
     end
     panel "Семестры" do
       table_for Semester.joins(:student).where(:student_id => student).order(number: :asc) do |t|
@@ -98,7 +100,7 @@ ActiveAdmin.register Student do
   # Here we replace :email with :username.
   controller do
     def permitted_params
-      params.permit student: [:username, :password, :password_confirmation, :specialty_id, :full_name, :age, :avatar, :country, :hostel]
+      params.permit student: [:username, :password, :password_confirmation, :specialty_id, :full_name, :birthday, :avatar, :country, :hostel, :rating]
     end
   end
 

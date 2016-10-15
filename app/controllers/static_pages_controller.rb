@@ -6,4 +6,8 @@ layout "creative"
     @univers = University.all
   end
 
+  def parents
+    
+  end
+
 end
