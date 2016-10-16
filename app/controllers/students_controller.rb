@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
     @specialty = @student.specialty
     @departament = @specialty.departament
     @univer = @departament.university
+    @semesters = @student.semesters
   end
 
 

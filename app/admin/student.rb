@@ -89,7 +89,7 @@ ActiveAdmin.register Student do
     panel "Семестры" do
       table_for Semester.joins(:student).where(:student_id => student).order(number: :asc) do |t|
         t.column("Семестр") { |semester| semester.number }
-        t.column("Период") { |semester| semester.period }
+        t.column("Курс") { |semester| semester.period }
         t.column(" ") { |semester| link_to "Открыть", admin_student_semester_path(student,semester) }
         t.column(" ") { |semester| link_to "Изменить", edit_admin_student_semester_path(student,semester) }
       end

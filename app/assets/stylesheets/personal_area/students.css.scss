@@ -112,3 +112,35 @@ body{
     color: #d8d8d8; /* old IE */
     background-color: #d8d8d8; /* Modern Browsers */
 }
+
+.cont-tabl{
+  margin-top: 30px;
+  width: 80%;
+}
+
+.sem-select{
+  width: 30% !important;
+  color: #3b5998;
+}
+
+.semester-label{
+  font-weight: lighter;
+  padding-right: 15px;
+}
+
+.select-cont{
+  margin-bottom: 45px;
+}
+
+.first-head{
+  height: 40px;
+  padding-top: 10px;
+  background-color: #de8686;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.active-head{
+  background-color: #ba6867 !important;
+}

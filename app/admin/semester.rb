@@ -8,7 +8,7 @@ ActiveAdmin.register Semester do
 
   index do
     column 'Номер семестра', :number 
-    column 'Период', :period
+    column 'Курс', :period
     actions
   end
 
@@ -53,7 +53,7 @@ ActiveAdmin.register Semester do
     f.inputs "Добавление студента" do
       f.input :student, :as => :select, :collection => @students, label: "Студент"
       f.input :number,label: "Номер семестра"
-      f.input :period,label: "Период"
+      f.input :period,label: "Курс"
     end
     action(:submit)
   end
@@ -62,7 +62,7 @@ ActiveAdmin.register Semester do
     attributes_table do
       row("Студент"){ |r| link_to "#{Student.find(r.student_id).full_name}", admin_student_path(Student.find(r.student_id)) }
       row("Номер"){ |r| r.number }
-      row("Период"){ |r| r.period } 
+      row("Курс"){ |r| r.period } 
     end
     panel "Оценки по экзаменам" do
       table_for Assessment.joins(:semester).where(:semester_id => semester) do |t|
