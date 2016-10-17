@@ -1,7 +1,47 @@
 var Personal = React.createClass({
   getInitialState: function() {
-    return {semester: this.props.semesters[(this.props.semesters.length - 1)], 
-            active_first: 1 };
+    return {semester: this.props.semester_default, 
+            active_first: 1,
+            marks: [],
+            credits: [],
+            diff_credits: [] };
+  },
+  componentDidMount: function() {
+    this.getDataMarks();
+  },
+  getDataMarks: function() {
+    var self = this,
+        sem  = self.state.semester.id;
+    $.ajax({
+      url: '/semester_info',
+      method: 'POST',
+      data: { semester: sem },
+      success: function(data) {
+        self.setState({ marks: data.marks,
+                        credits: data.credits,
+                        diff_credits: data.diff_credits });
+      },
+      error: function(xhr,status,error){
+        alert('Cannot get data from!');
+      }
+    })
+  },
+  addDataMarks: function(semester) {
+    var self = this,
+        sem  = semester.id;
+    $.ajax({
+      url: '/semester_info',
+      method: 'POST',
+      data: { semester: sem },
+      success: function(data) {
+        self.setState({ marks: data.marks,
+                        credits: data.credits,
+                        diff_credits: data.diff_credits });
+      },
+      error: function(xhr,status,error){
+        alert('Cannot get data from!');
+      }
+    })
   },
   haveHostel: function() {
     if (this.props.student.hostel == true){
@@ -16,19 +56,20 @@ var Personal = React.createClass({
     this.props.semesters.forEach(function(x) {
       if (x.id == semesterId){
         result = x;
+        this.setState({ semester: result });
+        this.addDataMarks(result);
       };
-    });
-    this.setState({ semester: result });
+    }.bind(this));
   },
   setHeadActive: function(number) {
+    this.getDataMarks();
     this.setState({ active_first: number });
   },
   render: function()  {
       var semesters = this.props.semesters,
-          default_semester = this.state.semester,
           semesters_list = [];
       this.props.semesters.forEach(function(semester) {
-        semesters_list.push(<SemesterOption semester={semester} active = {default_semester.id} key={'semester' + semester.id}/>);
+        semesters_list.push(<SemesterOption semester={semester} key={'semester' + semester.id}/>);
       }.bind(this));
       return  (
           <div  className='container-fluid back'>
@@ -38,7 +79,7 @@ var Personal = React.createClass({
               </div>
               <div  className='container-fluid info-cont'>
                   <div className='col-xs-4 text-center'>
-                    <img src={this.props.student.avatar.url} alt="avatar" className='img-circle'/>
+                    <img src={this.props.student.avatar.ava.url} alt="avatar" className='img-circle'/>
                   </div>
                   <div className='col-xs-8'>
                     <table>
@@ -100,7 +141,7 @@ var Personal = React.createClass({
                     <div className='form-inline select-cont'>
                       <label className='semester-label'>Выберите семестр</label>
                       <select className = 'form-control sem-select'
-                              defaultValue = {'Семестр ' + default_semester.number.toString() + ' ('+ default_semester.period +')'}
+                              defaultValue = {'Семестр ' + this.state.semester.number.toString() + ' ('+ this.state.semester.period +')'}
                               onChange = {(e) => this.selectSemesterHandler(e)}> 
                         {semesters_list}
                       </select>
@@ -117,7 +158,25 @@ var Personal = React.createClass({
                          onClick={() => { this.setHeadActive(3)}}>
                          Не дифф. зачет
                          </div>
+                    <ProgressTable marks={this.state.marks} credits={this.state.credits} diff_credits={this.state.diff_credits} progressActive={this.state.active_first} />
                   </div>
+                <div className='container-fluid marks-cont'>
+                  <table className='hr-text'>
+                    <td><hr className='half-hr' /></td>
+                    <td className='text-hr'>ПРОПУСКИ И ВЫГОВОРЫ</td>
+                    <td><hr className='half-hr' /></td>
+                  </table>
+                  <div className='container cont-tabl'>
+                    <div className='form-inline select-cont'>
+                      <label className='semester-label'>Выберите семестр</label>
+                      <select className = 'form-control sem-select'
+                              defaultValue = {'Семестр ' + this.state.semester.number.toString() + ' ('+ this.state.semester.period +')'}
+                              onChange = {(e) => this.selectSemesterHandler(e)}> 
+                        {semesters_list}
+                      </select>
+                    </div>
+                  </div>
+                </div>
                 </div>
             </div>
         )
@@ -131,17 +190,10 @@ var Personal = React.createClass({
 
 
 var SemesterOption = React.createClass({
-  activeSemester: function(semester) {
-    if (semester.id == this.props.active){ 
-      return 'selected';
-    }else{
-      return 'disabled';
-    };
-  },
   render: function() {
     var semester = this.props.semester;
     return(
-      <option value={semester.id} selected={this.activeSemester(semester)}>{'Семестр ' + semester.number.toString() + ' ('+ semester.period +')'}</option>
+      <option value={semester.id}>{'Семестр ' + semester.number.toString() + ' ('+ semester.period +')'}</option>
     )
   }
 });

@@ -25,5 +25,9 @@ module StudentsHelper
     months = semester.months
   end
 
+  def last_semester(semesters)
+    semesters.order(number: :asc).last
+  end
+
 
 end

@@ -119,7 +119,7 @@ body{
 }
 
 .sem-select{
-  width: 30% !important;
+  width: 33% !important;
   color: #3b5998;
 }
 
@@ -143,4 +143,30 @@ body{
 
 .active-head{
   background-color: #ba6867 !important;
+}
+
+.table-head{
+  height: 20px;
+  background-color: #d8d8d8;
+  color: black;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.hide{
+  display: none;
+}
+
+.progress-tr{
+  padding-left: 20px !important; 
+}
+
+.good-progress{
+  color: #546ea5 !important;
+  height: 25px;
+}
+
+.bad-progress{
+  color: #de8686 !important;
+  height: 25px;
 }

@@ -13,6 +13,14 @@ class StudentsController < ApplicationController
     @semesters = @student.semesters
   end
 
+  def semester_info
+      semester = Semester.find(params[:semester])
+      marks    = semester.assessments
+      d_credits = semester.diff_credits
+      credits  = semester.credits
+      render :json => { :marks => marks , :diff_credits => d_credits, :credits => credits }
+  end
+
 
 
 end
