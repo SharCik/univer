@@ -29,6 +29,12 @@ ActiveAdmin.register Semester do
     end
   end
 
+  sidebar "Выговоры и замечания", only: [:show] do
+    ul do
+      li link_to "Добавить выговор",    new_admin_semester_penalty_path(semester)
+    end
+  end
+
   sidebar "Пропуски", only: [:show] do
     table_for Month.joins(:semester).where(:semester_id => semester.id) do |t|
       t.column("Месяц") { |month| link_to month.name , admin_semester_month_path(semester,month) }
@@ -89,6 +95,14 @@ ActiveAdmin.register Semester do
         t.column("Дата") { |credit| credit.data }
         t.column(" ") { |credit| link_to "Открыть", admin_semester_credit_path(semester,credit) }
         t.column(" ") { |credit| link_to "Изменить", edit_admin_semester_credit_path(semester,credit) }
+      end
+    end
+    panel "Выговоры и замечания" do
+      table_for Penalty.joins(:semester).where(:semester_id => semester) do |t|
+        t.column("Название") { |penalty| penalty.title } 
+        t.column("Дата") { |penalty| penalty.data }
+        t.column(" ") { |penalty| link_to "Открыть", admin_semester_penalty_path(semester,penalty) }
+        t.column(" ") { |penalty| link_to "Изменить", edit_admin_semester_penalty_path(semester,penalty) }
       end
     end
   end

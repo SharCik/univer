@@ -21,6 +21,21 @@ class StudentsController < ApplicationController
       render :json => { :marks => marks , :diff_credits => d_credits, :credits => credits }
   end
 
+  def semester_penalties
+      array_omissions = []
+      array_penalties = []
+      semester = Semester.find(params[:semester])
+      months = semester.months
+      months.each do |month|
+        hash = Hash.new
+        if !month.omissions.empty?
+          array_omissions << month.omissions.first
+        end
+      end
+      penalties = semester.penalties
+      render :json => { :months => months , :omissions => array_omissions, :penalties => penalties }
+  end
+
 
 
 end

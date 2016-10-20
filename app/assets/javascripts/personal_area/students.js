@@ -3,3 +3,4 @@ function changeColor() {
   obj.className = 'red_color';
 };
 
+

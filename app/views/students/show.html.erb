@@ -1,9 +1,15 @@
 <% provide(:title, 'Личный кабинет') %>
 
 <div class="container wrapper">
-  <div class="container">
+  <div class="container text-center">
     <%= link_to image_tag('logo.png',class:'navbar-brand nav-st', style:'padding-bottom: 0px;padding-top: 0px;padding-right: 80px;height: 50px;'),root_path %>
     </div>
     <%= react_component 'Personal', { student: @student, univer: @univer, departament: @departament, specialty: @specialty, omis: count_omissions(@student), penal: count_penalties(@student), semesters: @semesters, semester_default: last_semester(@semesters) } %>
 </div>
-<h3><%= link_to 'SignOut', signout_path, id:'one' %></h3>
+<div class="container-fluid personal-footer text-center">
+  <div class="container text-footer text-center">
+    <div class="col-xs-4">Skype: myuniver.by</div>
+    <div class="col-xs-4">line: @myuniver</div>
+    <div class="col-xs-4">Email: info@myuniver.by</div>
+  </div>
+</div>

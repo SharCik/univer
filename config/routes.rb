@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'get'
 
   match '/semester_info', to: 'students#semester_info',     via: 'post'
+  match '/semester_penalties', to: 'students#semester_penalties',     via: 'post'
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :universities ,only:[ :index ,:show]

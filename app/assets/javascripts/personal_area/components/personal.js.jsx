@@ -1,13 +1,19 @@
 var Personal = React.createClass({
   getInitialState: function() {
-    return {semester: this.props.semester_default, 
+    return {semester: this.props.semester_default,
+            semester_penalties: this.props.semester_default, 
             active_first: 1,
+            active_second: 1,
             marks: [],
             credits: [],
-            diff_credits: [] };
+            diff_credits: [],
+            months: [],
+            omissions: [],
+            penalties: [] };
   },
   componentDidMount: function() {
     this.getDataMarks();
+    this.getDataPenalties();
   },
   getDataMarks: function() {
     var self = this,
@@ -26,7 +32,7 @@ var Personal = React.createClass({
       }
     })
   },
-  addDataMarks: function(semester) {
+  updateDataMarks: function(semester) {
     var self = this,
         sem  = semester.id;
     $.ajax({
@@ -37,6 +43,40 @@ var Personal = React.createClass({
         self.setState({ marks: data.marks,
                         credits: data.credits,
                         diff_credits: data.diff_credits });
+      },
+      error: function(xhr,status,error){
+        alert('Cannot get data from!');
+      }
+    })
+  },
+  getDataPenalties: function() {
+    var self = this,
+        sem  = self.state.semester_penalties.id;
+    $.ajax({
+      url: '/semester_penalties',
+      method: 'POST',
+      data: { semester: sem },
+      success: function(data) {
+        self.setState({ months: data.months,
+                        omissions: data.omissions,
+                        penalties: data.penalties });
+      },
+      error: function(xhr,status,error){
+        alert('Cannot get data from!');
+      }
+    })
+  },
+  updateDataPenalties: function(semester) {
+    var self = this,
+        sem  = semester.id;
+    $.ajax({
+      url: '/semester_penalties',
+      method: 'POST',
+      data: { semester: sem },
+      success: function(data) {
+        self.setState({ months: data.months,
+                        omissions: data.omissions,
+                        penalties: data.penalties });
       },
       error: function(xhr,status,error){
         alert('Cannot get data from!');
@@ -57,13 +97,28 @@ var Personal = React.createClass({
       if (x.id == semesterId){
         result = x;
         this.setState({ semester: result });
-        this.addDataMarks(result);
+        this.updateDataMarks(result);
       };
     }.bind(this));
   },
-  setHeadActive: function(number) {
+  selectSemesterSecondHandler: function(event) {
+    var semesterId = event.target.value;
+    var result;
+    this.props.semesters.forEach(function(x) {
+      if (x.id == semesterId){
+        result = x;
+        this.setState({ semester_penalties: result });
+        this.updateDataPenalties(result);
+      };
+    }.bind(this));
+  },
+  setHeadFirstActive: function(number) {
     this.getDataMarks();
     this.setState({ active_first: number });
+  },
+  setHeadSecondActive: function(number) {
+    this.getDataPenalties();
+    this.setState({ active_second: number });
   },
   render: function()  {
       var semesters = this.props.semesters,
@@ -118,15 +173,15 @@ var Personal = React.createClass({
                   <div className='col-xs-4'></div>
                   <div className='col-xs-8'>
                     <div className='col-xs-3 circ'>
-                      <div className='circle'>{this.props.student.rating}</div>
+                      <div className='circle'>{this.props.student.rating.length != 0 ? this.props.student.rating : '0'}</div>
                       <div className='text-center text-circle'>Текущий рейтинг</div>
                     </div>
                     <div className='col-xs-3 text-center'>
-                      <div className='circle'>{this.props.omis}</div>
+                      <div className='circle'>{this.props.omis.length != 0 ? this.props.omis : '0'}</div>
                       <div className='text-center text-circle'>Пропуски <br/>(последний семестр)</div>
                     </div>
                     <div className='col-xs-3 text-center'>
-                      <div className='circle'>{this.props.penal}</div>
+                      <div className='circle'>{this.props.penal.length != 0 ? this.props.penal : '0'}</div>
                       <div className='text-center text-circle'>Выговоры и <br/>штрафы</div>
                     </div>
                   </div>
@@ -140,22 +195,22 @@ var Personal = React.createClass({
                   <div className='container cont-tabl'>
                     <div className='form-inline select-cont'>
                       <label className='semester-label'>Выберите семестр</label>
-                      <select className = 'form-control sem-select'
-                              defaultValue = {'Семестр ' + this.state.semester.number.toString() + ' ('+ this.state.semester.period +')'}
-                              onChange = {(e) => this.selectSemesterHandler(e)}> 
+                      <select onChange = {(e) => this.selectSemesterHandler(e)}
+                              className = 'form-control sem-select'
+                              value = {this.state.semester.id}>
                         {semesters_list}
                       </select>
                     </div>
                     <div className={'col-xs-3 first-head ' + (this.state.active_first == 1 ? 'active-head' : '')}
-                         onClick={() => { this.setHeadActive(1)}}>
+                         onClick={() => { this.setHeadFirstActive(1)}}>
                          Оценка за экзамен
                          </div>
                     <div className={'col-xs-4 first-head ' + (this.state.active_first == 2 ? 'active-head' : '')}
-                         onClick={() => { this.setHeadActive(2)}}>
+                         onClick={() => { this.setHeadFirstActive(2)}}>
                          Дифференцированный зачет
                          </div>
                     <div className={'col-xs-5 first-head ' + (this.state.active_first == 3 ? 'active-head' : '')}
-                         onClick={() => { this.setHeadActive(3)}}>
+                         onClick={() => { this.setHeadFirstActive(3)}}>
                          Не дифф. зачет
                          </div>
                     <ProgressTable marks={this.state.marks} credits={this.state.credits} diff_credits={this.state.diff_credits} progressActive={this.state.active_first} />
@@ -169,12 +224,21 @@ var Personal = React.createClass({
                   <div className='container cont-tabl'>
                     <div className='form-inline select-cont'>
                       <label className='semester-label'>Выберите семестр</label>
-                      <select className = 'form-control sem-select'
-                              defaultValue = {'Семестр ' + this.state.semester.number.toString() + ' ('+ this.state.semester.period +')'}
-                              onChange = {(e) => this.selectSemesterHandler(e)}> 
+                      <select onChange = {(e) => this.selectSemesterSecondHandler(e)}
+                              className = 'form-control sem-select'
+                              value = {this.state.semester_penalties.id}> 
                         {semesters_list}
                       </select>
                     </div>
+                    <div className={'col-xs-3 first-head ' + (this.state.active_second == 1 ? 'active-head' : '')}
+                         onClick={() => { this.setHeadSecondActive(1)}}>
+                         Пропуски
+                         </div>
+                    <div className={'col-xs-9 first-head ' + (this.state.active_second == 2 ? 'active-head' : '')}
+                         onClick={() => { this.setHeadSecondActive(2)}}>
+                         Выговоры и замечания
+                         </div>
+                    <FailTable months={this.state.months} omissions={this.state.omissions} penalties={this.state.penalties} failActive={this.state.active_second} />
                   </div>
                 </div>
                 </div>
