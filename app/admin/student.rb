@@ -63,11 +63,11 @@ ActiveAdmin.register Student do
       f.input :password,label: "Пароль"
       f.input :password_confirmation, label: "Повторить пароль"
       f.input :full_name, label: "Полное имя"
-      f.input :birthday, label: "Дата рождения"
+      f.input :birthday, label: "Дата рождения", placeholder: '**.**.****'
       f.input :country, :as => :string, label: "Страна"
       f.input :avatar, label:"Фото" 
       f.input :hostel, label: "Общежитие"
-      f.input :rating, label: "Рэйтинг"
+      f.input :rating, label: "Рэйтинг", placeholder: 'Число'
     end
     action(:submit)
   end

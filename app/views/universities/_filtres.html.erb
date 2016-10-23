@@ -4,7 +4,7 @@
       <%= bootstrap_form_for('universities#index', method: :get, remote: :true) do %>
         <div class="form-group modal-form">
           <div class="customSelect">
-            <%= select_tag "City", options_from_collection_for_select(@city, "id", "name"), :include_blank => 'Все города', class:"selectpicker" %>
+            <%= select_tag "City", options_from_collection_for_select(@city, "id", "name"), :include_blank => 'Все города', class:"form-control sem-select" %>
             </div>
         </div>
         <h4>Форма обучения</h4>

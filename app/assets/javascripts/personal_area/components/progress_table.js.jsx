@@ -35,7 +35,7 @@ var Mark = React.createClass({
   render: function() {
     var mark = this.props.mark;
     return(
-      <tr className={(this.props.progressActive == 1 ? '' : 'hide') + (this.props.mark.value >= 4 ? ' good-progress' : ' bad-progress')}>
+      <tr className={(this.props.progressActive == 1 ? '' : 'hide') + (this.props.mark.value >= 4 ? ' good-progress' : ' bad-progress')+ ' tr-up'}>
         <td className='progress-tr'>{mark.subject}</td>
         <td className='progress-tr'>{mark.value}</td>
         <td className='progress-tr'>{mark.data}</td>
@@ -48,7 +48,7 @@ var Credit = React.createClass({
   render: function() {
     var credit = this.props.credit;
     return(
-      <tr className={(this.props.progressActive == 2 ? '' : 'hide') + (this.props.credit.value == true ? ' good-progress' : ' bad-progress')}>
+      <tr className={(this.props.progressActive == 2 ? '' : 'hide') + (this.props.credit.value == true ? ' good-progress' : ' bad-progress')+ ' tr-up'}>
         <td className='progress-tr'>{credit.subject}</td>
         <td className='progress-tr'>{credit.value == true ? 'Зачтено' : 'Не зачет'}</td>
         <td className='progress-tr'>{credit.data}</td>
@@ -61,7 +61,7 @@ var DiffCredit = React.createClass({
   render: function() {
     var diff_credit = this.props.diff_credit;
     return(
-      <tr className={(this.props.progressActive == 3 ? '' : 'hide') + (this.props.diff_credit.value >= 4 ? ' good-progress' : ' bad-progress')}>
+      <tr className={(this.props.progressActive == 3 ? '' : 'hide') + (this.props.diff_credit.value >= 4 ? ' good-progress' : ' bad-progress')+ ' tr-up'}>
         <td className='progress-tr'>{diff_credit.subject}</td>
         <td className='progress-tr'>{diff_credit.value}</td>
         <td className='progress-tr'>{diff_credit.data}</td>

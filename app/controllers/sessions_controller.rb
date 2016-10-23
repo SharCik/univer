@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-
+    render 'new',:layout => false
   end
 
   def create 
@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
 
         redirect_to student_path(student)
       else
-        flash.now[:error] = 'Invalid password or email!' # Not quite right!
+        flash.now[:error] = 'Неверный логин или пароль!'
 
-        render 'new'
+        render 'new',:layout => false
       end
   end
 

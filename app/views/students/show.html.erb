@@ -5,11 +5,19 @@
     <%= link_to image_tag('logo.png',class:'navbar-brand nav-st', style:'padding-bottom: 0px;padding-top: 0px;padding-right: 80px;height: 50px;'),root_path %>
     </div>
     <%= react_component 'Personal', { student: @student, univer: @univer, departament: @departament, specialty: @specialty, omis: count_omissions(@student), penal: count_penalties(@student), semesters: @semesters, semester_default: last_semester(@semesters) } %>
+    <div><%= link_to 'Sign Out', signout_path(@student) , stule:'color: white;' %></div>
 </div>
 <div class="container-fluid personal-footer text-center">
   <div class="container text-footer text-center">
     <div class="col-xs-4">Skype: myuniver.by</div>
     <div class="col-xs-4">line: @myuniver</div>
     <div class="col-xs-4">Email: info@myuniver.by</div>
+  </div>
+  <div class="row">
+    <div id='container' class="col-xs-12 col-md-12 center">
+        <span><%= link_to image_tag('ic_f.png', class:'social'), 'https://www.facebook.com/myuniverby/', target:'blank' %></span>
+        <span><%= link_to image_tag('ic_vk.png', class:'social'), 'https://www.vk.com/myuniver_by', target:'blank' %></span>
+        <span><%= link_to image_tag('ic_twitt.png', class:'social'), 'https://www.instagram.com/myuniver_by', target:'blank'  %></span>
+    </div>
   </div>
 </div>

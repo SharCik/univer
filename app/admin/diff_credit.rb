@@ -9,7 +9,7 @@ ActiveAdmin.register DiffCredit do
 
   index do
     column 'Предмет', :subject 
-    column 'Зачтено', :value
+    column 'Оценка', :value
     column 'Дата', :data
     actions
   end
@@ -40,7 +40,7 @@ ActiveAdmin.register DiffCredit do
     f.inputs "Зачет" do
       f.input :semester, :as => :select, :collection => Semester.all.map{|u| ["#{u.number}", u.id]}, label: "Семестр"
       f.input :subject,label: "Предмет"
-      f.input :value,label: "Зачтено"
+      f.input :value,label: "Оценка"
       f.input :data,label: "Дата"
     end
     action(:submit)

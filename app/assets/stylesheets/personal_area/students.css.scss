@@ -6,6 +6,11 @@ body{
   background: #3b5998 !important;
 }
 
+.main-wrapper{
+  padding: 0px;
+}
+
+
 .wrapper{
   margin-top: 50px;
 }
@@ -135,6 +140,12 @@ body{
   margin-bottom: 45px;
 }
 
+tr.tr-up{
+  border-left: 1pt solid #d8d8d8 !important;
+  border-bottom: 1pt solid #d8d8d8 !important;
+  border-right: 1pt solid #d8d8d8 !important;
+}
+
 .first-head{
   height: 40px;
   padding-top: 10px;
@@ -231,6 +242,7 @@ body{
 .personal-footer{
   margin-top: 50px;
   background-color: #192128;
+  padding-bottom: 30px;
 }
 
 .text-footer{
@@ -240,9 +252,11 @@ body{
   font-weight: bold;
 }
 
-
-
-
+.social{
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80px;
+}
 
 
 

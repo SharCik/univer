@@ -1,15 +1,41 @@
-  <div class="wrapper">
-    <div class="form-signin">   
-    <button type="button" class="close" style="padding-top: 5px;" data-dismiss="modal" aria-hidden="true" onClick="closeModalWindow()">×</button>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>" style="padding: 0px;color: red;"><%= value %></div>
-        <% end %>    
-        <%= bootstrap_form_for(:session, url: sessions_path) do |f| %>
-          <div class="form-group modal-form"><%= f.text_field :username , hide_label: true, autofocus: true, placeholder: "Логин"%></div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyUniver | Вход в личный кабинет MyUniver</title>
+  <%= stylesheet_link_tag 'session.css', media: 'all' %>
+  <%= stylesheet_link_tag :all %>
+  <%= favicon_link_tag 'favicon.png' %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+  <%= javascript_include_tag 'main-session.js'%>
+  <%= javascript_include_tag 'jquery' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-          <div class="form-group modal-form"><%= f.password_field :password,  hide_label: true, autocomplete: "off", placeholder: "Пароль" %></div>
+<canvas id="canvas"></canvas>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+              <div class='redfor text-center'>
+                <%= link_to image_tag('logo.png', style:'height: 65px'),root_path %>
+              </div>
+              <% flash.each do |key, value| %>
+                <div class="container text-center alert alert-<%= key %> errors-cont" style="padding: 0px;color: red;width: 100%;margin-top: 10px;margin-bottom: 0px;"><%= value %></div>
+              <% end %>    
+              <%= form_for(:session, url: sessions_path, :html => {:class => "form-signin"}) do |f| %>
+                <%= f.text_field :username, class:'form-control' , hide_label: true, autofocus: true, placeholder: "Логин"%>
 
-          <%= f.submit "Войти", class:"btn btn-lg btn-primary btn-block"%>
-        <% end %> 
+                <%= f.password_field :password, class:'form-control',  hide_label: true, autocomplete: "off", placeholder: "Пароль"%>
+
+                <%= f.submit "Войти", class:"btn btn-lg btn-primary btn-block", style:'background: #3b5998; border:none; border-radius: 0; box-shadow: 0 0 1px #000000 ' %>
+              <% end %>
+            </div>
+            
+        </div>
     </div>
-  </div>
+</div>
+
+</body>
+</html>
+

@@ -182,7 +182,7 @@ var Personal = React.createClass({
                     </div>
                     <div className='col-xs-3 text-center'>
                       <div className='circle'>{this.props.penal.length != 0 ? this.props.penal : '0'}</div>
-                      <div className='text-center text-circle'>Выговоры и <br/>штрафы</div>
+                      <div className='text-center text-circle'>Выговоры и штрафы<br/>(последний семестр)</div>
                     </div>
                   </div>
                 </div>
