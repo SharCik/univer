@@ -28,7 +28,6 @@ var Personal = React.createClass({
                         diff_credits: data.diff_credits });
       },
       error: function(xhr,status,error){
-        alert('Cannot get data from!');
       }
     })
   },
@@ -45,7 +44,6 @@ var Personal = React.createClass({
                         diff_credits: data.diff_credits });
       },
       error: function(xhr,status,error){
-        alert('Cannot get data from!');
       }
     })
   },
@@ -62,7 +60,6 @@ var Personal = React.createClass({
                         penalties: data.penalties });
       },
       error: function(xhr,status,error){
-        alert('Cannot get data from!');
       }
     })
   },
@@ -79,7 +76,6 @@ var Personal = React.createClass({
                         penalties: data.penalties });
       },
       error: function(xhr,status,error){
-        alert('Cannot get data from!');
       }
     })
   },

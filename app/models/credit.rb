@@ -1,4 +1,4 @@
 class Credit < ActiveRecord::Base
-  validates :subject, presence: true , uniqueness: true
+  validates :subject, presence: true 
   belongs_to :semester
 end
