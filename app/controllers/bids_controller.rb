@@ -33,6 +33,13 @@ class BidsController < ApplicationController
       flash[:bid_error] = 'Заявка не отправлена!'
       redirect_to request_path
     end
+
+    if @bid.save
+
+      BidMailer.bid_new(@bid.id).deliver
+
+    end
+
   end
 
   private
