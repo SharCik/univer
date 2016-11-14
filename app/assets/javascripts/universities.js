@@ -11,13 +11,13 @@ var button_m = document.getElementById("button_magis");
 var button_active  = function(){
   var button_h = document.getElementById("button_height");
   var button_m = document.getElementById("button_magis");
-  if (active == "height"){
+  if ((active == "height")&&(button_h)){
     button_h.classList.remove("large-btn");
     button_h.classList.add("large-btn_active");
 
     button_m.classList.remove("large-btn_active");
     button_m.classList.add("large-btn");
-  } else {
+  } else if (button_h) {
     
     button_m.classList.remove("large-btn");
     button_m.classList.add("large-btn_active");

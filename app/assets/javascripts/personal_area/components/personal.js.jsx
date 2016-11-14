@@ -166,8 +166,7 @@ var Personal = React.createClass({
                       </tbody>
                     </table>
                   </div>
-                  <div className='col-xs-4'></div>
-                  <div className='col-xs-8'>
+                  <div className='col-xs-8 col-xs-offset-4'>
                     <div className='col-xs-3 circ'>
                       <div className='circle'>{this.props.student.rating.length != 0 ? this.props.student.rating : '0'}</div>
                       <div className='text-center text-circle'>Текущий рейтинг</div>
@@ -203,11 +202,11 @@ var Personal = React.createClass({
                          </div>
                     <div className={'col-xs-4 first-head ' + (this.state.active_first == 2 ? 'active-head' : '')}
                          onClick={() => { this.setHeadFirstActive(2)}}>
-                         Дифференцированный зачет
+                         Не дифф. зачет
                          </div>
                     <div className={'col-xs-5 first-head ' + (this.state.active_first == 3 ? 'active-head' : '')}
                          onClick={() => { this.setHeadFirstActive(3)}}>
-                         Не дифф. зачет
+                         Дифференцированный зачет
                          </div>
                     <ProgressTable marks={this.state.marks} credits={this.state.credits} diff_credits={this.state.diff_credits} progressActive={this.state.active_first} />
                   </div>

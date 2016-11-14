@@ -33,8 +33,11 @@ var ready;
 
 
 function closeModalWindow(){
-  $("#modal-window").removeClass("show");
-  $("#modal-window").addClass("hide");
+  $("#modal-window").removeClass('show');
+  $("#modal-window").addClass('hide');
+  $("#modal-window").modal('hide');
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
 };
 
 

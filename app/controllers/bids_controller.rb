@@ -23,22 +23,11 @@ class BidsController < ApplicationController
 
     if @bid.save
 
-      BidMailer.bid_new(@bid.id).deliver
-
-      respond_to do |format|
-        format.js
-        format.html
-      end
     else
       flash[:bid_error] = 'Заявка не отправлена!'
       redirect_to request_path
     end
 
-    if @bid.save
-
-      BidMailer.bid_new(@bid.id).deliver
-
-    end
 
   end
 

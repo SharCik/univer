@@ -4,6 +4,16 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+function closeModalWindow(){
+  $("#modal-window").removeClass('show');
+  $("#modal-window").addClass('hide');
+  $("#modal-window").modal('hide');
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
+};
+
+
+
 $(document).ready(function(){
 
   (function($) {
@@ -50,12 +60,6 @@ $(document).ready(function(){
   })(jQuery); // End of use strict
 
 })
-
-
-function closeModalWindow(){
-  $("#modal-window").removeClass("show");
-  $("#modal-window").addClass("hide");
-};
 
 
 function open_sertificates(){
