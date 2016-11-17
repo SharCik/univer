@@ -23,6 +23,13 @@ ActiveAdmin.register Specialty do
       super
     end 
 
+    def destroy
+      
+        destroy! do |format|
+          format.html { redirect_to admin_departament_path(Departament.find(@specialty.departament_id).id) } if resource.valid?
+        end
+      
+    end
       private 
   end 
 

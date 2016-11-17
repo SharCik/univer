@@ -1,6 +1,6 @@
 <% provide(:title, @univer.name) %>
 
-<div class="container header_image_all">
+<div class="container header_image_show">
   <div class="container cont_image">
     <div class="container">
       <div class="row">
@@ -26,7 +26,7 @@
     <div class="container" style="width: 100%;">
 
       <div class="col-md-3 show_univer_ava">
-        <%= image_tag(@univer.image.normal.url, style:'height: 190px; width: 251px;') %>
+        <%= image_tag(@univer.image.url, style:'height: 190px; width: 251px;object-fit: cover;') %>
       </div>
 
       <div class="col-md-6 univer_text">
@@ -93,39 +93,8 @@
 
     </div>
 
-    <% @departaments.each do |departament| %>
-
-      <div onclick="showHide('<%= departament.id  %>')"  class="container_for_departaments">
-        <div id="<%= departament.id.to_s + 'departament' %>" onclick="changeColor('<%= departament.id.to_s + 'departament' %>')" class="container departament_row">
-
-          <div class="col-xs-7 departament_details">
-            <%= departament.name %>
-          </div>
-
-          <% if count_specialties(departament) != 1 %>
-
-          <div class="col-xs-3 departament_details">
-            <%= count_specialties(departament) %> специальности
-          </div>
-
-          <% else %>
-
-          <div class="col-xs-3 departament_details">
-            <%= count_specialties(departament) %> специальность
-          </div>
-
-          <% end %>
-
-          <div class="col-xs-2 departament_details">
-            от <%= unitial_cost(departament.id) %> $
-          </div>
-        </div>
-      </div>
-
-      <%= render "universities/departament_specailties", :depart_id => departament.id %>
-      <%= render "universities/departament_magistracy", :depart_id => departament.id %>
-
-    <% end %>
+    <%= render "universities/height", :departaments => @departaments %>
+    <%= render "universities/magis", :departaments => @departaments %>
 
   </div>
 </div>

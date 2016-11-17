@@ -14,7 +14,15 @@ ActiveAdmin.register Student do
     # column :current_sign_in_at
     # column :last_sign_in_at
     # column :sign_in_count
-    actions
+    actions defaults: false do |student|
+      link_to "Открыть", admin_student_path(student)
+    end
+    actions defaults: false do |student|
+      link_to "Изменить", edit_admin_student_path(student)
+    end
+    actions defaults: false do |student|
+      link_to "Удалить", admin_student_path(student,page: 'index'), method: :delete, data: {confirm: "Вы уверены?"}
+    end
   end
 
   controller do
@@ -22,6 +30,20 @@ ActiveAdmin.register Student do
       @student = Student.new(specialty_id: params[:specialty])
       super
     end 
+
+    def destroy
+      
+        destroy! do |format|
+          if @student.specialty_id
+            if params[:page] == 'index'
+              format.html { redirect_to admin_students_path } if resource.valid?
+            else  
+              format.html { redirect_to admin_specialty_path(Specialty.find(@student.specialty_id).id) } if resource.valid?
+            end
+          end
+        end
+      
+    end
 
       private 
   end

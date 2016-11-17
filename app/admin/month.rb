@@ -21,6 +21,14 @@ ActiveAdmin.register Month do
       super
     end  
 
+    def destroy
+      
+        destroy! do |format|
+          format.html { redirect_to admin_student_semester_path(Semester.find(@month.semester_id).student.id,Semester.find(@month.semester_id).id) } if resource.valid?
+        end
+      
+    end
+
 
       private 
   end

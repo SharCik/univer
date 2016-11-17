@@ -20,7 +20,15 @@ ActiveAdmin.register Credit do
       @credit = Credit.new(semester_id: params[:semester_id])
 
       super
-    end  
+    end 
+
+    def destroy
+      
+        destroy! do |format|
+          format.html { redirect_to admin_student_semester_path(Semester.find(@credit.semester_id).student.id,Semester.find(@credit.semester_id).id) } if resource.valid?
+        end
+      
+    end 
 
 
       private 

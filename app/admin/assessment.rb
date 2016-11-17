@@ -14,6 +14,8 @@ ActiveAdmin.register Assessment do
     actions
   end
 
+  filter :none
+
   controller do
 
     def new
@@ -22,6 +24,13 @@ ActiveAdmin.register Assessment do
       super
     end  
 
+    def destroy
+      
+        destroy! do |format|
+          format.html { redirect_to admin_student_semester_path(Semester.find(@assessment.semester_id).student.id,Semester.find(@assessment.semester_id).id) } if resource.valid?
+        end
+      
+    end
 
       private 
   end

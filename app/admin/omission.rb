@@ -21,6 +21,13 @@ ActiveAdmin.register Omission do
       super
     end  
 
+    def destroy
+      
+        destroy! do |format|
+          format.html { redirect_to admin_semester_month_path(Month.find(@omission.month_id).semester.id,Month.find(@omission.month_id).id) } if resource.valid?
+        end
+      
+    end
 
       private 
   end

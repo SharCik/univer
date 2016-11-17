@@ -22,6 +22,14 @@ ActiveAdmin.register Magistracy do
       @magistracy = Magistracy.new(departament_id: params[:departament])
       super
     end 
+
+    def destroy
+      
+        destroy! do |format|
+          format.html { redirect_to admin_departament_path(Departament.find(@magistracy.departament_id).id) } if resource.valid?
+        end
+      
+    end
       private 
   end 
 

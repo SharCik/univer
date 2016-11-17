@@ -1,0 +1,35 @@
+    <% departaments.each do |departament| %>
+
+      <% if count_magis(departament) != 0 %>
+
+        <div onclick="showHideMagis('<%= departament.id  %>')"  class="container_for_departaments magis-depart hide">
+          <div id="<%= departament.id.to_s + 'departamentMagis' %>" onclick="changeColor('<%= departament.id.to_s + 'departamentMagis' %>')" class="container departament_row">
+
+            <div class="col-xs-7 departament_details">
+              <%= departament.name %>
+            </div>
+
+            <% if count_magis(departament) != 1 %>
+
+            <div class="col-xs-3 departament_details">
+              <%= count_magis(departament) %> специальности
+            </div>
+
+            <% else %>
+
+            <div class="col-xs-3 departament_details">
+              <%= count_magis(departament) %> специальность
+            </div>
+
+            <% end %>
+
+            <div class="col-xs-2 departament_details">
+              от <%= unitial_cost_magis(departament.id) %> $
+            </div>
+          </div>
+        </div>
+
+        <%= render "universities/departament_magistracy", :depart_id => departament.id %>
+
+      <% end %>
+    <% end %>

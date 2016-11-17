@@ -549,6 +549,7 @@ a:hover{
 }
 
 
+
 .header_image_show{
   width: 100%;
   position: relative;
@@ -1296,3 +1297,10 @@ $gray: #bbbbbb;
 }
 
 
+.hide{
+  display: none;
+}
+
+.block_class{
+  padding: 0 !important;
+}

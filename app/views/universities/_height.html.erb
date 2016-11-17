@@ -1,0 +1,34 @@
+    <% departaments.each do |departament| %>
+      <% if count_specialties(departament) != 0 %>
+
+        <div class="container_for_departaments special-depart" onclick="showHideHeight('<%= departament.id  %>')">
+          <div id="<%= departament.id.to_s + 'departamentHeight' %>" onclick="changeColor('<%= departament.id.to_s + 'departamentHeight' %>')" class="container departament_row">
+
+            <div class="col-xs-7 departament_details">
+              <%= departament.name %>
+            </div>
+
+            <% if count_specialties(departament) != 1 %>
+
+            <div class="col-xs-3 departament_details">
+              <%= count_specialties(departament) %> специальности
+            </div>
+
+            <% else %>
+
+            <div class="col-xs-3 departament_details">
+              <%= count_specialties(departament) %> специальность
+            </div>
+
+            <% end %>
+
+            <div class="col-xs-2 departament_details">
+              от <%= unitial_cost(departament.id) %> $
+            </div>
+          </div>
+        </div>
+
+        <%= render "universities/departament_specailties", :depart_id => departament.id %>
+
+      <% end %>
+    <% end %>

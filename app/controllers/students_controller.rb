@@ -7,10 +7,12 @@ class StudentsController < ApplicationController
 
   def show
     @student = current_user  
-    @specialty = @student.specialty
-    @departament = @specialty.departament
-    @univer = @departament.university
-    @semesters = @student.semesters
+    if @student.specialty.present?
+      @specialty = @student.specialty 
+      @departament = @specialty.departament
+      @univer = @departament.university
+      @semesters = @student.semesters
+    end
   end
 
   def semester_info

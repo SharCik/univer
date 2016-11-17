@@ -27,72 +27,57 @@ var button_active  = function(){
   };
 };
 
-
-
-
 var SetActionHeight = function(){
-  var magis = document.getElementsByClassName("magis");
-  for (i = 0; i < magis.length; i++){
-    magis[i].style.display = 'none';
-  };
+  $('.special-depart').removeClass('hide');
+  $('.magis-depart').addClass('hide');
   active = "height";
   button_active();
-  resetDepartament();
+  resetDepartaments();
 };
 
 
 var SetActionMagis = function(){
-  var special = document.getElementsByClassName("special");
-  for (i = 0; i < special.length; i++){
-    special[i].style.display = 'none';
-  };
+  $('.special-depart').addClass('hide');
+  $('.magis-depart').removeClass('hide');
   active = "magis";
   button_active();
-  resetDepartament();
+  resetDepartaments();
 };
 
 
-function resetDepartament() {   
-  var open_departs = document.getElementsByClassName("departament_row_open");
-  for (i = 0; i < open_departs.length; i++){
-    var something = open_departs[i];
-      open_departs[i].classList.remove("departament_row_open") 
-      something.classList.add("departament_row");
+
+
+
+function showHideMagis(element_id) {
+  var id = "magis_" + element_id,
+      element = $('#' + id);  
+  if (element.hasClass('hide')){
+    element.removeClass('hide');
+  } else {
+    element.addClass('hide');
   };
+ 
 };
 
-
-function showHide(element_id) {
-
-  if (document.getElementById(element_id + "departament"))
-  { 
-    
-    if (active == "height"){ 
-
-      var spec = document.getElementById("spec_" + element_id);
-
-      if (spec.style.display != "block") 
-      { 
-        spec.style.display = "block"; 
-      }
-      else 
-      {
-        spec.style.display = "none"; 
-      };
-    } else {
-      var magis = document.getElementById("magis_" + element_id);
-
-      if (magis.style.display != "block") 
-      { 
-        magis.style.display = "block"; 
-      }
-      else 
-      {
-        magis.style.display = "none"; 
-      };
-    };
-  };  
+function showHideHeight(element_id) {
+  var id = "spec_" + element_id,
+      element = $('#' + id); 
+  if (element.hasClass('hide')){
+    element.removeClass('hide');
+  } else {
+    element.addClass('hide');
+  };
+ 
 };
+
+function resetDepartaments() {
+  var departs = $('.departament_row_open');
+  $('.magis').addClass('hide');
+  $('.spec').addClass('hide');
+  departs.removeClass('departament_row_open');
+  departs.addClass('departament_row');
+};
+
 
 
 function changeColor(element_id) {

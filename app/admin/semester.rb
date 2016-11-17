@@ -21,6 +21,10 @@ ActiveAdmin.register Semester do
       private 
   end
 
+
+  filter :none
+
+
   sidebar "Успеваемость", only: [:show] do
     ul do
       li link_to "Добавить Оценку",    new_admin_semester_assessment_path(semester)

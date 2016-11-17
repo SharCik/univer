@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018112010) do
+ActiveRecord::Schema.define(version: 20161117114132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,13 +127,13 @@ ActiveRecord::Schema.define(version: 20161018112010) do
     t.datetime "updated_at",              null: false
     t.string   "name"
     t.string   "profession"
-    t.integer  "training_period"
+    t.string   "training_period"
     t.boolean  "ochno"
     t.boolean  "zaochno"
     t.integer  "ochno_price"
     t.integer  "zaochno_price"
     t.integer  "departament_id"
-    t.integer  "training_period_zaochno"
+    t.string   "training_period_zaochno"
   end
 
   add_index "magistracies", ["departament_id"], name: "index_magistracies_on_departament_id", using: :btree
@@ -202,12 +202,12 @@ ActiveRecord::Schema.define(version: 20161018112010) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "profession"
-    t.integer  "training_period"
+    t.string   "training_period"
     t.boolean  "ochno"
     t.boolean  "zaochno"
     t.integer  "ochno_price"
     t.integer  "zaochno_price"
-    t.integer  "training_period_zaochno"
+    t.string   "training_period_zaochno"
   end
 
   add_index "specialties", ["departament_id"], name: "index_specialties_on_departament_id", using: :btree

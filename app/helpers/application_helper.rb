@@ -5,6 +5,10 @@ module ApplicationHelper
     Specialty.where(departament_id: departament.id).count
   end
 
+  def count_magis(departament)
+    Magistracy.where(departament_id: departament.id).count
+  end
+
   def count_universities
     University.all.count
   end

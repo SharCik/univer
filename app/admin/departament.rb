@@ -22,6 +22,15 @@ ActiveAdmin.register Departament do
       @departament = Departament.new(university_id: params[:univer])
       super
     end 
+
+    def destroy
+      
+        destroy! do |format|
+          format.html { redirect_to admin_university_path(University.find(@departament.university_id).id) } if resource.valid?
+        end
+      
+    end
+
       private 
   end 
 
@@ -35,7 +44,7 @@ ActiveAdmin.register Departament do
     end
   end
 
-  action_item  do
+  action_item only: [:edit,:show,:new] do
     link_to "Вернуться к университету", admin_university_path(University.find(departament.university_id).id) ,style:"background: white;color: green;margin-top:10px;"
   end
 
