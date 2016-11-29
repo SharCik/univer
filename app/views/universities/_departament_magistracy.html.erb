@@ -18,9 +18,9 @@
         <% magistracies.each do |magistracy| %>
 
         <tr>
-          <td class="padding_spec td_height"><%= magistracy.name %></td>
-          <td class="padding_spec td_height"><%= magistracy.profession %></td>
-          <td class="padding_spec td_height">
+          <td class="padding_spec td_height" style="width: 36%;"><p><%= magistracy.name %></p></td>
+          <td class="padding_spec td_height" style="width: 28%;"><p><%= magistracy.profession %></p></td>
+          <td class="padding_spec td_height" style="width: 12%;">
 
             <% if magistracy.ochno == true  %>
 
@@ -33,11 +33,11 @@
 
             <% end %>
           </td>
-          <td class="padding_spec td_height td_align">
+          <td class="padding_spec td_height td_align"  style="width: 12%;">
             <p><%= magistracy.training_period %></p>
             <p><%= magistracy.training_period_zaochno %></p>
           </td>
-          <td class="padding_spec td_height">
+          <td class="padding_spec td_height"  style="width: 12%;">
 
             <% if magistracy.ochno == true %>
 

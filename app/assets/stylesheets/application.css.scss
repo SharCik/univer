@@ -548,12 +548,13 @@ a:hover{
   height: 489px;
 }
 
+.univer-full-ava{
 
+}
 
 .header_image_show{
   width: 100%;
   position: relative;
-  background-image: image-url('show_univer.jpg');
   background-size: 100% 100%;
   height: 489px;
 }
@@ -721,7 +722,7 @@ a:hover{
 
 /*******   checkboxes *******/
 
-$activeColor: #2EFE2E; //green
+$activeColor: #A9A9A9; //green
 $darkenColor: darken($activeColor, 20%);
 
 /* .roundedOne */
@@ -745,16 +746,15 @@ $darkenColor: darken($activeColor, 20%);
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
     &:after {
       content: '';
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       position: absolute;
-      top: 1px;
-      left: 1px;
+      top: 2px;
+      left: 2px;
       background: $activeColor;
       background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
       opacity: 0;
       border-radius: 50px;
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
     }
     &:hover::after {
       opacity: 0.3;
@@ -788,16 +788,15 @@ $darkenColor: darken($activeColor, 20%);
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
     &:after {
       content: '';
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       position: absolute;
-      top: 1px;
-      left: 1px;
+      top: 2px;
+      left: 2px;
       background: $activeColor;
       background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
       opacity: 0;
       border-radius: 50px;
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
     }
     &:hover::after {
       opacity: 0.3;
@@ -832,16 +831,15 @@ $darkenColor: darken($activeColor, 20%);
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
     &:after {
       content: '';
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       position: absolute;
-      top: 1px;
-      left: 1px;
+      top: 2px;
+      left: 2px;
       background: $activeColor;
       background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
       opacity: 0;
       border-radius: 50px;
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
     }
     &:hover::after {
       opacity: 0.3;
@@ -875,16 +873,15 @@ $darkenColor: darken($activeColor, 20%);
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
     &:after {
       content: '';
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       position: absolute;
-      top: 1px;
-      left: 1px;
+      top: 2px;
+      left: 2px;
       background: $activeColor;
       background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
       opacity: 0;
       border-radius: 50px;
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
     }
     &:hover::after {
       opacity: 0.3;
@@ -919,16 +916,15 @@ $darkenColor: darken($activeColor, 20%);
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
     &:after {
       content: '';
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       position: absolute;
-      top: 1px;
-      left: 1px;
+      top: 2px;
+      left: 2px;
       background: $activeColor;
       background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
       opacity: 0;
       border-radius: 50px;
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
     }
     &:hover::after {
       opacity: 0.3;
@@ -953,74 +949,52 @@ $darkenColor: darken($activeColor, 20%);
 
 
 /******   button ******/
+.container-button{
+  margin-top: 30px;
+  margin-left: 40px;
+}
 
-$green: #2EFE2E;
-$gray: #bbbbbb;
-* {
-  font-family: 'Roboto', sans-serif;
+.button-rounded-filter {
+  border-radius: 3px;
 }
-.container-button {
-  padding-top: 10px;
-  padding-left: 30px;
-  width: 130px;
-  height: 40px;
-  text-align: center;
-}
-#button-filter {
-  text-align: center;
-  outline:none;
-  height: 40px;
-  text-align: center;
-  width: 130px;
-  border-radius:40px;
-  background: #fff;
-  border: 1px solid $green;
-  color:$green;
-  letter-spacing:1px;
-  text-shadow:0;
-  font:{
-    size:12px;
-    weight: 550;
-  }
-  cursor: pointer;
-  transition: all 0.25s ease;
-  &:hover {
-    color:white;
-    background: $green;
-  }
-  &:active {
-    //letter-spacing: 2px;
-    letter-spacing: 2px ;
-  }
-  &:after {
-    content:"SUBMIT";
-  }
-}
-.onclic {
-  width: 40px;
-  border-color:$gray;
-  border-width:3px;
-  font-size:0;
-  border-left-color:$green;
-  animation: rotating 2s 0.25s linear infinite;
 
-  &:after {
-    content:"";
-  }
-  &:hover {
-    color:$green;
-    background: white;
+.button-flat-filter {
+  box-shadow: none;
+  -webkit-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+  background: #EEE;
+  border: none;
+  text-shadow: none;
+}
+
+.button-filter {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5),0 1px 2px rgba(0,0,0,.15);
+  background: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,#fbfbfb),color-stop(100%,#e1e1e1));
+  background: -webkit-linear-gradient(top,#fbfbfb,#e1e1e1);
+  background: linear-gradient(to bottom,#fbfbfb,#e1e1e1);
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #d4d4d4;
+  height: 32px;
+  line-height: 30px;
+  padding: 0 25.6px;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: "Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  color: #666;
+  text-shadow: 0 1px 1px #fff;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  &:hover{
+    box-shadow: inset 0 5px 0 rgba(255,255,255,.5),2px 2px 2px rgba(0,0,0,.15);
   }
 }
-.validate {
-  font-size:13px;
-  color: white;
-  background: $green;
-  &:after {
-    font-family:'FontAwesome';
-    content:"\f00c";
-  }
-}
+
+
+
 
 @keyframes rotating {
   from {

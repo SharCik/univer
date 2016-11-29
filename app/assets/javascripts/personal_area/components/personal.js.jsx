@@ -192,7 +192,7 @@ var Personal = React.createClass({
                       <label className='semester-label'>Выберите семестр</label>
                       <select onChange = {(e) => this.selectSemesterHandler(e)}
                               className = 'form-control sem-select'
-                              value = {this.state.semester.id}>
+                              value = {this.state.semester ? this.state.semester.id : ''}>
                         {semesters_list}
                       </select>
                     </div>
@@ -221,7 +221,7 @@ var Personal = React.createClass({
                       <label className='semester-label'>Выберите семестр</label>
                       <select onChange = {(e) => this.selectSemesterSecondHandler(e)}
                               className = 'form-control sem-select'
-                              value = {this.state.semester_penalties.id}> 
+                              value = {this.state.semester_penalties ? this.state.semester_penalties.id : ''}> 
                         {semesters_list}
                       </select>
                     </div>

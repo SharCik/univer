@@ -19,9 +19,9 @@
         <% specialties.each do |specialty| %>
 
         <tr>
-          <td class="padding_spec td_height"><%= specialty.name %></td>
-          <td class="padding_spec td_height"><%= specialty.profession %></td>
-          <td class="padding_spec td_height">
+          <td class="padding_spec td_height" style="width: 36%;"><p><%= specialty.name %></p></td>
+          <td class="padding_spec td_height" style="width: 28%;"><p><%= specialty.profession %></p></td>
+          <td class="padding_spec td_height" style="width: 12%;">
 
             <% if specialty.ochno == true  %>
 
@@ -34,11 +34,11 @@
 
             <% end %>
           </td>
-          <td class="padding_spec td_height td_align">
+          <td class="padding_spec td_height td_align" style="width: 12%;">
             <p><%= specialty.training_period %></p>
             <p><%= specialty.training_period_zaochno %></p>
           </td>
-          <td class="padding_spec td_height">
+          <td class="padding_spec td_height" style="width: 12%;">
 
           <% if specialty.ochno == true %>
 

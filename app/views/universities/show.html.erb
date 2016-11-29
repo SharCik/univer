@@ -1,9 +1,10 @@
 <% provide(:title, @univer.name) %>
+<% background = @univer.image.url %>
 
-<div class="container header_image_show">
+<div class="container header_image_show" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(<%=background%>);">
   <div class="container cont_image">
     <div class="container">
-      <div class="row">
+      <div class="row univer-full-ava">
 
         <div class="col-xs-12 col-md-8 col-md-offset-2">
 
@@ -25,11 +26,8 @@
   <div class="container cont_univer_show">
     <div class="container" style="width: 100%;">
 
-      <div class="col-md-3 show_univer_ava">
-        <%= image_tag(@univer.image.url, style:'height: 190px; width: 251px;object-fit: cover;') %>
-      </div>
-
-      <div class="col-md-6 univer_text">
+      <div class="col-md-8 univer_text">
+        <span class="city">Описание:</span><br/>
         <%= @univer.description %>
       </div>
 

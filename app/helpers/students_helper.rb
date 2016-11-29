@@ -16,7 +16,7 @@ module StudentsHelper
   def count_penalties(student)
     result = 0
     student = Student.find(student)
-    if student.semesters == nil
+    if student.semesters != nil
       if student.semesters.last.penalties
         result = student.semesters.order(number: :asc).last.penalties.count
       end
