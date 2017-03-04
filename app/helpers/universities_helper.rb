@@ -12,7 +12,8 @@ module UniversitiesHelper
         end
       end
     end
-    all_spec.compact.sort!
+    all_spec.compact!
+    all_spec.sort!
     all_spec[0]  
   end
 
@@ -43,7 +44,9 @@ module UniversitiesHelper
       first  = spec.order(zaochno_price: :asc).first.zaochno_price if spec.order(zaochno_price: :asc).first
       second = spec.order(ochno_price: :asc).first.ochno_price if spec.order(ochno_price: :asc).first
 
-      first > second ? second : first
+      if first and second
+        first > second ? second : first
+      end
     elsif !(spec.where(ochno: true).empty?)
       spec.order(ochno_price: :asc).first.ochno_price
     else
