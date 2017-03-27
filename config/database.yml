@@ -5,12 +5,12 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   host: localhost
-  username: rails
-  password: 'DEePEd3nyx'
+  username: pguser
+  password: 140994
 
 development:
   <<: *default
-  database: myuniver_development
+  database: example
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

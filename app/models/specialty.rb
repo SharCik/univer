@@ -1,4 +1,6 @@
 class Specialty < ActiveRecord::Base
-  has_many :students
+  validates :name, presence: true 
+
   belongs_to :departament
+  has_many :students
 end

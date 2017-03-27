@@ -36,13 +36,6 @@ ActiveAdmin.register Bid do
     attributes_table do
       row("Город"){ |r| result = City.find(r.city_id).name if r.city_id != nil }
       row("Университет"){ |r| result = University.find(r.university_id).name if r.university_id != nil }
-      row("Факультет"){ |r| result = Departament.find(r.departament_id).name if r.departament_id != nil }
-      if bid.specialty_id != nil
-      row("Специальность"){ |r| result = Specialty.find(r.specialty_id).name if r.specialty_id != nil }
-      end  
-      if bid.magistracy_id != nil
-      row("Магистратура"){ |r| result = Magistracy.find(r.magistracy_id).name if r.magistracy_id != nil }
-      end  
       row("Имя"){ |r| r.name }
       row("Телефон"){ |r| r.phone }
       row("Email"){ |r| r.mail }

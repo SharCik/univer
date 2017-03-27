@@ -8,7 +8,7 @@ module UniversitiesHelper
         if depart.specialties != nil 
           specialties = Specialty.where(departament_id: depart.id)
           spec = specialties.order(ochno_price: :asc).first
-          all_spec << spec.ochno_price if spec&&spec.ochno_price
+          all_spec << spec.ochno_price if spec&&spec.ochno_price&&spec.ochno
         end
       end
     end
@@ -25,7 +25,7 @@ module UniversitiesHelper
         if depart.specialties != nil   
           specialties = Specialty.where(departament_id: depart.id)
           spec = specialties.order(zaochno_price: :asc).first
-          all_spec << spec.zaochno_price if spec&&spec.zaochno_price
+          all_spec << spec.zaochno_price if spec&&spec.zaochno_price&&spec.zaochno
         end
       end
     end 

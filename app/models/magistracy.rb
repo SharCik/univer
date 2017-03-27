@@ -1,3 +1,5 @@
 class Magistracy < ActiveRecord::Base
-    belongs_to :departament
+  validates :name, presence: true 
+
+  belongs_to :departament
 end

@@ -133,7 +133,7 @@ var Personal = React.createClass({
                     <img src={this.props.student.avatar.ava.url} alt="avatar" className='img-circle'/>
                   </div>
                   <div className='col-xs-8'>
-                    <table>
+                    <table className='student_info_table'>
                       <tbody>
                         <tr>
                           <td className='info-first full-info'>ФИО</td>
@@ -166,16 +166,16 @@ var Personal = React.createClass({
                       </tbody>
                     </table>
                   </div>
-                  <div className='col-xs-8 col-xs-offset-4'>
-                    <div className='col-xs-3 circ'>
+                  <div className='col-md-8 col-md-offset-4 col-sm-12'>
+                    <div className='col-md-3 col-sm-4 circ'>
                       <div className='circle'>{this.props.student.rating.length != 0 ? this.props.student.rating : '0'}</div>
                       <div className='text-center text-circle'>Текущий рейтинг</div>
                     </div>
-                    <div className='col-xs-3 text-center'>
+                    <div className='col-md-3 col-sm-4 text-center'>
                       <div className='circle'>{this.props.omis.length != 0 ? this.props.omis : '0'}</div>
                       <div className='text-center text-circle'>Пропуски <br/>(последний семестр)</div>
                     </div>
-                    <div className='col-xs-3 text-center'>
+                    <div className='col-md-3 col-sm-4 text-center'>
                       <div className='circle'>{this.props.penal.length != 0 ? this.props.penal : '0'}</div>
                       <div className='text-center text-circle'>Выговоры и штрафы<br/>(последний семестр)</div>
                     </div>

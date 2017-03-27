@@ -51,6 +51,7 @@ body{
   border-radius: 50%;
   height: 230px;
   width: 230px;
+  object-fit: cover;
 }
 
 .info-cont{
@@ -59,7 +60,7 @@ body{
 
 .info-first{
   color: #949494;
-  width: 35%;
+  width: 30%;
 }
 
 .info-second{
@@ -109,6 +110,11 @@ body{
   white-space: nowrap;
   vertical-align: middle;
   font-size: large;
+}
+
+.student_info_table{
+  margin-left: 15px;
+  width: 100%;
 }
 
 .half-hr{
