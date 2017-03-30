@@ -43,7 +43,8 @@ gem 'frontend-generators'
 gem 'figaro'
 gem 'seed_dump'
 gem 'react-rails', '~> 1.0'
-
+gem 'telegram-bot-ruby'
+gem 'sidekiq'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
