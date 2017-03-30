@@ -21,6 +21,6 @@ test:
 
 production:
   <<: *default
-  database: myuniver_production
+  database: univer_production
   username: rails
-  password: 'DEePEd3nyx'
+  password: 'railsuniver'
