@@ -14,17 +14,17 @@
           <div class="form-group modal-form"><%= f.text_field :name , hide_label: true, placeholder: "Имя, обязательно"%></div>
 
 
-          <div class="form-group modal-form"><%= f.text_field :phone, hide_label: true, placeholder: "Телефон,  обязательно" %></div>
+          <div class="form-group modal-form"><%= f.text_field :phone, hide_label: true, placeholder: "Телефон, обязательно" %></div>
 
 
-          <div class="form-group modal-form"><%= f.email_field :mail , hide_label: true, placeholder: "Email" %></div>
+          <div class="form-group modal-form"><%= f.email_field :mail , hide_label: true, placeholder: "Email, обязательно" %></div>
 
 
           <div class="form-group modal-form"><%= f.text_area :comment, hide_label: true, placeholder: "Комментарий" %></div>  
           <% if @university != nil %>
             <%= hidden_field_tag(:university, @university.id) %>
           <% end %>
-          <%= f.submit "ОТПРАВИТЬ", class:"btn btn-lg btn-primary btn-block"%>
+          <%= f.submit "ОТПРАВИТЬ", class:"btn btn-lg btn-primary btn-block", data: { disable_with: "Пожалуйста, подождите..." } %>
         <% end %> 
     </div>
   </div>

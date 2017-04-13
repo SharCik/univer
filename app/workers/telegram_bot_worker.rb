@@ -4,7 +4,7 @@ class TelegramBotWorker
   include Sidekiq::Worker
 
   TOKEN   = '284079359:AAHDvhzytIlC9Mk0yE6eRB0MoQvwFi9dHOA'
-  CHANNEL = '191554053'
+  CHANNEL = '-182118136'
 
   def perform_async(message)
     Telegram::Bot::Client.run(TOKEN) do |bot|
