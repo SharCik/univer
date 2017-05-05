@@ -9,3 +9,10 @@ s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js";
 if (w.opera == "[object Opera]") {
 d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
 })(document, window, "yandex_metrika_callbacks");
+
+
+function sendCounter(){
+  yaCounter31225432.reachGoal('SENDING_AN_APPLICATION', function () {
+    console.log('Данные успешно отправлены');
+  })
+}

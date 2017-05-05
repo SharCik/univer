@@ -9,7 +9,7 @@
           <% if @university != nil %>
             <p style="color: #23599b;text-align: center;"><%= @university.name %></p>
           <% end %>
-        <%= bootstrap_form_for(@bid,:url => bids_path, remote: :true, class:'form-signin') do |f| %>
+        <%= bootstrap_form_for(@bid,:url => bids_path, remote: :true, class:'form-signin', onsubmit:"sendCounter()") do |f| %>
 
           <div class="form-group modal-form"><%= f.text_field :name , hide_label: true, placeholder: "Имя, обязательно"%></div>
 
