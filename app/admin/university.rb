@@ -105,6 +105,7 @@ ActiveAdmin.register University do
     inputs 'Details' do
       input :city, :as => :select, :collection => @cities, label:"Город"
       input :name, label: "Название"
+      input :univer_url, label: "URL:"
       input :short_name, label: "Аббревиатура"
       input :description, label: "Описание"
       input :address, label: "Адрес"
@@ -123,6 +124,6 @@ ActiveAdmin.register University do
   filter :city,  collection: proc { City.all },label: 'Город'
 
 
-  permit_params :name, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :ochno , :zaochno ,:rating, :magistracy
+  permit_params :name, :univer_url, :slug, :short_name, :description, :image, :initial_cost, :city_id , :preparatory_department, :address , :hostel, :ochno , :zaochno ,:rating, :magistracy
 
 end

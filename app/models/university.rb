@@ -1,5 +1,6 @@
 class University < ActiveRecord::Base
   validates :name, presence: true , uniqueness: true
+  validates :univer_url, uniqueness: true
   validates :short_name, presence: true , uniqueness: true
   validates :description, presence: true 
   validates :image, presence: true 
@@ -17,10 +18,22 @@ class University < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  extend FriendlyId
+  friendly_id :univer_url, use: [:slugged, :finders]
+
+  def slug_candidates
+    [:univer_url, [:univer_url, :id]]
+  end
+
   def self.search(search)
     where("name ILIKE ? OR short_name ILIKE ?", "%#{search}%", "%#{search}%")
   end
 
+  private
+
+    def should_generate_new_friendly_id?
+      univer_url_changed?
+    end
 
 
 end

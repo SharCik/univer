@@ -22,17 +22,10 @@ class UniversitiesController < ApplicationController
 
 
   def show
-    
     @univer = University.find(params[:id])
     @city = City.find(@univer.city_id)
     @departaments = Departament.where(university_id: @univer.id)
   end
 
-
-  private
-
-  def univer_params
-    params.require(:university).permit(:name, :short_name, :description, :image, :initial_cost)
-  end 
 
 end

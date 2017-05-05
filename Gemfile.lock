@@ -143,6 +143,8 @@ GEM
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     frontend-generators (0.1.1)
       rainbow (= 2.0.0)
       turf (= 0.0.5)
@@ -322,6 +324,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   figaro
+  friendly_id (~> 5.1.0)
   frontend-generators
   jbuilder (~> 2.0)
   jquery-rails
