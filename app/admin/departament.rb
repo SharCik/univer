@@ -19,7 +19,7 @@ ActiveAdmin.register Departament do
 
   controller do
     def new
-      @departament = Departament.new(university_id: params[:univer])
+      @departament = Departament.new(university_id: University.friendly.find(params[:univer]).id)
       super
     end 
 
